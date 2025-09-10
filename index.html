@@ -13,12 +13,27 @@
     body { background: #0f0f11; color: #fff; transition: background 0.3s, color 0.3s; }
     .glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
     .accent { background: linear-gradient(90deg,#f97316,#ef4444); }
-    body.light-theme { background: #fff; color: #222; }
-    body.light-theme .glass { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); }
-    body.light-theme .accent { background: linear-gradient(90deg,#fb923c,#ef4444); }
+  /* Modo claro */
+  body.night-theme { background: #fff; color: #000; }
+    body.night-theme .glass { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); }
+    body.night-theme .accent { background: linear-gradient(90deg,#fb923c,#ef4444); }
+
+  /* Sobrescrever utilitários de texto branco no modo claro */
+  body.night-theme .text-white { color: #000 !important; }
+  body.night-theme .text-white\/90 { color: rgba(0,0,0,0.9) !important; }
+  body.night-theme .text-white\/85 { color: rgba(0,0,0,0.85) !important; }
+  body.night-theme .text-white\/80 { color: rgba(0,0,0,0.8) !important; }
+  body.night-theme .text-white\/75 { color: rgba(0,0,0,0.75) !important; }
+  body.night-theme .text-white\/70 { color: rgba(0,0,0,0.7) !important; }
+  body.night-theme .text-white\/60 { color: rgba(0,0,0,0.6) !important; }
+  body.night-theme .text-white\/50 { color: rgba(0,0,0,0.5) !important; }
+  body.night-theme .text-white\/40 { color: rgba(0,0,0,0.4) !important; }
+  body.night-theme .text-white\/30 { color: rgba(0,0,0,0.3) !important; }
+  body.night-theme .text-white\/20 { color: rgba(0,0,0,0.2) !important; }
+  body.night-theme .text-white\/10 { color: rgba(0,0,0,0.1) !important; }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased night-theme">
 
   <!-- NAV -->
   <header class="sticky top-0 z-40 glass backdrop-blur-sm">
@@ -26,7 +41,7 @@
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center gap-3">
           <!-- Troque o src abaixo pelo caminho da sua logo -->
-          <img id="logo" src="logo-placeholder.png" alt="PapiFast" class="h-8 w-8 rounded-full bg-orange-400/50" />
+          <img id="logo" src="img/logo.jpg" alt="PapiFast" class="h-8 w-8 rounded-full bg-orange-400/50" />
           <span class="font-semibold tracking-tight text-lg">PapiFast</span>
         </div>
 
@@ -71,7 +86,7 @@
         <div class="grid lg:grid-cols-2 gap-10 items-center">
           <div>
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
-              Organize eventos de ponta a ponta <span style="background:linear-gradient(90deg,#fb923c,#ef4444);-webkit-background-clip:text;color:transparent">em um só app</span>
+              Organize eventos de ponta a ponta <span style="background:linear-gradient(90deg,#fb923c,#ef4444);-webkit-background-clip:text;background-clip:text;color:transparent">em um só app</span>
             </h1>
             <p class="mt-4 text-white/80 max-w-2xl">
               O PapiFast centraliza criação do evento, convites, lista de presentes, cupons e integração com PDV. Moderno, rápido e fácil para quem organiza e para quem participa.
@@ -294,8 +309,8 @@
 
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', function() {
-      document.body.classList.toggle('light-theme');
-      themeToggle.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+      document.body.classList.toggle('night-theme');
+      themeToggle.textContent = document.body.classList.contains('night-theme') ? '☀️' : '🌙';
     });
   </script>
 
