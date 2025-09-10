@@ -10,9 +10,12 @@
 
   <style>
     /* Pequenos ajustes visuais */
-    body { background: #0f0f11; color: #fff; }
+    body { background: #0f0f11; color: #fff; transition: background 0.3s, color 0.3s; }
     .glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
     .accent { background: linear-gradient(90deg,#f97316,#ef4444); }
+    body.light-theme { background: #fff; color: #222; }
+    body.light-theme .glass { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); }
+    body.light-theme .accent { background: linear-gradient(90deg,#fb923c,#ef4444); }
   </style>
 </head>
 <body class="antialiased">
@@ -37,6 +40,7 @@
 
         <div class="flex items-center gap-3">
           <a href="#contato" class="hidden sm:inline-flex px-4 py-2 rounded-2xl accent shadow-lg">Solicitar Demonstração</a>
+          <button id="theme-toggle" class="inline-flex items-center px-3 py-2 rounded-xl border border-white/10 bg-white/10 text-white hover:bg-white/20 transition">🌙/☀️</button>
           <button id="btn-mobile" class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 p-2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"/>
@@ -287,6 +291,12 @@
       m.classList.toggle('hidden');
     });
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('light-theme');
+      themeToggle.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+    });
   </script>
 
 </body>
