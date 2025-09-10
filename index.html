@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PapiFast — Gestão de Eventos</title>
+
+  <!-- Tailwind CDN (rápido para protótipo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Pequenos ajustes visuais */
+    body { background: #0f0f11; color: #fff; }
+    .glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+    .accent { background: linear-gradient(90deg,#f97316,#ef4444); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 glass backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <!-- Troque o src abaixo pelo caminho da sua logo -->
+          <img id="logo" src="logo-placeholder.png" alt="PapiFast" class="h-8 w-8 rounded-full bg-orange-400/50" />
+          <span class="font-semibold tracking-tight text-lg">PapiFast</span>
+        </div>
+
+        <nav id="nav-desktop" class="hidden md:flex items-center gap-8 text-sm">
+          <a href="#sobre" class="hover:text-orange-400">Sobre</a>
+          <a href="#perfis" class="hover:text-orange-400">Perfis</a>
+          <a href="#funcionalidades" class="hover:text-orange-400">Funcionalidades</a>
+          <a href="#prints" class="hover:text-orange-400">Telas</a>
+          <a href="#contato" class="hover:text-orange-400">Contato</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="#contato" class="hidden sm:inline-flex px-4 py-2 rounded-2xl accent shadow-lg">Solicitar Demonstração</a>
+          <button id="btn-mobile" class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 p-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10">
+      <div class="px-4 py-3 space-y-2">
+        <a href="#sobre" class="block px-3 py-2 rounded-xl bg-white/5">Sobre</a>
+        <a href="#perfis" class="block px-3 py-2 rounded-xl bg-white/5">Perfis</a>
+        <a href="#funcionalidades" class="block px-3 py-2 rounded-xl bg-white/5">Funcionalidades</a>
+        <a href="#prints" class="block px-3 py-2 rounded-xl bg-white/5">Telas</a>
+        <a href="#contato" class="block px-3 py-2 rounded-xl bg-white/5">Contato</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.45),transparent_40%),radial-gradient(ellipse_at_bottom,rgba(239,68,68,0.35),transparent_40%)]"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+              Organize eventos de ponta a ponta <span style="background:linear-gradient(90deg,#fb923c,#ef4444);-webkit-background-clip:text;color:transparent">em um só app</span>
+            </h1>
+            <p class="mt-4 text-white/80 max-w-2xl">
+              O PapiFast centraliza criação do evento, convites, lista de presentes, cupons e integração com PDV. Moderno, rápido e fácil para quem organiza e para quem participa.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#funcionalidades" class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/15">Ver recursos</a>
+              <a href="#contato" class="px-5 py-3 rounded-2xl accent shadow-lg">Quero uma demo</a>
+            </div>
+          </div>
+
+          <!-- Hero mockups: troque as imagens pelos screenshots reais -->
+          <div>
+            <div class="relative rounded-3xl overflow-hidden glass p-4 shadow-2xl">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="aspect-[4/3] rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
+                  <!-- substituir por: imgs/gestao-eventos.jpg -->
+                  Tela: Gestão de Eventos
+                </div>
+                <div class="aspect-[4/3] rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
+                  <!-- substituir por: imgs/detalhe-evento.jpg -->
+                  Tela: Detalhe do Evento
+                </div>
+                <div class="col-span-2 aspect-[21/9] rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
+                  <!-- substituir por: imgs/cadastrar-evento.jpg -->
+                  Tela: Cadastrar Evento
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="py-20 border-t border-white/10">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-2xl md:text-3xl font-bold">O que é o PapiFast?</h2>
+          <p class="mt-4 text-white/80">
+            O PapiFast é um aplicativo para gestão completa de eventos como aniversários, festas e comemorações. Em um único lugar você cria o evento, monta a lista de presentes, envia convites digitais e acompanha confirmações e compras — com recibos automáticos e integração com PDV.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERFIS -->
+    <section id="perfis" class="py-20 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold">Perfis de Usuário</h2>
+        <p class="mt-2 text-white/70">Cada perfil possui ações pensadas para sua jornada dentro do sistema.</p>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-10">
+          <div class="rounded-3xl glass p-6">
+            <div class="text-xs uppercase tracking-wider text-orange-300/90 font-semibold">C1 · Administrador</div>
+            <h3 class="text-lg font-semibold mt-1">Gestão completa da operação</h3>
+            <ul class="mt-4 space-y-2 text-sm text-white/80">
+              <li>Gerir empresas, filiais e usuários (cliente/funcionário)</li>
+              <li>Adicionar/editar produtos das filiais</li>
+              <li>Campanhas, cupons, vouchers e cardápios (TV, imagens, impressos)</li>
+              <li>Sincronização com UAI PDV</li>
+            </ul>
+          </div>
+
+          <div class="rounded-3xl glass p-6">
+            <div class="text-xs uppercase tracking-wider text-orange-300/90 font-semibold">C2 · Organizador</div>
+            <h3 class="text-lg font-semibold mt-1">Tudo para criar seu evento</h3>
+            <ul class="mt-4 space-y-2 text-sm text-white/80">
+              <li>Login/cadastro, criação do evento e convites</li>
+              <li>Montar e editar lista de presentes (interligada aos convites)</li>
+              <li>Adicionar ou cadastrar produtos do evento</li>
+              <li>Receber notificações de compra de presentes e confirmações</li>
+              <li>Visualizar vouchers e cupons</li>
+            </ul>
+          </div>
+
+          <div class="rounded-3xl glass p-6">
+            <div class="text-xs uppercase tracking-wider text-orange-300/90 font-semibold">C3 · Convidado</div>
+            <h3 class="text-lg font-semibold mt-1">Participa sem cadastro</h3>
+            <ul class="mt-4 space-y-2 text-sm text-white/80">
+              <li>Recebe convite via link/WhatsApp/e-mail</li>
+              <li>Acessa o evento, visualiza presentes e compra</li>
+              <li>Recebe recibo e notificações (ex.: lembrete da data)</li>
+              <li>Acessa página de cupons e promoções</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section id="funcionalidades" class="py-20 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between flex-wrap gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold">Funcionalidades e Benefícios</h2>
+            <p class="mt-2 text-white/70 max-w-2xl">Recursos que simplificam a organização e ampliam os resultados dos seus eventos.</p>
+          </div>
+          <a href="#contato" class="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/15">Falar com vendas</a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          <div class="rounded-3xl glass p-6">
+            <h3 class="font-semibold">Criação de eventos em minutos</h3>
+            <p class="text-white/75 mt-2 text-sm">Fluxo guiado para eventos gratuitos ou pagos com imagens, categorias e visibilidade.</p>
+          </div>
+
+          <div class="rounded-3xl glass p-6">
+            <h3 class="font-semibold">Convites digitais</h3>
+            <p class="text-white/75 mt-2 text-sm">Envio por WhatsApp, e-mail ou link. Acompanhe confirmações em tempo real.</p>
+          </div>
+
+          <div class="rounded-3xl glass p-6">
+            <h3 class="font-semibold">Lista de presentes inteligente</h3>
+            <p class="text-white/75 mt-2 text-sm">Sugestões via IA, compra direta e recibos automáticos para o organizador.</p>
+          </div>
+
+          <div class="rounded-3xl glass p-6">
+            <h3 class="font-semibold">Cupons, Vouchers e Cardápios</h3>
+            <p class="text-white/75 mt-2 text-sm">Crie campanhas, gere cupons e vouchers; exiba cardápio do evento e catálogo de produtos.</p>
+          </div>
+
+          <div class="rounded-3xl glass p-6">
+            <h3 class="font-semibold">Perfis e permissões</h3>
+            <p class="text-white/75 mt-2 text-sm">ADM (empresa/filiais), Organizador (evento) e Convidado (sem cadastro).</p>
+          </div>
+
+          <div class="rounded-3xl glass p-6">
+            <h3 class="font-semibold">Integração com PDV</h3>
+            <p class="text-white/75 mt-2 text-sm">Integra com UAI PDV para sincronizar produtos, filiais e relatórios.</p>
+          </div>
+        </div>
+
+        <!-- FLUXO -->
+        <div class="mt-14">
+          <h3 class="text-lg font-semibold">Como funciona</h3>
+          <div class="mt-4 rounded-3xl glass p-3">
+            <div class="aspect-[16/7] w-full rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
+              <!-- Substituir pela imagem do diagrama de fluxo -->
+              Diagrama do fluxo (ADM · Organizador · Convidado)
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINTS -->
+    <section id="prints" class="py-20 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold">Algumas telas do sistema</h2>
+        <p class="mt-2 text-white/70">Interface moderna, responsiva e pronta para uso em desktop e mobile.</p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          <div class="rounded-3xl overflow-hidden glass">
+            <div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm">Gestão de Eventos</div>
+            <div class="p-4 text-sm text-white/80">Gestão de Eventos</div>
+          </div>
+
+          <div class="rounded-3xl overflow-hidden glass">
+            <div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm">Detalhes do Evento</div>
+            <div class="p-4 text-sm text-white/80">Detalhes do Evento</div>
+          </div>
+
+          <div class="rounded-3xl overflow-hidden glass">
+            <div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm">Cadastrar Evento</div>
+            <div class="p-4 text-sm text-white/80">Cadastrar Evento</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTEGRAÇÃO PDV -->
+    <section class="py-20 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold">Integração com UAI PDV</h2>
+            <p class="mt-4 text-white/80">Sincronize produtos, filiais, funcionários e campanhas. Gere cardápios e exiba promoções na TV, com imagens e materiais de divulgação.</p>
+
+            <ul class="mt-6 space-y-2 text-sm text-white/80">
+              <li>Sincronização de catálogo por filial</li>
+              <li>Cupons e vouchers vinculados ao evento</li>
+              <li>Relatórios e recibos automáticos</li>
+            </ul>
+          </div>
+
+          <div class="rounded-3xl glass p-4">
+            <div class="aspect-[4/3] rounded-2xl bg-white/6 w-full flex items-center justify-center text-white/60 text-sm">
+              Mockup integração PDV
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="contato" class="py-20 border-t border-white/10">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Pronto para transformar seus eventos?</h2>
+        <p class="mt-3 text-white/80">Fale com nosso time e veja o PapiFast em ação.</p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://wa.me/5532993585185?text=Ol%C3%A1%20quero%20uma%20demo%20do%20PapiFast" target="_blank" rel="noreferrer" class="px-6 py-3 rounded-2xl bg-green-500 hover:opacity-90 shadow-lg">Chamar no WhatsApp</a>
+          <a href="mailto:contato@papifast.com" class="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/15">Enviar e-mail</a>
+        </div>
+
+        <p class="mt-6 text-xs text-white/50">© <span id="year"></span> PapiFast. Todos os direitos reservados.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Interações simples: menu mobile + ano automático
+    document.getElementById('btn-mobile').addEventListener('click', function(){
+      const m = document.getElementById('mobile-menu');
+      m.classList.toggle('hidden');
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
