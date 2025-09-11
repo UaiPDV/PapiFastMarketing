@@ -1,61 +1,191 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PapiFast — Gestão de Eventos</title>
 
-  <!-- Tailwind CDN (rápido para protótipo) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    /* Pequenos ajustes visuais */
-    body { background: #0f0f11; color: #fff; transition: background 0.3s, color 0.3s; }
-    .glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
-    .accent { background: linear-gradient(90deg,#f97316,#ef4444); }
-  /* Modo claro */
-  body.night-theme { background: #fff; color: #000; }
-    body.night-theme .glass { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); }
-    body.night-theme .accent { background: linear-gradient(90deg,#fb923c,#ef4444); }
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  /* Sobrescrever utilitários de texto branco no modo claro */
-  body.night-theme .text-white { color: #000 !important; }
-  body.night-theme .text-white\/90 { color: rgba(0,0,0,0.9) !important; }
-  body.night-theme .text-white\/85 { color: rgba(0,0,0,0.85) !important; }
-  body.night-theme .text-white\/80 { color: rgba(0,0,0,0.8) !important; }
-  body.night-theme .text-white\/75 { color: rgba(0,0,0,0.75) !important; }
-  body.night-theme .text-white\/70 { color: rgba(0,0,0,0.7) !important; }
-  body.night-theme .text-white\/60 { color: rgba(0,0,0,0.6) !important; }
-  body.night-theme .text-white\/50 { color: rgba(0,0,0,0.5) !important; }
-  body.night-theme .text-white\/40 { color: rgba(0,0,0,0.4) !important; }
-  body.night-theme .text-white\/30 { color: rgba(0,0,0,0.3) !important; }
-  body.night-theme .text-white\/20 { color: rgba(0,0,0,0.2) !important; }
-  body.night-theme .text-white\/10 { color: rgba(0,0,0,0.1) !important; }
+  <style>
+    /* Estilos base e animações */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0f11;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+    .header-bg {
+      background: rgba(15, 15, 17, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.08);
+    }
+    .accent {
+      background: linear-gradient(90deg, #f97316, #ef4444);
+      color: white;
+      transition: all 0.2s ease-in-out;
+    }
+    .accent:hover {
+        opacity: 0.95;
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+    }
+    .button-animation {
+        transition: all 0.2s ease-in-out;
+    }
+    .button-animation:hover {
+        transform: scale(1.05) translateY(-2px);
+    }
+
+    .btn-whatsapp {
+        background-color: #25D366;
+        color: white;
+    }
+    .btn-whatsapp:hover {
+        background-color: #128C7E;
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    .btn-email {
+        background-color: #3B82F6; /* Azul */
+        color: white;
+    }
+    .btn-email:hover {
+        background-color: #2563EB;
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    }
+    
+    /* Animação do link do menu */
+    .nav-link {
+        position: relative;
+        padding-bottom: 5px;
+        transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+        color: #f97316;
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #f97316;
+        transform-origin: bottom right;
+        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .nav-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+
+    /* Modo claro */
+    body.light-theme {
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    body.light-theme .glass {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    body.light-theme .header-bg {
+      background: rgba(248, 250, 252, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+     body.light-theme .glass:hover {
+        background: rgba(255,255,255,1);
+    }
+    body.light-theme .accent {
+      background: linear-gradient(90deg, #fb923c, #ef4444);
+      color: white !important; /* Garante o texto branco nos botões de gradiente */
+    }
+    body.light-theme .accent:hover {
+      box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4);
+    }
+    body.light-theme .btn-whatsapp:hover {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    body.light-theme .btn-email:hover {
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    }
+    body.light-theme .text-white { color: #1e293b !important; }
+    body.light-theme .text-white\/90 { color: rgba(30,41,59,0.9) !important; }
+    body.light-theme .text-white\/80 { color: rgba(30,41,59,0.8) !important; }
+    body.light-theme .text-white\/70 { color: rgba(30,41,59,0.7) !important; }
+    body.light-theme .text-white\/60 { color: rgba(30,41,59,0.6) !important; }
+    body.light-theme .text-white\/50 { color: rgba(30,41,59,0.5) !important; }
+    body.light-theme .border-white\/10 { border-color: rgba(0,0,0,0.1); }
+    body.light-theme .bg-white\/10 { background: rgba(0,0,0,0.05); }
+    body.light-theme .bg-white\/5 { background: rgba(0,0,0,0.03); }
+    body.light-theme .bg-white\/6 { background: rgba(0,0,0,0.04); }
+
+    /* Animação de entrada */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        will-change: opacity, transform;
+    }
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Menu mobile animado */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    #mobile-menu.open {
+      max-height: 30rem; /* Suficiente para os links */
+    }
+    body.menu-open {
+      overflow: hidden;
+    }
   </style>
 </head>
-<body class="antialiased night-theme">
+<body class="antialiased">
 
   <!-- NAV -->
-  <header class="sticky top-0 z-40 glass backdrop-blur-sm">
+  <header class="sticky top-0 z-40 header-bg backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center gap-3">
-          <!-- Troque o src abaixo pelo caminho da sua logo -->
-          <img id="logo" src="img/logo.jpg" alt="PapiFast" class="h-8 w-8 rounded-full bg-orange-400/50" />
+          <img id="logo" src="img/logo.jpg" alt="PapiFast" class="h-8 w-8 rounded-full object-cover bg-orange-400/50" />
           <span class="font-semibold tracking-tight text-lg">PapiFast</span>
         </div>
 
         <nav id="nav-desktop" class="hidden md:flex items-center gap-8 text-sm">
-          <a href="#sobre" class="hover:text-orange-400">Sobre</a>
-          <a href="#perfis" class="hover:text-orange-400">Perfis</a>
-          <a href="#funcionalidades" class="hover:text-orange-400">Funcionalidades</a>
-          <a href="#prints" class="hover:text-orange-400">Telas</a>
-          <a href="#contato" class="hover:text-orange-400">Contato</a>
+          <a href="#sobre" class="nav-link">Sobre</a>
+          <a href="#perfis" class="nav-link">Perfis</a>
+          <a href="#funcionalidades" class="nav-link">Funcionalidades</a>
+          <a href="#prints" class="nav-link">Telas</a>
+          <a href="#contato" class="nav-link">Contato</a>
         </nav>
 
         <div class="flex items-center gap-3">
-          <a href="#contato" class="hidden sm:inline-flex px-4 py-2 rounded-2xl accent shadow-lg">Solicitar Demonstração</a>
-          <button id="theme-toggle" class="inline-flex items-center px-3 py-2 rounded-xl border border-white/10 bg-white/10 text-white hover:bg-white/20 transition">🌙/☀️</button>
+          <a href="#contato" class="hidden sm:inline-flex px-4 py-2 rounded-xl accent shadow-lg button-animation">Solicitar Demonstração</a>
+          <button id="theme-toggle" class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-white/10 bg-white/10 hover:bg-white/20 transition">
+            <svg id="theme-icon-light" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
           <button id="btn-mobile" class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 p-2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"/>
@@ -66,7 +196,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10">
+    <div id="mobile-menu" class="md:hidden border-t border-white/10">
       <div class="px-4 py-3 space-y-2">
         <a href="#sobre" class="block px-3 py-2 rounded-xl bg-white/5">Sobre</a>
         <a href="#perfis" class="block px-3 py-2 rounded-xl bg-white/5">Perfis</a>
@@ -82,48 +212,34 @@
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.45),transparent_40%),radial-gradient(ellipse_at_bottom,rgba(239,68,68,0.35),transparent_40%)]"></div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div class="reveal">
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter">
               Organize eventos de ponta a ponta <span style="background:linear-gradient(90deg,#fb923c,#ef4444);-webkit-background-clip:text;background-clip:text;color:transparent">em um só app</span>
             </h1>
-            <p class="mt-4 text-white/80 max-w-2xl">
+            <p class="mt-4 text-white/80 max-w-2xl text-lg">
               O PapiFast centraliza criação do evento, convites, lista de presentes, cupons e integração com PDV. Moderno, rápido e fácil para quem organiza e para quem participa.
             </p>
 
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="#funcionalidades" class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/15">Ver recursos</a>
-              <a href="#contato" class="px-5 py-3 rounded-2xl accent shadow-lg">Quero uma demo</a>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="#funcionalidades" class="button-animation text-center w-full sm:w-44 justify-center px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 transition">Ver recursos</a>
+              <a href="#contato" class="button-animation text-center w-full sm:w-44 justify-center px-5 py-3 rounded-xl accent shadow-lg transition">Quero uma demo</a>
             </div>
           </div>
 
-          <!-- Hero mockups: troque as imagens pelos screenshots reais -->
-          <div>
-            <div class="relative rounded-3xl overflow-hidden glass p-4 shadow-2xl">
-              <div class="grid grid-cols-2 gap-4">
-                <div class="aspect-[4/3] rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
-                  <!-- substituir por: imgs/gestao-eventos.jpg -->
-                  Tela: Gestão de Eventos
-                </div>
-                <div class="aspect-[4/3] rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
-                  <!-- substituir por: imgs/detalhe-evento.jpg -->
-                  Tela: Detalhe do Evento
-                </div>
-                <div class="col-span-2 aspect-[21/9] rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
-                  <!-- substituir por: imgs/cadastrar-evento.jpg -->
-                  Tela: Cadastrar Evento
-                </div>
-              </div>
-            </div>
+          <!-- Hero mockups com novo layout -->
+          <div class="relative mt-12 lg:mt-0 h-64 sm:h-72 lg:h-80 reveal" style="animation-delay: 200ms;">
+            <img src="https://placehold.co/600x400/333/fff?text=Tela+1" alt="Tela do App 1" class="absolute top-0 left-0 w-2/3 rounded-2xl shadow-2xl transform -rotate-6 transition-transform hover:rotate-0 hover:scale-105 cursor-pointer">
+            <img src="https://placehold.co/600x400/555/fff?text=Tela+2" alt="Tela do App 2" class="absolute top-0 right-0 w-2/3 rounded-2xl shadow-2xl transform rotate-6 transition-transform hover:rotate-0 hover:scale-105 cursor-pointer">
+            <img src="https://placehold.co/600x400/777/fff?text=Tela+3" alt="Tela do App 3" class="absolute top-1/4 left-1/2 w-2/3 -translate-x-1/2 rounded-2xl shadow-2xl z-10 border-4 border-black/20 transform hover:scale-105 transition-transform cursor-pointer">
           </div>
-
         </div>
       </div>
     </section>
 
     <!-- SOBRE -->
-    <section id="sobre" class="py-20 border-t border-white/10">
+    <section id="sobre" class="py-16 sm:py-20 border-t border-white/10 reveal">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
           <h2 class="text-2xl md:text-3xl font-bold">O que é o PapiFast?</h2>
@@ -135,42 +251,41 @@
     </section>
 
     <!-- PERFIS -->
-    <section id="perfis" class="py-20 border-t border-white/10">
+    <section id="perfis" class="py-16 sm:py-20 border-t border-white/10 reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold">Perfis de Usuário</h2>
         <p class="mt-2 text-white/70">Cada perfil possui ações pensadas para sua jornada dentro do sistema.</p>
 
         <div class="grid md:grid-cols-3 gap-6 mt-10">
-          <div class="rounded-3xl glass p-6">
+          <div class="rounded-3xl glass p-6 cursor-pointer">
             <div class="text-xs uppercase tracking-wider text-orange-300/90 font-semibold">C1 · Administrador</div>
             <h3 class="text-lg font-semibold mt-1">Gestão completa da operação</h3>
-            <ul class="mt-4 space-y-2 text-sm text-white/80">
-              <li>Gerir empresas, filiais e usuários (cliente/funcionário)</li>
+            <ul class="mt-4 space-y-2 text-sm text-white/80 list-disc list-inside">
+              <li>Gerir empresas, filiais e usuários</li>
               <li>Adicionar/editar produtos das filiais</li>
-              <li>Campanhas, cupons, vouchers e cardápios (TV, imagens, impressos)</li>
+              <li>Campanhas, cupons, vouchers e cardápios</li>
               <li>Sincronização com UAI PDV</li>
             </ul>
           </div>
 
-          <div class="rounded-3xl glass p-6">
+          <div class="rounded-3xl glass p-6 cursor-pointer">
             <div class="text-xs uppercase tracking-wider text-orange-300/90 font-semibold">C2 · Organizador</div>
             <h3 class="text-lg font-semibold mt-1">Tudo para criar seu evento</h3>
-            <ul class="mt-4 space-y-2 text-sm text-white/80">
-              <li>Login/cadastro, criação do evento e convites</li>
-              <li>Montar e editar lista de presentes (interligada aos convites)</li>
+            <ul class="mt-4 space-y-2 text-sm text-white/80 list-disc list-inside">
+              <li>Criação do evento e convites</li>
+              <li>Montar e editar lista de presentes</li>
               <li>Adicionar ou cadastrar produtos do evento</li>
-              <li>Receber notificações de compra de presentes e confirmações</li>
-              <li>Visualizar vouchers e cupons</li>
+              <li>Receber notificações de compra</li>
             </ul>
           </div>
 
-          <div class="rounded-3xl glass p-6">
+          <div class="rounded-3xl glass p-6 cursor-pointer">
             <div class="text-xs uppercase tracking-wider text-orange-300/90 font-semibold">C3 · Convidado</div>
             <h3 class="text-lg font-semibold mt-1">Participa sem cadastro</h3>
-            <ul class="mt-4 space-y-2 text-sm text-white/80">
+            <ul class="mt-4 space-y-2 text-sm text-white/80 list-disc list-inside">
               <li>Recebe convite via link/WhatsApp/e-mail</li>
-              <li>Acessa o evento, visualiza presentes e compra</li>
-              <li>Recebe recibo e notificações (ex.: lembrete da data)</li>
+              <li>Acessa o evento, visualiza e compra presentes</li>
+              <li>Recebe recibo e notificações</li>
               <li>Acessa página de cupons e promoções</li>
             </ul>
           </div>
@@ -179,140 +294,131 @@
     </section>
 
     <!-- FUNCIONALIDADES -->
-    <section id="funcionalidades" class="py-20 border-t border-white/10">
+    <section id="funcionalidades" class="py-16 sm:py-20 border-t border-white/10 reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between flex-wrap gap-4">
           <div>
             <h2 class="text-2xl md:text-3xl font-bold">Funcionalidades e Benefícios</h2>
             <p class="mt-2 text-white/70 max-w-2xl">Recursos que simplificam a organização e ampliam os resultados dos seus eventos.</p>
           </div>
-          <a href="#contato" class="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/15">Falar com vendas</a>
+          <a href="#contato" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 transition-colors">Falar com vendas</a>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-          <div class="rounded-3xl glass p-6">
-            <h3 class="font-semibold">Criação de eventos em minutos</h3>
-            <p class="text-white/75 mt-2 text-sm">Fluxo guiado para eventos gratuitos ou pagos com imagens, categorias e visibilidade.</p>
-          </div>
-
-          <div class="rounded-3xl glass p-6">
-            <h3 class="font-semibold">Convites digitais</h3>
-            <p class="text-white/75 mt-2 text-sm">Envio por WhatsApp, e-mail ou link. Acompanhe confirmações em tempo real.</p>
-          </div>
-
-          <div class="rounded-3xl glass p-6">
-            <h3 class="font-semibold">Lista de presentes inteligente</h3>
-            <p class="text-white/75 mt-2 text-sm">Sugestões via IA, compra direta e recibos automáticos para o organizador.</p>
-          </div>
-
-          <div class="rounded-3xl glass p-6">
-            <h3 class="font-semibold">Cupons, Vouchers e Cardápios</h3>
-            <p class="text-white/75 mt-2 text-sm">Crie campanhas, gere cupons e vouchers; exiba cardápio do evento e catálogo de produtos.</p>
-          </div>
-
-          <div class="rounded-3xl glass p-6">
-            <h3 class="font-semibold">Perfis e permissões</h3>
-            <p class="text-white/75 mt-2 text-sm">ADM (empresa/filiais), Organizador (evento) e Convidado (sem cadastro).</p>
-          </div>
-
-          <div class="rounded-3xl glass p-6">
-            <h3 class="font-semibold">Integração com PDV</h3>
-            <p class="text-white/75 mt-2 text-sm">Integra com UAI PDV para sincronizar produtos, filiais e relatórios.</p>
-          </div>
-        </div>
-
-        <!-- FLUXO -->
-        <div class="mt-14">
-          <h3 class="text-lg font-semibold">Como funciona</h3>
-          <div class="mt-4 rounded-3xl glass p-3">
-            <div class="aspect-[16/7] w-full rounded-2xl bg-white/6 flex items-center justify-center text-white/60 text-sm">
-              <!-- Substituir pela imagem do diagrama de fluxo -->
-              Diagrama do fluxo (ADM · Organizador · Convidado)
-            </div>
-          </div>
+          <div class="rounded-3xl glass p-6 cursor-pointer"><h3 class="font-semibold">Criação de eventos em minutos</h3><p class="text-white/70 mt-2 text-sm">Fluxo guiado para eventos gratuitos ou pagos com imagens, categorias e visibilidade.</p></div>
+          <div class="rounded-3xl glass p-6 cursor-pointer"><h3 class="font-semibold">Convites digitais</h3><p class="text-white/70 mt-2 text-sm">Envio por WhatsApp, e-mail ou link. Acompanhe confirmações em tempo real.</p></div>
+          <div class="rounded-3xl glass p-6 cursor-pointer"><h3 class="font-semibold">Lista de presentes inteligente</h3><p class="text-white/70 mt-2 text-sm">Sugestões via IA, compra direta e recibos automáticos para o organizador.</p></div>
+          <div class="rounded-3xl glass p-6 cursor-pointer"><h3 class="font-semibold">Cupons, Vouchers e Cardápios</h3><p class="text-white/70 mt-2 text-sm">Crie campanhas, gere cupons e vouchers; exiba cardápio do evento e catálogo.</p></div>
+          <div class="rounded-3xl glass p-6 cursor-pointer"><h3 class="font-semibold">Perfis e permissões</h3><p class="text-white/70 mt-2 text-sm">ADM (empresa/filiais), Organizador (evento) e Convidado (sem cadastro).</p></div>
+          <div class="rounded-3xl glass p-6 cursor-pointer"><h3 class="font-semibold">Integração com PDV</h3><p class="text-white/70 mt-2 text-sm">Integra com UAI PDV para sincronizar produtos, filiais e relatórios.</p></div>
         </div>
       </div>
     </section>
 
     <!-- PRINTS -->
-    <section id="prints" class="py-20 border-t border-white/10">
+    <section id="prints" class="py-16 sm:py-20 border-t border-white/10 reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold">Algumas telas do sistema</h2>
         <p class="mt-2 text-white/70">Interface moderna, responsiva e pronta para uso em desktop e mobile.</p>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-          <div class="rounded-3xl overflow-hidden glass">
-            <div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm">Gestão de Eventos</div>
-            <div class="p-4 text-sm text-white/80">Gestão de Eventos</div>
-          </div>
-
-          <div class="rounded-3xl overflow-hidden glass">
-            <div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm">Detalhes do Evento</div>
-            <div class="p-4 text-sm text-white/80">Detalhes do Evento</div>
-          </div>
-
-          <div class="rounded-3xl overflow-hidden glass">
-            <div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm">Cadastrar Evento</div>
-            <div class="p-4 text-sm text-white/80">Cadastrar Evento</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INTEGRAÇÃO PDV -->
-    <section class="py-20 border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-bold">Integração com UAI PDV</h2>
-            <p class="mt-4 text-white/80">Sincronize produtos, filiais, funcionários e campanhas. Gere cardápios e exiba promoções na TV, com imagens e materiais de divulgação.</p>
-
-            <ul class="mt-6 space-y-2 text-sm text-white/80">
-              <li>Sincronização de catálogo por filial</li>
-              <li>Cupons e vouchers vinculados ao evento</li>
-              <li>Relatórios e recibos automáticos</li>
-            </ul>
-          </div>
-
-          <div class="rounded-3xl glass p-4">
-            <div class="aspect-[4/3] rounded-2xl bg-white/6 w-full flex items-center justify-center text-white/60 text-sm">
-              Mockup integração PDV
-            </div>
-          </div>
+          <div class="rounded-2xl overflow-hidden glass group cursor-pointer"><div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm overflow-hidden"><img src="https://placehold.co/600x400/444/fff?text=Gestão+de+Eventos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></div><div class="p-4 text-sm text-white/80">Gestão de Eventos</div></div>
+          <div class="rounded-2xl overflow-hidden glass group cursor-pointer"><div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm overflow-hidden"><img src="https://placehold.co/600x400/444/fff?text=Detalhes+do+Evento" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></div><div class="p-4 text-sm text-white/80">Detalhes do Evento</div></div>
+          <div class="rounded-2xl overflow-hidden glass group cursor-pointer"><div class="aspect-[16/9] w-full bg-white/6 flex items-center justify-center text-white/60 text-sm overflow-hidden"><img src="https://placehold.co/600x400/444/fff?text=Cadastrar+Evento" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></div><div class="p-4 text-sm text-white/80">Cadastrar Evento</div></div>
         </div>
       </div>
     </section>
 
     <!-- CTA FINAL -->
-    <section id="contato" class="py-20 border-t border-white/10">
+    <section id="contato" class="py-16 sm:py-20 border-t border-white/10 reveal">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Pronto para transformar seus eventos?</h2>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tighter">Pronto para transformar seus eventos?</h2>
         <p class="mt-3 text-white/80">Fale com nosso time e veja o PapiFast em ação.</p>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="https://wa.me/5532993585185?text=Ol%C3%A1%20quero%20uma%20demo%20do%20PapiFast" target="_blank" rel="noreferrer" class="px-6 py-3 rounded-2xl bg-green-500 hover:opacity-90 shadow-lg">Chamar no WhatsApp</a>
-          <a href="mailto:contato@papifast.com" class="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/15">Enviar e-mail</a>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/5532993585185?text=Ol%C3%A1%20quero%20uma%20demo%20do%20PapiFast" target="_blank" rel="noreferrer" class="button-animation flex items-center justify-center gap-2 w-full sm:w-60 px-6 py-3 rounded-xl btn-whatsapp shadow-lg font-semibold transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l.219.341-1.238 4.515 4.644-1.219.324.194z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a href="mailto:contato@papifast.com" class="button-animation flex items-center justify-center gap-2 w-full sm:w-60 px-6 py-3 rounded-xl btn-email shadow-lg font-semibold transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+            Enviar e-mail
+          </a>
         </div>
 
-        <p class="mt-6 text-xs text-white/50">© <span id="year"></span> PapiFast. Todos os direitos reservados.</p>
+        <p class="mt-10 text-sm text-white/50">© <span id="year"></span> PapiFast. Todos os direitos reservados.</p>
       </div>
     </section>
   </main>
 
   <script>
-    // Interações simples: menu mobile + ano automático
-    document.getElementById('btn-mobile').addEventListener('click', function(){
-      const m = document.getElementById('mobile-menu');
-      m.classList.toggle('hidden');
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menu mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBtn = document.getElementById('btn-mobile');
 
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', function() {
-      document.body.classList.toggle('night-theme');
-      themeToggle.textContent = document.body.classList.contains('night-theme') ? '☀️' : '🌙';
+        mobileBtn.addEventListener('click', function(){
+            mobileMenu.classList.toggle('open');
+            document.body.classList.toggle('menu-open');
+        });
+        
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Ano automático no rodapé
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Alternador de tema (light/dark)
+        const themeToggle = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-icon-light');
+        const darkIcon = document.getElementById('theme-icon-dark');
+        
+        // Função para aplicar o tema salvo
+        const applyTheme = (theme) => {
+            if (theme === 'light') {
+                document.body.classList.add('light-theme');
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+            } else {
+                document.body.classList.remove('light-theme');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        };
+
+        // Verifica o tema salvo no localStorage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        // Evento de clique para trocar o tema
+        themeToggle.addEventListener('click', function() {
+            const isLight = document.body.classList.toggle('light-theme');
+            const newTheme = isLight ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+
+        // Animação de scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
     });
   </script>
 
 </body>
 </html>
+
