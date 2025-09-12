@@ -3,22 +3,25 @@
 		"title": "A Plataforma Completa para seu Negócio Decolar",
 		"subtitle": "Gestão de eventos, marketing automatizado e vendas integradas. Transforme a experiência do seu cliente e impulsione seus resultados com Wevity.",
 		"cta_button": "Agendar uma Demonstração",
-		"secondary_button": "Ver Planos"
+		"secondary_button": "Ver Funcionalidades"
 	},
-	"stats": {
-		"title": "Resultados que falam por si",
+	"valueProposition": {
+		"title": "Transforme a Gestão, o Marketing e as Vendas do seu Negócio",
 		"items": [
 			{
-				"value": "+40%",
-				"label": "Aumento na Venda de Ingressos"
+				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='12' y1='1' x2='12' y2='23'></line><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'></path></svg>",
+				"title": "Aumente sua Receita",
+				"description": "Monetize seus eventos com um sistema de venda de ingressos online, crie campanhas de marketing que convertem e ofereça listas de presentes pagas diretamente na plataforma."
 			},
 			{
-				"value": "10h+",
-				"label": "Economizadas por Semana em Gestão"
+				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 6 13.5 15.5 8.5 10.5 1 18'></polyline><polyline points='17 6 23 6 23 12'></polyline></svg>",
+				"title": "Otimize sua Gestão",
+				"description": "Centralize a criação de eventos, o controle de convidados (RSVP), a gestão de clientes (CRM) e a sincronização de produtos com seu PDV em um único lugar. Menos planilhas, mais resultados."
 			},
 			{
-				"value": "3x",
-				"label": "Mais Engajamento de Clientes"
+				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'></path></svg>",
+				"title": "Fidelize seus Clientes",
+				"description": "Crie um relacionamento duradouro enviando convites exclusivos, cupons de desconto e vouchers de presente diretamente via WhatsApp e E-mail. Transforme clientes em fãs."
 			}
 		]
 	},
@@ -27,24 +30,24 @@
 		"subtitle": "Centralize suas operações e ofereça uma experiência inesquecível para seus clientes.",
 		"items": [
 			{
-				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'></path><polyline points='14 2 14 8 20 8'></polyline><line x1='16' y1='13' x2='8' y2='13'></line><line x1='16' y1='17' x2='8' y2='17'></line><polyline points='10 9 9 9 8 9'></polyline></svg>",
+				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'></rect><line x1='16' y1='2' x2='16' y2='6'></line><line x1='8' y1='2' x2='8' y2='6'></line><line x1='3' y1='10' x2='21' y2='10'></line></svg>",
 				"title": "Gestão Completa de Eventos",
 				"description": "Crie eventos, defina lotes de ingressos e gerencie listas de convidados com uma interface intuitiva. Tenha uma visão 360º de cada celebração."
 			},
 			{
-				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'></rect><line x1='16' y1='2' x2='16' y2='6'></line><line x1='8' y1='2' x2='8' y2='6'></line><line x1='3' y1='10' x2='21' y2='10'></line></svg>",
-				"title": "Venda de Ingressos Integrada",
-				"description": "Venda ingressos online com segurança através do Mercado Pago. Ofereça uma experiência de compra fluida para seus clientes e acompanhe as vendas em tempo real."
+				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'></path></svg>",
+				"title": "Comunicação Direta via WhatsApp",
+				"description": "Envie convites, ingressos, cupons e vouchers diretamente para o WhatsApp dos seus clientes, garantindo altas taxas de abertura e engajamento."
 			},
 			{
 				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8'></path><polyline points='16 6 12 2 8 6'></polyline><line x1='12' y1='2' x2='12' y2='15'></line></svg>",
 				"title": "Marketing e Campanhas Digitais",
-				"description": "Crie cardápios digitais, gere anúncios com IA e envie cupons promocionais via WhatsApp e e-mail. Aumente seu alcance e atraia mais clientes."
+				"description": "Crie cardápios digitais, gere anúncios com IA e envie cupons promocionais. Aumente seu alcance e atraia mais clientes."
 			},
 			{
 				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path><circle cx='9' cy='7' r='4'></circle><path d='M23 21v-2a4 4 0 0 0-3-3.87'></path><path d='M16 3.13a4 4 0 0 1 0 7.75'></path></svg>",
-				"title": "Fidelização de Clientes",
-				"description": "Gerencie sua base de clientes, crie vouchers de presente e envie comunicações personalizadas para construir um relacionamento duradouro e incentivar o retorno."
+				"title": "Gestão de Clientes (CRM)",
+				"description": "Gerencie sua base de clientes e funcionários, associe-os a filiais e acompanhe o histórico de interações para um atendimento personalizado."
 			},
 			{
 				"icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21.2 15c.7-1.2 1-2.5.7-3.9-.6-2.4-3.4-4.2-6.2-4.2s-5.6 1.8-6.2 4.2c-.3 1.4 0 2.7.7 3.9l.4.5-1.5 4.9 4.9-1.5.5.4z'></path></svg>",
@@ -58,35 +61,82 @@
 			}
 		]
 	},
-	"howItWorks": {
-		"title": "Simples de Implementar, Poderoso para Gerenciar",
-		"steps": [
+	"detailedFeatures": {
+		"feature1": {
+			"title": "Marketing Inteligente para Vender Mais",
+			"description": "Deixe a criatividade por nossa conta. Com o Wevity, você cria anúncios impactantes para seus produtos usando Inteligência Artificial. Além disso, transforme suas promoções em cardápios digitais interativos ou materiais para impressão com apenas alguns cliques.",
+			"points": [
+				"Geração de Anúncios com IA",
+				"Criação de Cardápios Digitais (HTML)",
+				"Geração de Material para Impressão (PDF/Imagens)",
+				"Gestão de Campanhas Promocionais"
+			],
+			"image": "https://placehold.co/600x400/444/fff?text=Marketing+com+IA"
+		},
+		"feature2": {
+			"title": "Plataforma de Eventos de Ponta a Ponta",
+			"description": "Organize, promova e monetize eventos sem esforço. Nossa plataforma gerencia tudo, desde a venda de ingressos online com Mercado Pago até o envio de convites digitais com confirmação de presença (RSVP) via WhatsApp e e-mail.",
+			"points": [
+				"Venda de Ingressos Online (Mercado Pago)",
+				"Criação de Lotes de Ingressos",
+				"Envio de Convites Digitais (WhatsApp/Email)",
+				"Confirmação de Presença (RSVP)"
+			],
+			"image": "https://placehold.co/600x400/555/fff?text=Gestão+de+Eventos"
+		}
+	},
+	"screenshots": {
+		"title": "Uma Visão Completa da Sua Operação",
+		"subtitle": "Interface moderna e intuitiva, projetada para que você gerencie seu negócio de qualquer lugar.",
+		"items": [
 			{
-				"id": "1",
-				"title": "Sincronize seu Negócio",
-				"description": "Conecte sua conta e sincronize suas filiais, produtos e preços do seu sistema de PDV para a plataforma Wevity."
+				"image": "https://placehold.co/600x400/444/fff?text=Dashboard+de+Vendas",
+				"caption": "Dashboard de Vendas"
 			},
 			{
-				"id": "2",
-				"title": "Crie Campanhas e Eventos",
-				"description": "Utilize nossas ferramentas para criar eventos, promoções e cardápios digitais em poucos minutos. Defina seu público e objetivos."
+				"image": "https://placehold.co/600x400/444/fff?text=Criação+de+Campanha",
+				"caption": "Criação de Campanha"
 			},
 			{
-				"id": "3",
-				"title": "Venda e Engaje",
-				"description": "Comece a vender ingressos, envie convites e comunique suas ofertas. Nossa plataforma cuida da operação para você focar no cliente."
+				"image": "https://placehold.co/600x400/444/fff?text=Gestão+de+Ingressos",
+				"caption": "Gestão de Ingressos"
 			},
 			{
-				"id": "4",
-				"title": "Analise e Otimize",
-				"description": "Acompanhe os resultados de vendas e engajamento em tempo real através de dashboards completos. Tome decisões baseadas em dados."
+				"image": "https://placehold.co/600x400/555/fff?text=Envio+de+Cupons",
+				"caption": "Envio de Cupons"
+			},
+			{
+				"image": "https://placehold.co/600x400/555/fff?text=Controle+de+Clientes",
+				"caption": "Controle de Clientes"
+			},
+			{
+				"image": "https://placehold.co/600x400/555/fff?text=Sincronização+PDV",
+				"caption": "Sincronização com PDV"
+			}
+		]
+	},
+	"testimonials": {
+		"title": "O que nossos parceiros dizem",
+		"subtitle": "Negócios que confiam no Wevity para crescer.",
+		"items": [
+			{
+				"quote": "“Desde que adotamos o Wevity, a venda de ingressos para nossos shows aumentou 40%. A gestão ficou muito mais simples e profissional.”",
+				"author": "Carlos Pereira, Dono de Casa de Shows"
+			},
+			{
+				"quote": "“A funcionalidade de gerar cardápios digitais para nossas campanhas semanais é fantástica. Economizamos tempo e nossos clientes adoram a interatividade.”",
+				"author": "Juliana Martins, Gerente de Restaurante"
+			},
+			{
+				"quote": "“Conseguir enviar vouchers e cupons diretamente pelo WhatsApp mudou nosso relacionamento com os clientes. A taxa de retorno aumentou significativamente.”",
+				"author": "Marcos Andrade, Proprietário de Bar"
 			}
 		]
 	},
 	"forClients": {
 		"title": "Organizando sua festa pessoal?",
 		"description": "O Wevity também é a ferramenta perfeita para aniversários, chás de bebê e qualquer celebração. Crie convites, listas de presentes e muito mais.",
-		"button": "Saiba mais para você"
+		"button": "Conheça a versão para você"
 	},
 	"cta": {
 		"title": "Pronto para levar seu negócio ao próximo nível?",

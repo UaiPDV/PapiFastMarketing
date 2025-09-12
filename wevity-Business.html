@@ -110,6 +110,11 @@
 			body.light-theme .border-white\/10 { border-color: rgba(0, 0, 0, 0.1); }
 			body.light-theme .bg-white\/5 { background: rgba(0, 0, 0, 0.03); }
 			body.light-theme .feature-icon { color: #f97316; background: #ffedd5; }
+			.unselectable {
+				-webkit-user-select: none; /* Safari */
+				-ms-user-select: none; /* IE 10+ */
+				user-select: none; /* Standard */
+			}
 			
 			/* Animação de entrada */
 			.reveal {
@@ -263,17 +268,43 @@
 				</div>
 			</section>
 
-			<!-- STATS -->
-			<section class="py-16 sm:py-20 border-t border-white/10 reveal">
+			<!-- VALUE PROPOSITION -->
+			<section id="value-proposition" class="py-16 sm:py-20 border-t border-white/10 reveal">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 id="stats-title" class="text-center text-3xl font-bold"></h2>
-					<div id="stats-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 max-w-4xl mx-auto">
-						<!-- Stats will be injected here -->
+					<h2 id="value-proposition-title" class="text-center text-3xl font-bold max-w-3xl mx-auto"></h2>
+					<div id="value-proposition-container" class="grid sm:grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+						<!-- Value propositions will be injected here -->
 					</div>
 				</div>
 			</section>
 			
-			<!-- FEATURES -->
+			<!-- DETAILED FEATURES -->
+			<section id="detailed-features" class="py-16 sm:py-20 border-t border-white/10 space-y-16">
+				<!-- Feature 1 -->
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center reveal">
+					<div id="detailed-feature-1-text">
+						<h3 class="text-3xl font-bold"></h3>
+						<p class="mt-4 text-white/80"></p>
+						<ul class="mt-6 space-y-3"></ul>
+					</div>
+					<div class="bg-white/5 rounded-2xl p-4">
+						<img id="detailed-feature-1-image" src="" alt="" class="rounded-xl shadow-lg"/>
+					</div>
+				</div>
+				<!-- Feature 2 -->
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center reveal">
+					<div class="bg-white/5 rounded-2xl p-4 md:order-last">
+						<img id="detailed-feature-2-image" src="" alt="" class="rounded-xl shadow-lg"/>
+					</div>
+					<div id="detailed-feature-2-text">
+						<h3 class="text-3xl font-bold"></h3>
+						<p class="mt-4 text-white/80"></p>
+						<ul class="mt-6 space-y-3"></ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- FEATURES GRID -->
 			<section id="features" class="py-16 sm:py-20 border-t border-white/10 reveal">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="text-center max-w-3xl mx-auto">
@@ -286,12 +317,36 @@
 				</div>
 			</section>
 
-			<!-- HOW IT WORKS -->
-			<section id="how-it-works" class="py-16 sm:py-20 border-t border-white/10 reveal">
+			<!-- SCREENSHOTS -->
+			<section id="screenshots" class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 id="how-it-works-title" class="text-center text-3xl md:text-4xl font-bold"></h2>
-					<div id="how-it-works-container" class="relative mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-						 <!-- Steps will be injected here -->
+					<h2 id="screenshots-title" class="text-2xl md:text-3xl font-bold"></h2>
+					<p id="screenshots-subtitle" class="mt-2 text-white/70"></p>
+					<div class="relative mt-10">
+						<div id="carousel-wrapper-prints" class="overflow-hidden cursor-grab">
+							<div id="carousel-track-prints" class="flex">
+								<!-- Screenshots will be injected here -->
+							</div>
+						</div>
+						<button id="prev-slide-prints" class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+						</button>
+						<button id="next-slide-prints" class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- TESTIMONIALS -->
+			<section id="testimonials" class="py-16 sm:py-20 border-t border-white/10 reveal">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div class="text-center max-w-3xl mx-auto">
+						<h2 id="testimonials-title" class="text-3xl md:text-4xl font-bold"></h2>
+						<p id="testimonials-subtitle" class="mt-4 text-white/70"></p>
+					</div>
+					<div id="testimonials-container" class="grid lg:grid-cols-3 gap-8 mt-12">
+						<!-- Testimonials will be injected here -->
 					</div>
 				</div>
 			</section>
@@ -350,41 +405,81 @@
                         document.getElementById('hero-cta-button').innerHTML = content.hero.cta_button;
                         document.getElementById('hero-secondary-button').innerHTML = content.hero.secondary_button;
 
-						// Stats
-						document.getElementById('stats-title').innerHTML = content.stats.title;
-						const statsContainer = document.getElementById('stats-container');
-						content.stats.items.forEach(item => {
-							statsContainer.innerHTML += `
-								<div class="text-center glass rounded-2xl p-6">
-									<div class="text-5xl font-extrabold accent bg-clip-text text-transparent">${item.value}</div>
-									<div class="mt-2 text-white/70">${item.label}</div>
-								</div>
+						// Value Proposition
+						document.getElementById('value-proposition-title').innerHTML = content.valueProposition.title;
+						const valuePropositionContainer = document.getElementById('value-proposition-container');
+						content.valueProposition.items.forEach(item => {
+							valuePropositionContainer.innerHTML += `
+								<div class="glass p-6 rounded-2xl">
+                                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400 mb-4 feature-icon">${item.icon}</div>
+                                    <h3 class="font-semibold text-lg">${item.title}</h3>
+                                    <p class="text-white/70 mt-2 text-sm">${item.description}</p>
+                                </div>
 							`;
 						});
 
+						// Detailed Features
+						const feature1Text = document.getElementById('detailed-feature-1-text');
+						feature1Text.querySelector('h3').innerHTML = content.detailedFeatures.feature1.title;
+						feature1Text.querySelector('p').innerHTML = content.detailedFeatures.feature1.description;
+						const feature1Points = feature1Text.querySelector('ul');
+						content.detailedFeatures.feature1.points.forEach(point => {
+							feature1Points.innerHTML += `<li class="flex items-center gap-3"><svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-white/80">${point}</span></li>`
+						});
+						document.getElementById('detailed-feature-1-image').src = content.detailedFeatures.feature1.image;
+						document.getElementById('detailed-feature-1-image').alt = content.detailedFeatures.feature1.title;
 
-                        // Features
+						const feature2Text = document.getElementById('detailed-feature-2-text');
+						feature2Text.querySelector('h3').innerHTML = content.detailedFeatures.feature2.title;
+						feature2Text.querySelector('p').innerHTML = content.detailedFeatures.feature2.description;
+						const feature2Points = feature2Text.querySelector('ul');
+						content.detailedFeatures.feature2.points.forEach(point => {
+							feature2Points.innerHTML += `<li class="flex items-center gap-3"><svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-white/80">${point}</span></li>`
+						});
+						document.getElementById('detailed-feature-2-image').src = content.detailedFeatures.feature2.image;
+						document.getElementById('detailed-feature-2-image').alt = content.detailedFeatures.feature2.title;
+
+                        // Features Grid
                         document.getElementById('features-title').innerHTML = content.features.title;
                         document.getElementById('features-subtitle').innerHTML = content.features.subtitle;
                         const featuresContainer = document.getElementById('features-container');
                         content.features.items.forEach(item => {
                             featuresContainer.innerHTML += `
-                                <div class="glass p-6 rounded-2xl">
-                                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400 mb-4 feature-icon">${item.icon}</div>
-                                    <h3 class="font-semibold text-lg">${item.title}</h3>
-                                    <p class="text-white/70 mt-2 text-sm">${item.description}</p>
+                                <div class="flex gap-4">
+									<div class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400 feature-icon">${item.icon}</div>
+									<div>
+										<h3 class="font-semibold">${item.title}</h3>
+										<p class="text-white/70 mt-1 text-sm">${item.description}</p>
+									</div>
                                 </div>`;
                         });
-						
-						// How it works
-						document.getElementById('how-it-works-title').innerHTML = content.howItWorks.title;
-						const howItWorksContainer = document.getElementById('how-it-works-container');
-						content.howItWorks.steps.forEach(step => {
-							howItWorksContainer.innerHTML += `
+
+						// Screenshots
+						document.getElementById('screenshots-title').innerHTML = content.screenshots.title;
+						document.getElementById('screenshots-subtitle').innerHTML = content.screenshots.subtitle;
+						const screenshotsContainer = document.getElementById('carousel-track-prints');
+						content.screenshots.items.forEach(item => {
+							screenshotsContainer.innerHTML += `
+								<div class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+									<div class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable">
+										<div class="aspect-[16/9] w-full bg-white/5 overflow-hidden">
+											<img src="${item.image}" draggable="false" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+										</div>
+										<div class="p-4 text-sm text-white/80">${item.caption}</div>
+									</div>
+								</div>`;
+						});
+						initializeCarousel({ wrapperId: 'carousel-wrapper-prints', trackId: 'carousel-track-prints', slideClass: '.carousel-slide-prints', nextId: 'next-slide-prints', prevId: 'prev-slide-prints' });
+
+						// Testimonials
+						document.getElementById('testimonials-title').innerHTML = content.testimonials.title;
+						document.getElementById('testimonials-subtitle').innerHTML = content.testimonials.subtitle;
+						const testimonialsContainer = document.getElementById('testimonials-container');
+						content.testimonials.items.forEach(item => {
+							testimonialsContainer.innerHTML += `
 								<div class="glass p-6 rounded-2xl text-center">
-									<div class="w-12 h-12 mx-auto flex items-center justify-center rounded-full accent font-bold text-xl mb-4">${step.id}</div>
-									<h3 class="font-semibold text-lg">${step.title}</h3>
-									<p class="text-white/70 mt-2 text-sm">${step.description}</p>
+									<p class="text-white/80">“${item.quote}”</p>
+									<div class="mt-4 font-semibold text-orange-400">${item.author}</div>
 								</div>
 							`;
 						});
@@ -406,74 +501,92 @@
                 loadContent();
 
 				// --- SCRIPTS EXISTENTES ---
-				// Menu mobile
 				const mobileMenu = document.getElementById('mobile-menu');
 				const mobileBtn = document.getElementById('btn-mobile');
-				const navLinks = document.querySelectorAll(
-					'#mobile-menu a, #nav-desktop a'
-				);
-
-				const closeMenu = () => {
-					mobileMenu.classList.remove('open');
-					document.body.classList.remove('menu-open');
-				};
-
-				mobileBtn.addEventListener('click', function () {
-					mobileMenu.classList.toggle('open');
-					document.body.classList.toggle('menu-open');
-				});
-
-				navLinks.forEach((link) => {
-					link.addEventListener('click', () => {
-						closeMenu();
-					});
-				});
-
+				const navLinks = document.querySelectorAll('#mobile-menu a, #nav-desktop a');
+				const closeMenu = () => { mobileMenu.classList.remove('open'); document.body.classList.remove('menu-open'); };
+				mobileBtn.addEventListener('click', () => { mobileMenu.classList.toggle('open'); document.body.classList.toggle('menu-open'); });
+				navLinks.forEach(link => link.addEventListener('click', () => closeMenu()));
 				document.getElementById('year').textContent = new Date().getFullYear();
 
-				// Theme toggle
 				const themeToggle = document.getElementById('theme-toggle');
 				const lightIcon = document.getElementById('theme-icon-light');
 				const darkIcon = document.getElementById('theme-icon-dark');
-
 				const applyTheme = (theme) => {
-					if (theme === 'light') {
-						document.body.classList.add('light-theme');
-						lightIcon.classList.add('hidden');
-						darkIcon.classList.remove('hidden');
-					} else {
-						document.body.classList.remove('light-theme');
-						lightIcon.classList.remove('hidden');
-						darkIcon.classList.add('hidden');
-					}
+					if (theme === 'light') { document.body.classList.add('light-theme'); lightIcon.classList.add('hidden'); darkIcon.classList.remove('hidden'); } 
+					else { document.body.classList.remove('light-theme'); lightIcon.classList.remove('hidden'); darkIcon.classList.add('hidden'); }
 				};
-
 				const savedTheme = localStorage.getItem('theme') || 'dark';
 				applyTheme(savedTheme);
-
-				themeToggle.addEventListener('click', function () {
-					const isLight = document.body.classList.toggle('light-theme');
-					const newTheme = isLight ? 'light' : 'dark';
+				themeToggle.addEventListener('click', () => {
+					const newTheme = document.body.classList.toggle('light-theme') ? 'light' : 'dark';
 					localStorage.setItem('theme', newTheme);
 					applyTheme(newTheme);
 				});
 
-				// Scroll animation
-				const observer = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add('visible');
-							}
-						});
-					},
-					{ threshold: 0.1 }
-				);
-				document
-					.querySelectorAll('.reveal')
-					.forEach((el) => observer.observe(el));
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); }});
+				}, { threshold: 0.1 });
+				document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+				
+				// Lógica do Carrossel Avançado
+				function initializeCarousel(config) {
+					const carouselWrapper = document.getElementById(config.wrapperId);
+					const track = document.getElementById(config.trackId);
+					if (!track || track.children.length === 0) return;
 
+					const originalSlides = Array.from(track.children);
+					const nextButton = document.getElementById(config.nextId);
+					const prevButton = document.getElementById(config.prevId);
+					
+					let slides = []; let currentIndex = 0; let slidesPerView = 3; let isDragging = false, startX = 0, startTranslate = 0;
+
+					const setupCarousel = () => {
+						slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+						track.innerHTML = '';
+						originalSlides.forEach(slide => track.appendChild(slide.cloneNode(true)));
+						const slidesToCloneStart = originalSlides.slice(-slidesPerView);
+						const slidesToCloneEnd = originalSlides.slice(0, slidesPerView);
+						slidesToCloneEnd.forEach(slide => track.appendChild(slide.cloneNode(true)));
+						slidesToCloneStart.reverse().forEach(slide => track.prepend(slide.cloneNode(true)));
+						slides = Array.from(track.children);
+						currentIndex = slidesPerView;
+						updatePosition(false);
+					};
+					
+					const updatePosition = (animate = true) => {
+						if(slides.length === 0) return;
+						const transitionTime = animate ? 0.4 : 0;
+						track.style.transition = `transform ${transitionTime}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+						const slideWidth = slides[0].getBoundingClientRect().width;
+						track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+					};
+
+					const handleTransitionEnd = () => {
+						if (currentIndex < slidesPerView) { currentIndex = originalSlides.length + currentIndex; updatePosition(false); }
+						if (currentIndex >= originalSlides.length + slidesPerView) { currentIndex = currentIndex - originalSlides.length; updatePosition(false); }
+					};
+
+					const moveTo = (direction) => { if (isDragging) return; currentIndex += direction; updatePosition(); };
+					const handleDragStart = (e) => { isDragging = true; startX = e.pageX || e.touches[0].pageX; startTranslate = -currentIndex * slides[0].getBoundingClientRect().width; track.style.transition = 'none'; carouselWrapper.style.cursor = 'grabbing'; };
+					const handleDragMove = (e) => { if (!isDragging) return; e.preventDefault(); const currentX = e.pageX || e.touches[0].pageX; const walk = currentX - startX; track.style.transform = `translateX(${startTranslate + walk}px)`; };
+					const handleDragEnd = (e) => { if (!isDragging) return; isDragging = false; const currentX = e.pageX || (e.changedTouches && e.changedTouches[0].pageX) || startX; const walk = currentX - startX; carouselWrapper.style.cursor = 'grab'; if (Math.abs(walk) > slides[0].getBoundingClientRect().width / 5) { currentIndex += (walk > 0 ? -1 : 1); } updatePosition(); };
+					
+					nextButton.addEventListener('click', () => moveTo(1));
+					prevButton.addEventListener('click', () => moveTo(-1));
+					track.addEventListener('transitionend', handleTransitionEnd);
+					carouselWrapper.addEventListener('mousedown', handleDragStart);
+					document.addEventListener('mouseup', handleDragEnd);
+					carouselWrapper.addEventListener('mouseleave', (e) => { if (isDragging) handleDragEnd(e); });
+					carouselWrapper.addEventListener('touchstart', handleDragStart, { passive: true });
+					carouselWrapper.addEventListener('touchmove', handleDragMove, { passive: true });
+					carouselWrapper.addEventListener('touchend', handleDragEnd);
+					
+					setupCarousel();
+					window.addEventListener('resize', setupCarousel);
+				}
 			});
 		</script>
 	</body>
 </html>
+
