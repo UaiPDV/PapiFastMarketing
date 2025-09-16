@@ -18,128 +18,42 @@
 
 		<style>
 			/* Estilos base e animações */
-			body {
-				font-family: 'Inter', sans-serif;
-				background: #0f0f11;
-				color: #fff;
-				transition: background 0.3s, color 0.3s;
-			}
-			.glass {
-				background: rgba(255, 255, 255, 0.04);
-				border: 1px solid rgba(255, 255, 255, 0.08);
-				transition: all 0.3s ease;
-			}
-			.header-bg {
-				background: rgba(15, 15, 17, 0.8);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-			}
-			.glass:hover {
-				transform: translateY(-5px);
-				background: rgba(255, 255, 255, 0.08);
-			}
-			.accent {
-				background: linear-gradient(90deg, #f97316, #ef4444);
-				color: white;
-				transition: all 0.2s ease-in-out;
-			}
-			.accent:hover {
-				opacity: 0.95;
-				transform: scale(1.05) translateY(-2px);
-				box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-			}
-			.button-animation {
-				transition: all 0.2s ease-in-out;
-			}
-			.button-animation:hover {
-				transform: scale(1.05) translateY(-2px);
-			}
-
-			/* Animação do link do menu */
-			.nav-link {
-				position: relative;
-				padding-bottom: 5px;
-				transition: color 0.3s ease;
-			}
-			.nav-link:hover {
-				color: #f97316;
-			}
-			.nav-link::after {
-				content: '';
-				position: absolute;
-				width: 100%;
-				transform: scaleX(0);
-				height: 2px;
-				bottom: 0;
-				left: 0;
-				background-color: #f97316;
-				transform-origin: bottom right;
-				transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-			}
-			.nav-link:hover::after {
-				transform: scaleX(1);
-				transform-origin: bottom left;
-			}
-			
+			body { font-family: 'Inter', sans-serif; background: #0f0f11; color: #fff; transition: background 0.3s, color 0.3s; }
+			.glass { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
+			.header-bg { background: rgba(15, 15, 17, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+			.glass:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); }
+			.accent { background: linear-gradient(90deg, #f97316, #ef4444); color: white; transition: all 0.2s ease-in-out; }
+			.accent:hover { opacity: 0.95; transform: scale(1.05) translateY(-2px); box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4); }
+			.button-animation { transition: all 0.2s ease-in-out; }
+			.button-animation:hover { transform: scale(1.05) translateY(-2px); }
+			.nav-link { position: relative; padding-bottom: 5px; transition: color 0.3s ease; }
+			.nav-link:hover { color: #f97316; }
+			.nav-link::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: 0; left: 0; background-color: #f97316; transform-origin: bottom right; transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
+			.nav-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+			.unselectable { -webkit-user-select: none; -ms-user-select: none; user-select: none; }
 			/* Modo claro */
-			body.light-theme {
-				background: #f8fafc;
-				color: #1e293b;
-			}
-			body.light-theme .glass {
-				background: rgba(255, 255, 255, 0.8);
-				border: 1px solid rgba(0, 0, 0, 0.08);
-			}
-			body.light-theme .header-bg {
-				background: rgba(248, 250, 252, 0.8);
-				border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-			}
-			body.light-theme .glass:hover {
-				background: rgba(255, 255, 255, 1);
-			}
-			body.light-theme .accent {
-				background: linear-gradient(90deg, #fb923c, #ef4444);
-				color: white !important;
-			}
-			body.light-theme .accent:hover {
-				box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4);
-			}
+			body.light-theme { background: #f8fafc; color: #1e293b; }
+			body.light-theme .glass { background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 0, 0, 0.08); }
+			body.light-theme .header-bg { background: rgba(248, 250, 252, 0.8); border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+			body.light-theme .glass:hover { background: rgba(255, 255, 255, 1); }
+			body.light-theme .accent { background: linear-gradient(90deg, #fb923c, #ef4444); color: white !important; }
+			body.light-theme .accent:hover { box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4); }
 			body.light-theme .text-white { color: #1e293b !important; }
 			body.light-theme .text-white\/80 { color: rgba(30, 41, 59, 0.8) !important; }
 			body.light-theme .text-white\/70 { color: rgba(30, 41, 59, 0.7) !important; }
 			body.light-theme .text-white\/50 { color: rgba(30, 41, 59, 0.5) !important; }
 			body.light-theme .border-white\/10 { border-color: rgba(0, 0, 0, 0.1); }
-			body.light-theme .bg-white\/5 { background: rgba(0, 0, 0, 0.03); }
-			body.light-theme .feature-icon { color: #f97316; background: #ffedd5; }
-			.unselectable {
-				-webkit-user-select: none; /* Safari */
-				-ms-user-select: none; /* IE 10+ */
-				user-select: none; /* Standard */
-			}
-			
-			/* Animação de entrada */
-			.reveal {
-				opacity: 0;
-				transform: translateY(30px);
-				transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-				will-change: opacity, transform;
-			}
-			.reveal.visible {
-				opacity: 1;
-				transform: translateY(0);
-			}
+			body.light-theme .bg-white\/10 { background: rgba(0, 0, 0, 0.05); }
+			body.light-theme .bg-white\/5, body.light-theme .bg-white\/6 { background: rgba(0, 0, 0, 0.04); }
 
-			/* Menu mobile animado */
-			#mobile-menu {
-				max-height: 0;
-				overflow: hidden;
-				transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-			}
-			#mobile-menu.open {
-				max-height: 30rem;
-			}
-			body.menu-open {
-				overflow: hidden;
-			}
+			.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+			.reveal.visible { opacity: 1; transform: translateY(0); }
+			#mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+			#mobile-menu.open { max-height: 30rem; }
+			body.menu-open { overflow: hidden; }
+			/* Estilo para barra de rolagem invisível */
+			.invisible-scrollbar::-webkit-scrollbar { display: none; }
+			.invisible-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 		</style>
 	</head>
 	<body class="antialiased">
@@ -148,216 +62,122 @@
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex items-center justify-between h-16">
 					<div class="flex items-center gap-3">
-						<img
-							id="logo"
-							src="img/logo-semfundo.png"
-							alt="Wevity"
-							class="h-10 w-10 rounded-full object-cover bg-white"
-						/>
-						<span class="font-semibold tracking-tight text-lg"
-							>Wevity</span
-						>
+						<img src="img/logo-semfundo.png" alt="Wevity" class="h-10 w-10 rounded-full object-cover bg-white"/>
+						<span class="font-semibold tracking-tight text-lg">Wevity Business</span>
 					</div>
-
-					<nav
-						id="nav-desktop"
-						class="hidden md:flex items-center gap-8 text-sm"
-					>
+					<nav id="nav-desktop" class="hidden md:flex items-center gap-8 text-sm">
+						<a href="#value-proposition" class="nav-link">Proposta</a>
 						<a href="#features" class="nav-link">Funcionalidades</a>
-						<a href="#how-it-works" class="nav-link">Como Funciona</a>
+						<a href="#screenshots" class="nav-link">Telas</a>
+						<a href="#testimonials" class="nav-link">Parceiros</a>
 						<a href="index.html" class="nav-link">Para Clientes</a>
 					</nav>
-
 					<div class="flex items-center gap-3">
-						<a
-							href="#cta"
-							class="hidden sm:inline-flex px-4 py-2 rounded-xl accent shadow-lg button-animation"
-							>Agendar Demo</a
-						>
-						<button
-							id="theme-toggle"
-							class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-white/10 bg-white/10 hover:bg-white/20 transition"
-						>
-							<svg
-								id="theme-icon-light"
-								class="h-5 w-5"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-								></path>
-							</svg>
-							<svg
-								id="theme-icon-dark"
-								class="h-5 w-5 hidden"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-								></path>
-							</svg>
+						<a href="#cta" class="hidden sm:inline-flex px-4 py-2 rounded-xl accent shadow-lg button-animation">Agendar Demo</a>
+						<button id="theme-toggle" class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-white/10 bg-white/10 hover:bg-white/20 transition">
+							<svg id="theme-icon-light" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+							<svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
 						</button>
-						<button
-							id="btn-mobile"
-							class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 p-2"
-						>
-							<svg
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-							>
-								<path
-									d="M4 6h16M4 12h16M4 18h16"
-									stroke="currentColor"
-									stroke-width="2"
-								/>
-							</svg>
+						<button id="btn-mobile" class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 p-2">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"/></svg>
 						</button>
 					</div>
 				</div>
 			</div>
-
-			<!-- Mobile menu -->
 			<div id="mobile-menu" class="md:hidden border-t border-white/10">
 				<div class="px-4 py-3 space-y-2">
-					<a
-						href="#features"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Funcionalidades</a
-					>
-					<a
-						href="#how-it-works"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Como Funciona</a
-					>
-					<a
-						href="index.html"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Para Clientes</a
-					>
+					<a href="#value-proposition" class="block px-3 py-2 rounded-xl bg-white/5">Proposta</a>
+					<a href="#features" class="block px-3 py-2 rounded-xl bg-white/5">Funcionalidades</a>
+					<a href="#screenshots" class="block px-3 py-2 rounded-xl bg-white/5">Telas</a>
+					<a href="#testimonials" class="block px-3 py-2 rounded-xl bg-white/5">Parceiros</a>
+					<a href="index.html" class="block px-3 py-2 rounded-xl bg-white/5">Para Clientes</a>
 				</div>
 			</div>
 		</header>
 
 		<main>
 			<!-- HERO -->
-			<section class="relative overflow-hidden">
-				<div
-					class="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.45),transparent_40%),radial-gradient(ellipse_at_bottom,rgba(239,68,68,0.35),transparent_40%)]"
-				></div>
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
-					<div class="text-center">
-						<h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter"></h1>
-						<p id="hero-subtitle" class="mt-4 text-white/80 max-w-3xl mx-auto text-lg"></p>
-						<div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-							<a id="hero-cta-button" href="#cta" class="button-animation text-center w-full sm:w-auto justify-center px-8 py-3 rounded-xl accent shadow-lg font-semibold"></a>
-							<a id="hero-secondary-button" href="#features" class="button-animation text-center w-full sm:w-auto justify-center px-8 py-3 rounded-xl bg-white/10 hover:bg-white/15"></a>
-						</div>
+			<section class="relative overflow-hidden py-16 sm:py-20 lg:py-32">
+				<div class="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.45),transparent_40%)]"></div>
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+					<h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter"></h1>
+					<p id="hero-subtitle" class="mt-4 text-white/80 max-w-3xl mx-auto text-lg"></p>
+					<div class="mt-8 sm:inline-grid sm:grid-cols-2 gap-4">
+						<a id="hero-cta-button" href="#cta" class="button-animation text-center w-full block justify-center px-8 py-3 rounded-xl accent shadow-lg font-semibold mb-4 sm:mb-0"></a>
+						<a id="hero-secondary-button" href="#features" class="button-animation text-center w-full block justify-center px-8 py-3 rounded-xl bg-white/10 hover:bg-white/15"></a>
 					</div>
 				</div>
 			</section>
 
-			<!-- VALUE PROPOSITION -->
+			<!-- PROPOSTA DE VALOR -->
 			<section id="value-proposition" class="py-16 sm:py-20 border-t border-white/10 reveal">
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 id="value-proposition-title" class="text-center text-3xl font-bold max-w-3xl mx-auto"></h2>
-					<div id="value-proposition-container" class="grid sm:grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
-						<!-- Value propositions will be injected here -->
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+					<h2 id="value-proposition-title" class="text-3xl font-bold max-w-3xl mx-auto"></h2>
+					<div id="value-proposition-container" class="grid sm:grid-cols-1 lg:grid-cols-3 gap-8 mt-12 text-left">
+						<!-- Conteúdo inserido via JS -->
 					</div>
 				</div>
 			</section>
 			
-			<!-- DETAILED FEATURES -->
-			<section id="detailed-features" class="py-16 sm:py-20 border-t border-white/10 space-y-16">
-				<!-- Feature 1 -->
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center reveal">
-					<div id="detailed-feature-1-text">
-						<h3 class="text-3xl font-bold"></h3>
-						<p class="mt-4 text-white/80"></p>
-						<ul class="mt-6 space-y-3"></ul>
-					</div>
-					<div class="bg-white/5 rounded-2xl p-4">
-						<img id="detailed-feature-1-image" src="" alt="" class="rounded-xl shadow-lg"/>
-					</div>
-				</div>
-				<!-- Feature 2 -->
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center reveal">
-					<div class="bg-white/5 rounded-2xl p-4 md:order-last">
-						<img id="detailed-feature-2-image" src="" alt="" class="rounded-xl shadow-lg"/>
-					</div>
-					<div id="detailed-feature-2-text">
-						<h3 class="text-3xl font-bold"></h3>
-						<p class="mt-4 text-white/80"></p>
-						<ul class="mt-6 space-y-3"></ul>
+			<!-- SEÇÕES DE INFORMAÇÃO -->
+			<section class="py-16 sm:py-20 border-t border-white/10">
+				<div class="max-h-[80vh] overflow-y-auto invisible-scrollbar pr-2">
+					<div id="info-sections" class="space-y-16">
+						<!-- Conteúdo inserido via JS a partir da chave 'infoSections' -->
 					</div>
 				</div>
 			</section>
 
-			<!-- FEATURES GRID -->
+			<!-- GRID DE FUNCIONALIDADES -->
 			<section id="features" class="py-16 sm:py-20 border-t border-white/10 reveal">
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="text-center max-w-3xl mx-auto">
-						<h2 id="features-title" class="text-3xl md:text-4xl font-bold"></h2>
-						<p id="features-subtitle" class="mt-4 text-white/70"></p>
-					</div>
-					<div id="features-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-						<!-- Features will be injected here -->
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+					<h2 id="features-title" class="text-3xl md:text-4xl font-bold"></h2>
+					<p id="features-subtitle" class="mt-4 text-white/70 max-w-3xl mx-auto"></p>
+					<div id="features-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 text-left">
+						<!-- Conteúdo inserido via JS -->
 					</div>
 				</div>
 			</section>
 
-			<!-- SCREENSHOTS -->
+			<!-- TELAS -->
 			<section id="screenshots" class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 id="screenshots-title" class="text-2xl md:text-3xl font-bold"></h2>
 					<p id="screenshots-subtitle" class="mt-2 text-white/70"></p>
 					<div class="relative mt-10">
 						<div id="carousel-wrapper-prints" class="overflow-hidden cursor-grab">
-							<div id="carousel-track-prints" class="flex">
-								<!-- Screenshots will be injected here -->
-							</div>
+							<div id="carousel-track-prints" class="flex"></div>
 						</div>
-						<button id="prev-slide-prints" class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10">
-							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-						</button>
-						<button id="next-slide-prints" class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10">
-							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-						</button>
+						<button id="prev-slide-prints" class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+						<button id="next-slide-prints" class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
 					</div>
 				</div>
 			</section>
 
-			<!-- TESTIMONIALS -->
-			<section id="testimonials" class="py-16 sm:py-20 border-t border-white/10 reveal">
+			<!-- DEPOIMENTOS -->
+			<section id="testimonials" class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="text-center max-w-3xl mx-auto">
-						<h2 id="testimonials-title" class="text-3xl md:text-4xl font-bold"></h2>
-						<p id="testimonials-subtitle" class="mt-4 text-white/70"></p>
+					<div class="text-center">
+						<h2 id="testimonials-title" class="text-2xl md:text-3xl font-bold"></h2>
+						<p id="testimonials-subtitle" class="mt-2 text-white/70 max-w-2xl mx-auto"></p>
 					</div>
-					<div id="testimonials-container" class="grid lg:grid-cols-3 gap-8 mt-12">
-						<!-- Testimonials will be injected here -->
+					<div class="relative mt-10">
+						<div id="carousel-wrapper-testimonials" class="overflow-hidden cursor-grab">
+							<div id="carousel-track-testimonials" class="flex"></div>
+						</div>
+						<button id="prev-slide-testimonials" class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+						<button id="next-slide-testimonials" class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
 					</div>
 				</div>
 			</section>
 
-			<!-- FOR CLIENTS -->
+			<!-- PARA CLIENTES -->
 			<section id="for-clients-section" class="py-16 sm:py-20 border-t border-white/10 reveal">
 				<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="rounded-3xl glass p-8 md:p-12">
 						<div class="grid md:grid-cols-2 gap-8 items-center">
 							<div class="text-center md:text-left">
-								<p class="font-semibold text-orange-400">Você é um cliente?</p>
+								<p id="for-clients-tagline" class="font-semibold text-orange-400"></p>
 								<h2 id="for-clients-title" class="text-2xl md:text-3xl font-extrabold tracking-tighter mt-2"></h2>
 								<p id="for-clients-description" class="mt-3 text-white/80"></p>
 							</div>
@@ -370,8 +190,8 @@
 			</section>
 
 			<!-- CTA FINAL -->
-			<section id="cta" class="py-16 sm:py-20 border-t border-white/10 reveal">
-				<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<section id="cta" class="py-16 sm:py-20 border-t border-white/10 reveal text-center">
+				<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 id="cta-title" class="text-3xl md:text-4xl font-extrabold tracking-tighter"></h2>
 					<p id="cta-description" class="mt-3 text-white/80"></p>
 					<div class="mt-8 flex justify-center">
@@ -381,134 +201,282 @@
 			</section>
 		</main>
 
-		<!-- FOOTER -->
 		<footer class="py-10 border-t border-white/10">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-				<p class="text-sm text-white/50">
-					© <span id="year"></span> Wevity. Todos os direitos
-					reservados.
-				</p>
+				<p class="text-sm text-white/50">© <span id="year"></span> Wevity. Todos os direitos reservados.</p>
+				<div id="footer-links" class="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/70">
+					<a href="#value-proposition" class="hover:text-orange-400 transition-colors">Proposta</a>
+					<a href="#features" class="hover:text-orange-400 transition-colors">Funcionalidades</a>
+					<a href="#testimonials" class="hover:text-orange-400 transition-colors">Parceiros</a>
+					<a href="index.html" class="hover:text-orange-400 transition-colors">Para Clientes</a>
+					<a href="#" class="hover:text-orange-400 transition-colors">Política de Privacidade</a>
+				</div>
 			</div>
 		</footer>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-                // Função para carregar e popular o conteúdo do JSON
-                async function loadContent() {
-                    try {
-                        const response = await fetch('content.json');
-                        const content = await response.json();
+		<script type="module">
+			import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+			import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-                        // Hero
-                        document.getElementById('hero-title').innerHTML = content.hero.title;
-                        document.getElementById('hero-subtitle').innerHTML = content.hero.subtitle;
-                        document.getElementById('hero-cta-button').innerHTML = content.hero.cta_button;
-                        document.getElementById('hero-secondary-button').innerHTML = content.hero.secondary_button;
+			const firebaseConfig = {
+				apiKey: "AIzaSyDmScpF_IsLIWRtltZg09yDpOkYIyE1MrU",
+				authDomain: "papifast-90f21.firebaseapp.com",
+				projectId: "papifast-90f21",
+				storageBucket: "papifast-90f21.appspot.com",
+				messagingSenderId: "423481031884",
+				appId: "1:423481031884:web:8f2e02e4fd8bc9a0e55669",
+				measurementId: "G-0S2L6TXN0W"
+			};
 
-						// Value Proposition
-						document.getElementById('value-proposition-title').innerHTML = content.valueProposition.title;
-						const valuePropositionContainer = document.getElementById('value-proposition-container');
-						content.valueProposition.items.forEach(item => {
-							valuePropositionContainer.innerHTML += `
-								<div class="glass p-6 rounded-2xl">
-                                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400 mb-4 feature-icon">${item.icon}</div>
-                                    <h3 class="font-semibold text-lg">${item.title}</h3>
-                                    <p class="text-white/70 mt-2 text-sm">${item.description}</p>
-                                </div>
-							`;
-						});
+			const app = initializeApp(firebaseConfig);
+			const db = getFirestore(app);
 
-						// Detailed Features
-						const feature1Text = document.getElementById('detailed-feature-1-text');
-						feature1Text.querySelector('h3').innerHTML = content.detailedFeatures.feature1.title;
-						feature1Text.querySelector('p').innerHTML = content.detailedFeatures.feature1.description;
-						const feature1Points = feature1Text.querySelector('ul');
-						content.detailedFeatures.feature1.points.forEach(point => {
-							feature1Points.innerHTML += `<li class="flex items-center gap-3"><svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-white/80">${point}</span></li>`
-						});
-						document.getElementById('detailed-feature-1-image').src = content.detailedFeatures.feature1.image;
-						document.getElementById('detailed-feature-1-image').alt = content.detailedFeatures.feature1.title;
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+					}
+				});
+			}, { threshold: 0.1 });
 
-						const feature2Text = document.getElementById('detailed-feature-2-text');
-						feature2Text.querySelector('h3').innerHTML = content.detailedFeatures.feature2.title;
-						feature2Text.querySelector('p').innerHTML = content.detailedFeatures.feature2.description;
-						const feature2Points = feature2Text.querySelector('ul');
-						content.detailedFeatures.feature2.points.forEach(point => {
-							feature2Points.innerHTML += `<li class="flex items-center gap-3"><svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-white/80">${point}</span></li>`
-						});
-						document.getElementById('detailed-feature-2-image').src = content.detailedFeatures.feature2.image;
-						document.getElementById('detailed-feature-2-image').alt = content.detailedFeatures.feature2.title;
+			function observeRevealElements() {
+				document.querySelectorAll('.reveal').forEach(el => {
+					observer.observe(el);
+				});
+			}
 
-                        // Features Grid
-                        document.getElementById('features-title').innerHTML = content.features.title;
-                        document.getElementById('features-subtitle').innerHTML = content.features.subtitle;
-                        const featuresContainer = document.getElementById('features-container');
-                        content.features.items.forEach(item => {
-                            featuresContainer.innerHTML += `
-                                <div class="flex gap-4">
-									<div class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400 feature-icon">${item.icon}</div>
-									<div>
-										<h3 class="font-semibold">${item.title}</h3>
-										<p class="text-white/70 mt-1 text-sm">${item.description}</p>
-									</div>
-                                </div>`;
-                        });
+			function setContent(elementId, content) {
+				const element = document.getElementById(elementId);
+				if (element) element.innerHTML = content || '';
+			}
 
-						// Screenshots
-						document.getElementById('screenshots-title').innerHTML = content.screenshots.title;
-						document.getElementById('screenshots-subtitle').innerHTML = content.screenshots.subtitle;
-						const screenshotsContainer = document.getElementById('carousel-track-prints');
-						content.screenshots.items.forEach(item => {
-							screenshotsContainer.innerHTML += `
-								<div class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
-									<div class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable">
-										<div class="aspect-[16/9] w-full bg-white/5 overflow-hidden">
-											<img src="${item.image}" draggable="false" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
-										</div>
-										<div class="p-4 text-sm text-white/80">${item.caption}</div>
-									</div>
-								</div>`;
-						});
-						initializeCarousel({ wrapperId: 'carousel-wrapper-prints', trackId: 'carousel-track-prints', slideClass: '.carousel-slide-prints', nextId: 'next-slide-prints', prevId: 'prev-slide-prints' });
+			function renderContent(data) {
+				const content = data || {};
+				// Hero
+				setContent('hero-title', content.hero?.title);
+				setContent('hero-subtitle', content.hero?.subtitle);
+				setContent('hero-cta-button', content.hero?.cta_button);
+				setContent('hero-secondary-button', content.hero?.secondary_button);
 
-						// Testimonials
-						document.getElementById('testimonials-title').innerHTML = content.testimonials.title;
-						document.getElementById('testimonials-subtitle').innerHTML = content.testimonials.subtitle;
-						const testimonialsContainer = document.getElementById('testimonials-container');
-						content.testimonials.items.forEach(item => {
-							testimonialsContainer.innerHTML += `
-								<div class="glass p-6 rounded-2xl text-center">
-									<p class="text-white/80">“${item.quote}”</p>
-									<div class="mt-4 font-semibold text-orange-400">${item.author}</div>
-								</div>
-							`;
-						});
+				// Value Proposition
+				setContent('value-proposition-title', content.valueProposition?.title);
+				const vpContainer = document.getElementById('value-proposition-container');
+				if (vpContainer) vpContainer.innerHTML = (content.valueProposition?.items || []).map(item => `
+					<div class="glass p-6 rounded-2xl">
+						<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400 mb-4">${item.icon}</div>
+						<h3 class="font-semibold text-lg">${item.title}</h3>
+						<p class="text-white/70 mt-2 text-sm">${item.description}</p>
+					</div>`).join('');
+				
+				// Renderiza a seção 'infoSections'
+				const infoSectionsContainer = document.getElementById('info-sections');
+				const infoSectionsData = content.infoSections || [];
+				if(infoSectionsContainer && Array.isArray(infoSectionsData)) {
+					infoSectionsContainer.innerHTML = infoSectionsData.map((section, index) => `
+					<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center reveal">
+						<div>
+							<h3 class="text-3xl font-bold">${section.title || ''}</h3>
+							<p class="mt-4 text-white/80">${section.description || ''}</p>
+							<ul class="mt-6 space-y-3">${(section.points || []).map(p => `<li class="flex items-center gap-3"><svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="text-white/80">${p}</span></li>`).join('')}</ul>
+						</div>
+						<div class="bg-white/5 rounded-2xl p-4">
+							<img src="${section.image || ''}" alt="${section.title || ''}" class="rounded-xl shadow-lg object-cover aspect-video w-full"/>
+						</div>
+					</div>`).join('');
+				}
 
-						// For Clients
-						document.getElementById('for-clients-title').innerHTML = content.forClients.title;
-						document.getElementById('for-clients-description').innerHTML = content.forClients.description;
-						document.getElementById('for-clients-button').innerHTML = content.forClients.button;
 
-                        // CTA
-                        document.getElementById('cta-title').innerHTML = content.cta.title;
-                        document.getElementById('cta-description').innerHTML = content.cta.description;
-                        document.getElementById('cta-button').innerHTML = content.cta.button;
+				// Features Grid
+				setContent('features-title', content.features?.title);
+				setContent('features-subtitle', content.features?.subtitle);
+				const featuresContainer = document.getElementById('features-container');
+				if (featuresContainer) featuresContainer.innerHTML = (content.features?.items || []).map(item => `
+					<div class="flex gap-4">
+						<div class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400">${item.icon}</div>
+						<div><h3 class="font-semibold">${item.title}</h3><p class="text-white/70 mt-1 text-sm">${item.description}</p></div>
+					</div>`).join('');
+				
+				// Screenshots
+				setContent('screenshots-title', content.screenshots?.title);
+				setContent('screenshots-subtitle', content.screenshots?.subtitle);
+				const screenshotsContainer = document.getElementById('carousel-track-prints');
+				if (screenshotsContainer) screenshotsContainer.innerHTML = (content.screenshots?.items || []).map(item => `
+					<div class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+						<div class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable">
+							<div class="aspect-[16/9] w-full bg-white/6 overflow-hidden">
+								<img src="${item.image}" draggable="false" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+							</div>
+							<div class="p-4 text-sm text-white/80">${item.caption}</div>
+						</div>
+					</div>`).join('');
+				
+				// Testimonials
+				setContent('testimonials-title', content.testimonials?.title);
+				setContent('testimonials-subtitle', content.testimonials?.subtitle);
+				const testimonialsContainer = document.getElementById('carousel-track-testimonials');
+				if (testimonialsContainer) testimonialsContainer.innerHTML = (content.testimonials?.items || []).map(item => `
+					<div class="carousel-slide-testimonials w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+						<div class="glass p-6 rounded-2xl text-center h-full flex flex-col justify-center">
+							<p class="text-white/80">“${item.quote}”</p>
+							<div class="mt-4 font-semibold text-orange-400">${item.author}</div>
+						</div>
+					</div>`).join('');
+				
+				// For Clients CTA
+				setContent('for-clients-tagline', content.forClients?.tagline);
+				setContent('for-clients-title', content.forClients?.title);
+				setContent('for-clients-description', content.forClients?.description);
+				setContent('for-clients-button', content.forClients?.button);
+				
+				// Final CTA
+				setContent('cta-title', content.cta?.title);
+				setContent('cta-description', content.cta?.description);
+				setContent('cta-button', content.cta?.button);
+			}
+			
+			async function loadContentFromFirebase() {
+				try {
+					const docSnap = await getDoc(doc(db, 'content', 'pages'));
+					const data = docSnap.exists() ? docSnap.data().businessPage : {};
+					renderContent(data);
+				} catch (error) {
+					console.error("Erro ao carregar do Firebase:", error);
+					renderContent({});
+				} finally {
+					initializeCarousel({ wrapperId: 'carousel-wrapper-prints', trackId: 'carousel-track-prints', slideClass: '.carousel-slide-prints', nextId: 'next-slide-prints', prevId: 'prev-slide-prints' });
+					initializeCarousel({ wrapperId: 'carousel-wrapper-testimonials', trackId: 'carousel-track-testimonials', slideClass: '.carousel-slide-testimonials', nextId: 'next-slide-testimonials', prevId: 'prev-slide-testimonials' });
+					observeRevealElements();
+				}
+			}
 
-                    } catch (error) {
-                        console.error('Error loading content:', error);
-                    }
-                }
-                loadContent();
+			function initializeCarousel(config) {
+				const { wrapperId, trackId, slideClass, nextId, prevId } = config;
+				const carouselWrapper = document.getElementById(wrapperId);
+				const track = document.getElementById(trackId);
+				if (!track || !carouselWrapper) return;
+				
+				let originalSlides, slides, currentIndex, slidesPerView, isDragging, startX, startTranslate;
+				isDragging = false;
+				
+				const setupCarousel = () => {
+					originalSlides = Array.from(track.children);
+					if (originalSlides.length === 0) return;
 
-				// --- SCRIPTS EXISTENTES ---
+					slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+					const nextButton = document.getElementById(nextId);
+					const prevButton = document.getElementById(prevId);
+
+					if(originalSlides.length <= slidesPerView) {
+						if(nextButton) nextButton.style.display = 'none';
+						if(prevButton) prevButton.style.display = 'none';
+						return;
+					} else {
+						if(nextButton) nextButton.style.display = 'block';
+						if(prevButton) prevButton.style.display = 'block';
+					}
+
+					const fragment = document.createDocumentFragment();
+					originalSlides.slice(-slidesPerView).forEach(slide => fragment.appendChild(slide.cloneNode(true)));
+					originalSlides.forEach(slide => fragment.appendChild(slide.cloneNode(true)));
+					originalSlides.slice(0, slidesPerView).forEach(slide => fragment.appendChild(slide.cloneNode(true)));
+					
+					track.innerHTML = '';
+					track.appendChild(fragment);
+
+					slides = Array.from(track.children);
+					currentIndex = slidesPerView;
+					updatePosition(false);
+				};
+
+				const updatePosition = (animate = true) => {
+					if (!slides || slides.length === 0) return;
+					track.style.transition = animate ? `transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)` : 'none';
+					const slideWidth = slides[0].getBoundingClientRect().width;
+					track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+				};
+
+				const handleTransitionEnd = () => {
+					if (!originalSlides || originalSlides.length <= slidesPerView) return;
+					if (currentIndex < slidesPerView) {
+						currentIndex = originalSlides.length + currentIndex;
+						updatePosition(false);
+					}
+					if (currentIndex >= originalSlides.length + slidesPerView) {
+						currentIndex = currentIndex - originalSlides.length;
+						updatePosition(false);
+					}
+				};
+
+				const move = (direction) => {
+					if (isDragging) return;
+					currentIndex += direction;
+					updatePosition();
+				};
+
+				const handleDragStart = (e) => {
+					if (!slides || slides.length === 0 || originalSlides.length <= slidesPerView) return;
+					isDragging = true;
+					startX = e.pageX || e.touches[0].pageX;
+					const slideWidth = slides[0].getBoundingClientRect().width;
+					startTranslate = -currentIndex * slideWidth;
+					track.style.transition = 'none';
+					carouselWrapper.style.cursor = 'grabbing';
+				};
+
+				const handleDragMove = (e) => {
+					if (!isDragging) return;
+					e.preventDefault();
+					const currentX = e.pageX || e.touches[0].pageX;
+					track.style.transform = `translateX(${startTranslate + (currentX - startX)}px)`;
+				};
+
+				const handleDragEnd = (e) => {
+					if (!isDragging) return;
+					isDragging = false;
+					const currentX = e.pageX || (e.changedTouches && e.changedTouches[0].pageX) || startX;
+					carouselWrapper.style.cursor = 'grab';
+					if (Math.abs(currentX - startX) > slides[0].getBoundingClientRect().width / 5) {
+						move(currentX > startX ? -1 : 1);
+					} else {
+						updatePosition();
+					}
+				};
+				
+				const nextButton = document.getElementById(nextId);
+				const prevButton = document.getElementById(prevId);
+				if(nextButton) nextButton.addEventListener('click', () => move(1));
+				if(prevButton) prevButton.addEventListener('click', () => move(-1));
+				
+				track.addEventListener('transitionend', handleTransitionEnd);
+				carouselWrapper.addEventListener('mousedown', handleDragStart);
+				carouselWrapper.addEventListener('mousemove', handleDragMove);
+				document.addEventListener('mouseup', handleDragEnd);
+				carouselWrapper.addEventListener('mouseleave', (e) => { if (isDragging) handleDragEnd(e); });
+				carouselWrapper.addEventListener('touchstart', handleDragStart, { passive: true });
+				carouselWrapper.addEventListener('touchmove', handleDragMove, { passive: true });
+				carouselWrapper.addEventListener('touchend', handleDragEnd);
+
+				let resizeTimeout;
+				window.addEventListener('resize', () => {
+					clearTimeout(resizeTimeout);
+					resizeTimeout = setTimeout(setupCarousel, 200);
+				});
+				
+				setupCarousel();
+			}
+
+			document.addEventListener('DOMContentLoaded', () => {
+				loadContentFromFirebase();
+				
+				// UI Setup
+				document.getElementById('year').textContent = new Date().getFullYear();
 				const mobileMenu = document.getElementById('mobile-menu');
 				const mobileBtn = document.getElementById('btn-mobile');
-				const navLinks = document.querySelectorAll('#mobile-menu a, #nav-desktop a');
 				const closeMenu = () => { mobileMenu.classList.remove('open'); document.body.classList.remove('menu-open'); };
 				mobileBtn.addEventListener('click', () => { mobileMenu.classList.toggle('open'); document.body.classList.toggle('menu-open'); });
-				navLinks.forEach(link => link.addEventListener('click', () => closeMenu()));
-				document.getElementById('year').textContent = new Date().getFullYear();
-
+				document.querySelectorAll('#mobile-menu a, #nav-desktop a').forEach(link => link.addEventListener('click', closeMenu));
+				
+				// Theme Toggle
 				const themeToggle = document.getElementById('theme-toggle');
 				const lightIcon = document.getElementById('theme-icon-light');
 				const darkIcon = document.getElementById('theme-icon-dark');
@@ -523,68 +491,8 @@
 					localStorage.setItem('theme', newTheme);
 					applyTheme(newTheme);
 				});
-
-				const observer = new IntersectionObserver((entries) => {
-					entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); }});
-				}, { threshold: 0.1 });
-				document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 				
-				// Lógica do Carrossel Avançado
-				function initializeCarousel(config) {
-					const carouselWrapper = document.getElementById(config.wrapperId);
-					const track = document.getElementById(config.trackId);
-					if (!track || track.children.length === 0) return;
-
-					const originalSlides = Array.from(track.children);
-					const nextButton = document.getElementById(config.nextId);
-					const prevButton = document.getElementById(config.prevId);
-					
-					let slides = []; let currentIndex = 0; let slidesPerView = 3; let isDragging = false, startX = 0, startTranslate = 0;
-
-					const setupCarousel = () => {
-						slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-						track.innerHTML = '';
-						originalSlides.forEach(slide => track.appendChild(slide.cloneNode(true)));
-						const slidesToCloneStart = originalSlides.slice(-slidesPerView);
-						const slidesToCloneEnd = originalSlides.slice(0, slidesPerView);
-						slidesToCloneEnd.forEach(slide => track.appendChild(slide.cloneNode(true)));
-						slidesToCloneStart.reverse().forEach(slide => track.prepend(slide.cloneNode(true)));
-						slides = Array.from(track.children);
-						currentIndex = slidesPerView;
-						updatePosition(false);
-					};
-					
-					const updatePosition = (animate = true) => {
-						if(slides.length === 0) return;
-						const transitionTime = animate ? 0.4 : 0;
-						track.style.transition = `transform ${transitionTime}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
-						const slideWidth = slides[0].getBoundingClientRect().width;
-						track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-					};
-
-					const handleTransitionEnd = () => {
-						if (currentIndex < slidesPerView) { currentIndex = originalSlides.length + currentIndex; updatePosition(false); }
-						if (currentIndex >= originalSlides.length + slidesPerView) { currentIndex = currentIndex - originalSlides.length; updatePosition(false); }
-					};
-
-					const moveTo = (direction) => { if (isDragging) return; currentIndex += direction; updatePosition(); };
-					const handleDragStart = (e) => { isDragging = true; startX = e.pageX || e.touches[0].pageX; startTranslate = -currentIndex * slides[0].getBoundingClientRect().width; track.style.transition = 'none'; carouselWrapper.style.cursor = 'grabbing'; };
-					const handleDragMove = (e) => { if (!isDragging) return; e.preventDefault(); const currentX = e.pageX || e.touches[0].pageX; const walk = currentX - startX; track.style.transform = `translateX(${startTranslate + walk}px)`; };
-					const handleDragEnd = (e) => { if (!isDragging) return; isDragging = false; const currentX = e.pageX || (e.changedTouches && e.changedTouches[0].pageX) || startX; const walk = currentX - startX; carouselWrapper.style.cursor = 'grab'; if (Math.abs(walk) > slides[0].getBoundingClientRect().width / 5) { currentIndex += (walk > 0 ? -1 : 1); } updatePosition(); };
-					
-					nextButton.addEventListener('click', () => moveTo(1));
-					prevButton.addEventListener('click', () => moveTo(-1));
-					track.addEventListener('transitionend', handleTransitionEnd);
-					carouselWrapper.addEventListener('mousedown', handleDragStart);
-					document.addEventListener('mouseup', handleDragEnd);
-					carouselWrapper.addEventListener('mouseleave', (e) => { if (isDragging) handleDragEnd(e); });
-					carouselWrapper.addEventListener('touchstart', handleDragStart, { passive: true });
-					carouselWrapper.addEventListener('touchmove', handleDragMove, { passive: true });
-					carouselWrapper.addEventListener('touchend', handleDragEnd);
-					
-					setupCarousel();
-					window.addEventListener('resize', setupCarousel);
-				}
+				observeRevealElements();
 			});
 		</script>
 	</body>

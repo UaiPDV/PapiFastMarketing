@@ -4,221 +4,51 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<title>Wevity — Organize sua festa sem dor de cabeça</title>
-
-		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="img/logo-semfundo.png" />
-
-		<!-- Tailwind CDN -->
 		<script src="https://cdn.tailwindcss.com"></script>
-
-		<!-- Google Fonts: Inter -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-			rel="stylesheet"
-		/>
-
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 		<style>
 			/* Estilos base e animações */
-			body {
-				font-family: 'Inter', sans-serif;
-				background: #0f0f11;
-				color: #fff;
-				transition: background 0.3s, color 0.3s;
-			}
-			.glass {
-				background: rgba(255, 255, 255, 0.04);
-				border: 1px solid rgba(255, 255, 255, 0.08);
-				transition: all 0.3s ease;
-			}
-			.header-bg {
-				background: rgba(15, 15, 17, 0.8);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-			}
-			.glass:hover {
-				transform: translateY(-5px);
-				background: rgba(255, 255, 255, 0.08);
-			}
-			.accent {
-				background: linear-gradient(90deg, #f97316, #ef4444);
-				color: white;
-				transition: all 0.2s ease-in-out;
-			}
-			.accent:hover {
-				opacity: 0.95;
-				transform: scale(1.05) translateY(-2px);
-				box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-			}
-			.button-animation {
-				transition: all 0.2s ease-in-out;
-			}
-			.button-animation:hover {
-				transform: scale(1.05) translateY(-2px);
-			}
-
-			.btn-whatsapp {
-				background-color: #25d366;
-				color: white;
-			}
-			.btn-whatsapp:hover {
-				background-color: #128c7e;
-				box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-			}
-			.btn-email {
-				background-color: #3b82f6; /* Azul */
-				color: white;
-			}
-			.btn-email:hover {
-				background-color: #2563eb;
-				box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-			}
-
-			/* Animação do link do menu */
-			.nav-link {
-				position: relative;
-				padding-bottom: 5px;
-				transition: color 0.3s ease;
-			}
-			.nav-link:hover {
-				color: #f97316;
-			}
-			.nav-link::after {
-				content: '';
-				position: absolute;
-				width: 100%;
-				transform: scaleX(0);
-				height: 2px;
-				bottom: 0;
-				left: 0;
-				background-color: #f97316;
-				transform-origin: bottom right;
-				transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-			}
-			.nav-link:hover::after {
-				transform: scaleX(1);
-				transform-origin: bottom left;
-			}
-
-			.unselectable {
-				-webkit-user-select: none; /* Safari */
-				-ms-user-select: none; /* IE 10+ */
-				user-select: none; /* Standard */
-			}
-
-			/* Estilos para a nova seção de empresas */
-			.tab-btn {
-				transition: all 0.3s ease;
-				padding: 0.75rem 1.5rem;
-				border-radius: 0.75rem;
-				font-weight: 600;
-				border: 2px solid transparent;
-				flex: 1;
-				text-align: center;
-			}
-			.tab-btn.active {
-				background: linear-gradient(90deg, #f97316, #ef4444);
-				color: white;
-				box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-			}
-			.tab-content {
-				display: none;
-				opacity: 0;
-				transition: opacity 0.5s ease-in-out;
-				min-height: 120px;
-			}
-			.tab-content.active {
-				display: block;
-				opacity: 1;
-			}
-
+			body { font-family: 'Inter', sans-serif; background: #0f0f11; color: #fff; transition: background 0.3s, color 0.3s; }
+			.glass { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
+			.header-bg { background: rgba(15, 15, 17, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+			.glass:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); }
+			.accent { background: linear-gradient(90deg, #f97316, #ef4444); color: white; transition: all 0.2s ease-in-out; }
+			.accent:hover { opacity: 0.95; transform: scale(1.05) translateY(-2px); box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4); }
+			.button-animation { transition: all 0.2s ease-in-out; }
+			.button-animation:hover { transform: scale(1.05) translateY(-2px); }
+			.nav-link { position: relative; padding-bottom: 5px; transition: color 0.3s ease; }
+			.nav-link:hover { color: #f97316; }
+			.nav-link::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: 0; left: 0; background-color: #f97316; transform-origin: bottom right; transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
+			.nav-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+			.unselectable { -webkit-user-select: none; -ms-user-select: none; user-select: none; }
+			.tab-btn { transition: all 0.3s ease; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 600; border: 2px solid transparent; flex: 1; text-align: center; }
+			.tab-btn.active { background: linear-gradient(90deg, #f97316, #ef4444); color: white; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3); }
+			.tab-content { display: none; opacity: 0; transition: opacity 0.5s ease-in-out; min-height: 120px; }
+			.tab-content.active { display: block; opacity: 1; }
 			/* Modo claro */
-			body.light-theme {
-				background: #f8fafc;
-				color: #1e293b;
-			}
-			body.light-theme .glass {
-				background: rgba(255, 255, 255, 0.8);
-				border: 1px solid rgba(0, 0, 0, 0.08);
-			}
-			body.light-theme .header-bg {
-				background: rgba(248, 250, 252, 0.8);
-				border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-			}
-			body.light-theme .glass:hover {
-				background: rgba(255, 255, 255, 1);
-			}
-			body.light-theme .accent {
-				background: linear-gradient(90deg, #fb923c, #ef4444);
-				color: white !important; /* Garante o texto branco nos botões de gradiente */
-			}
-			body.light-theme .accent:hover {
-				box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4);
-			}
-			body.light-theme .btn-whatsapp:hover {
-				box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-			}
-			body.light-theme .btn-email:hover {
-				box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-			}
-			body.light-theme .text-white {
-				color: #1e293b !important;
-			}
-			body.light-theme .text-white\/90 {
-				color: rgba(30, 41, 59, 0.9) !important;
-			}
-			body.light-theme .text-white\/80 {
-				color: rgba(30, 41, 59, 0.8) !important;
-			}
-			body.light-theme .text-white\/70 {
-				color: rgba(30, 41, 59, 0.7) !important;
-			}
-			body.light-theme .text-white\/60 {
-				color: rgba(30, 41, 59, 0.6) !important;
-			}
-			body.light-theme .text-white\/50 {
-				color: rgba(30, 41, 59, 0.5) !important;
-			}
-			body.light-theme .border-white\/10 {
-				border-color: rgba(0, 0, 0, 0.1);
-			}
-			body.light-theme .bg-white\/10 {
-				background: rgba(0, 0, 0, 0.05);
-			}
-			body.light-theme .bg-white\/5 {
-				background: rgba(0, 0, 0, 0.03);
-			}
-			body.light-theme .bg-white\/6 {
-				background: rgba(0, 0, 0, 0.04);
-			}
-			body.light-theme .tab-btn.active {
-				box-shadow: 0 4px 15px rgba(251, 146, 60, 0.4);
-			}
-
+			body.light-theme { background: #f8fafc; color: #1e293b; }
+			body.light-theme .glass { background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 0, 0, 0.08); }
+			body.light-theme .header-bg { background: rgba(248, 250, 252, 0.8); border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+			body.light-theme .glass:hover { background: rgba(255, 255, 255, 1); }
+			body.light-theme .accent { background: linear-gradient(90deg, #fb923c, #ef4444); color: white !important; }
+			body.light-theme .accent:hover, body.light-theme .tab-btn.active { box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4); }
+			body.light-theme .text-white { color: #1e293b !important; }
+			body.light-theme .text-white\/80 { color: rgba(30, 41, 59, 0.8) !important; }
+			body.light-theme .text-white\/70 { color: rgba(30, 41, 59, 0.7) !important; }
+			body.light-theme .text-white\/50 { color: rgba(30, 41, 59, 0.5) !important; }
+			body.light-theme .border-white\/10 { border-color: rgba(0, 0, 0, 0.1); }
+			body.light-theme .bg-white\/10 { background: rgba(0, 0, 0, 0.05); }
+			body.light-theme .bg-white\/5, body.light-theme .bg-white\/6 { background: rgba(0, 0, 0, 0.04); }
 			/* Animação de entrada */
-			.reveal {
-				opacity: 0;
-				transform: translateY(30px);
-				transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-				will-change: opacity, transform;
-			}
-			.reveal.visible {
-				opacity: 1;
-				transform: translateY(0);
-			}
-
+			.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+			.reveal.visible { opacity: 1; transform: translateY(0); }
 			/* Menu mobile animado */
-			#mobile-menu {
-				max-height: 0;
-				overflow: hidden;
-				transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-			}
-			#mobile-menu.open {
-				max-height: 30rem; /* Suficiente para os links */
-			}
-			body.menu-open {
-				overflow: hidden;
-			}
+			#mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+			#mobile-menu.open { max-height: 30rem; }
+			body.menu-open { overflow: hidden; }
 		</style>
 	</head>
 	<body class="antialiased">
@@ -227,848 +57,156 @@
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex items-center justify-between h-16">
 					<div class="flex items-center gap-3">
-						<img
-							id="logo"
-							src="img/logo-semfundo.png"
-							alt="Wevity"
-							class="h-10 w-10 rounded-full object-cover bg-white"
-						/>
-						<span class="font-semibold tracking-tight text-lg"
-							>Wevity</span
-						>
+						<img src="img/logo-semfundo.png" alt="Wevity" class="h-10 w-10 rounded-full object-cover bg-white"/>
+						<span class="font-semibold tracking-tight text-lg">Wevity</span>
 					</div>
-
-					<nav
-						id="nav-desktop"
-						class="hidden md:flex items-center gap-8 text-sm"
-					>
+					<nav id="nav-desktop" class="hidden md:flex items-center gap-8 text-sm">
 						<a href="#sobre" class="nav-link">O que é</a>
-						<a href="#como-funciona" class="nav-link"
-							>Como Funciona</a
-						>
-						<a href="#funcionalidades" class="nav-link"
-							>Funcionalidades</a
-						>
-						<a href="#para-empresas" class="nav-link"
-							>Para Empresas</a
-						>
+						<a href="#como-funciona" class="nav-link">Como Funciona</a>
+						<a href="#funcionalidades" class="nav-link">Funcionalidades</a>
+						<a href="#para-empresas" class="nav-link">Para Empresas</a>
 						<a href="#depoimentos" class="nav-link">Depoimentos</a>
 						<a href="#contato" class="nav-link">Contato</a>
 					</nav>
-
 					<div class="flex items-center gap-3">
-						<a
-							href="#contato"
-							class="hidden sm:inline-flex px-4 py-2 rounded-xl accent shadow-lg button-animation"
-							>Começar agora</a
-						>
-						<button
-							id="theme-toggle"
-							class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-white/10 bg-white/10 hover:bg-white/20 transition"
-						>
-							<svg
-								id="theme-icon-light"
-								class="h-5 w-5"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-								></path>
-							</svg>
-							<svg
-								id="theme-icon-dark"
-								class="h-5 w-5 hidden"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-								></path>
-							</svg>
+						<a href="#contato" class="hidden sm:inline-flex px-4 py-2 rounded-xl accent shadow-lg button-animation">Começar agora</a>
+						<button id="theme-toggle" class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-white/10 bg-white/10 hover:bg-white/20 transition">
+							<svg id="theme-icon-light" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+							<svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
 						</button>
-						<button
-							id="btn-mobile"
-							class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 p-2"
-						>
-							<svg
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-							>
-								<path
-									d="M4 6h16M4 12h16M4 18h16"
-									stroke="currentColor"
-									stroke-width="2"
-								/>
-							</svg>
+						<button id="btn-mobile" class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 p-2">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"/></svg>
 						</button>
 					</div>
 				</div>
 			</div>
-
-			<!-- Mobile menu -->
-			<div id="mobile-menu" class="md:hidden border-t border-white/10">
-				<div class="px-4 py-3 space-y-2">
-					<a
-						href="#sobre"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>O que é</a
-					>
-					<a
-						href="#como-funciona"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Como Funciona</a
-					>
-					<a
-						href="#funcionalidades"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Funcionalidades</a
-					>
-					<a
-						href="#para-empresas"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Para Empresas</a
-					>
-					<a
-						href="#depoimentos"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Depoimentos</a
-					>
-					<a
-						href="#contato"
-						class="block px-3 py-2 rounded-xl bg-white/5"
-						>Contato</a
-					>
-				</div>
-			</div>
+			<div id="mobile-menu" class="md:hidden border-t border-white/10"><div class="px-4 py-3 space-y-2">
+				<a href="#sobre" class="block px-3 py-2 rounded-xl bg-white/5">O que é</a>
+				<a href="#como-funciona" class="block px-3 py-2 rounded-xl bg-white/5">Como Funciona</a>
+				<a href="#funcionalidades" class="block px-3 py-2 rounded-xl bg-white/5">Funcionalidades</a>
+				<a href="#para-empresas" class="block px-3 py-2 rounded-xl bg-white/5">Para Empresas</a>
+				<a href="#depoimentos" class="block px-3 py-2 rounded-xl bg-white/5">Depoimentos</a>
+				<a href="#contato" class="block px-3 py-2 rounded-xl bg-white/5">Contato</a>
+			</div></div>
 		</header>
 
-		<!-- HERO -->
 		<main>
-			<section class="relative overflow-hidden">
-				<div
-					class="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.45),transparent_40%),radial-gradient(ellipse_at_bottom,rgba(239,68,68,0.35),transparent_40%)]"
-				></div>
-
-				<div
-					class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32"
-				>
-					<div
-						class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
-					>
-						<div class="reveal">
-							<h1
-								class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter"
-							>
-								Sua festa organizada de um 
-								<span
-									style="
-										background: linear-gradient(
-											90deg,
-											#fb923c,
-											#ef4444
-										);
-										-webkit-background-clip: text;
-										background-clip: text;
-										color: transparent;
-									"
-									>jeito simples e inovador</span
-								>
-							</h1>
-							<p class="mt-4 text-white/80 max-w-2xl text-lg">
-								Crie seu evento, envie convites digitais, monte
-								sua lista de presentes e acompanhe tudo em tempo
-								real – direto do celular.
-							</p>
-
-							<div class="mt-8 flex flex-col sm:flex-row gap-4">
-								<a
-									href="#como-funciona"
-									class="button-animation text-center w-full sm:w-auto justify-center px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 transition"
-									>Saiba como funciona</a
-								>
-								<a
-									href="#contato"
-									class="button-animation text-center w-full sm:w-auto justify-center px-5 py-3 rounded-xl accent shadow-lg transition"
-									>Criar meu evento agora</a
-								>
-							</div>
+			<!-- HERO -->
+			<section class="relative overflow-hidden py-16 sm:py-20 lg:py-32">
+				<div class="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.45),transparent_40%)]"></div>
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+					<div class="reveal">
+						<h1 id="hero-title" class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter"></h1>
+						<p id="hero-subtitle" class="mt-4 text-white/80 max-w-2xl text-lg"></p>
+						<div class="mt-8 flex flex-col sm:flex-row gap-4">
+							<a id="hero-secondary-button" href="#como-funciona" class="button-animation text-center w-full sm:w-auto justify-center px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 transition"></a>
+							<a id="hero-primary-button" href="#contato" class="button-animation text-center w-full sm:w-auto justify-center px-5 py-3 rounded-xl accent shadow-lg transition"></a>
 						</div>
-
-						<!-- Hero mockups com novo layout -->
-						<div
-							class="relative mt-12 lg:mt-0 h-64 sm:h-72 lg:h-80 reveal"
-							style="animation-delay: 200ms"
-						>
-							<img
-								src="img/foto3.png"
-								alt="Tela do App 1"
-								class="absolute top-0 left-0 w-2/3 rounded-2xl shadow-2xl transform -rotate-6 transition-transform hover:rotate-0 hover:scale-105 cursor-pointer"
-							/>
-							<img
-								src="img/foto2.png"
-								alt="Tela do App 2"
-								class="absolute top-0 right-0 w-2/3 rounded-2xl shadow-2xl transform rotate-6 transition-transform hover:rotate-0 hover:scale-105 cursor-pointer"
-							/>
-							<img
-								src="img/foto4.png"
-								alt="Tela do App 3"
-								class="absolute top-1/4 left-1/2 w-2/3 -translate-x-1/2 rounded-2xl shadow-2xl z-10 border-4 border-black/20 transform hover:scale-105 transition-transform cursor-pointer"
-							/>
-						</div>
+					</div>
+					<div class="relative mt-12 lg:mt-0 h-64 sm:h-72 lg:h-80 reveal">
+						<img src="img/foto3.png" alt="Tela do App 1" class="absolute top-0 left-0 w-2/3 rounded-2xl shadow-2xl transform -rotate-6 transition-transform hover:rotate-0 hover:scale-105 cursor-pointer"/>
+						<img src="img/foto2.png" alt="Tela do App 2" class="absolute top-0 right-0 w-2/3 rounded-2xl shadow-2xl transform rotate-6 transition-transform hover:rotate-0 hover:scale-105 cursor-pointer"/>
+						<img src="img/foto4.png" alt="Tela do App 3" class="absolute top-1/4 left-1/2 w-2/3 -translate-x-1/2 rounded-2xl shadow-2xl z-10 border-4 border-black/20 transform hover:scale-105 transition-transform cursor-pointer"/>
 					</div>
 				</div>
 			</section>
 
-			<!-- O QUE É -->
-			<section
-				id="sobre"
-				class="py-16 sm:py-20 border-t border-white/10 reveal"
-			>
-				<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="max-w-3xl">
-						<h2 class="text-2xl md:text-3xl font-bold">
-							O jeito moderno de organizar suas comemorações
-						</h2>
-						<p class="mt-4 text-white/80">
-							O Wevity é o aplicativo que simplifica a organização
-							de festas, aniversários e eventos especiais. Em
-							poucos cliques, você cria seu evento, adiciona
-							produtos ou presentes, envia convites personalizados
-							e acompanha tudo em tempo real.
-						</p>
-					</div>
+			<!-- SOBRE -->
+			<section id="sobre" class="py-16 sm:py-20 border-t border-white/10 reveal">
+				<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+					<h2 id="about-title" class="text-2xl md:text-3xl font-bold"></h2>
+					<p id="about-description" class="mt-4 text-white/80"></p>
 				</div>
 			</section>
-
+			
 			<!-- COMO FUNCIONA -->
-			<section
-				id="como-funciona"
-				class="py-16 sm:py-20 border-t border-white/10 reveal"
-			>
+			<section id="como-funciona" class="py-16 sm:py-20 border-t border-white/10 reveal">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 class="text-2xl md:text-3xl font-bold text-center">
-						Seu evento pronto em 4 passos
-					</h2>
-
-					<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-						<div
-							class="rounded-3xl glass p-6 cursor-pointer text-center"
-						>
-							<div class="text-3xl mb-2">1.</div>
-							<h3 class="text-lg font-semibold mt-1">
-								Crie sua conta
-							</h3>
-							<p class="mt-2 text-sm text-white/80">
-								Faça login ou cadastre-se rapidamente para
-								começar a planejar.
-							</p>
-						</div>
-
-						<div
-							class="rounded-3xl glass p-6 cursor-pointer text-center"
-						>
-							<div class="text-3xl mb-2">2.</div>
-							<h3 class="text-lg font-semibold mt-1">
-								Cadastre seu evento
-							</h3>
-							<p class="mt-2 text-sm text-white/80">
-								Personalize sua festa com tema, data, local e
-								todas as informações.
-							</p>
-						</div>
-
-						<div
-							class="rounded-3xl glass p-6 cursor-pointer text-center"
-						>
-							<div class="text-3xl mb-2">3.</div>
-							<h3 class="text-lg font-semibold mt-1">
-								Monte a lista e convide
-							</h3>
-							<p class="mt-2 text-sm text-white/80">
-								Adicione presentes à sua lista e envie convites
-								digitais com um clique.
-							</p>
-						</div>
-
-						<div
-							class="rounded-3xl glass p-6 cursor-pointer text-center"
-						>
-							<div class="text-3xl mb-2">4.</div>
-							<h3 class="text-lg font-semibold mt-1">
-								Acompanhe tudo
-							</h3>
-							<p class="mt-2 text-sm text-white/80">
-								Receba confirmações de presença e notificações
-								de presentes em tempo real.
-							</p>
-						</div>
+					<h2 id="howItWorks-title" class="text-2xl md:text-3xl font-bold text-center"></h2>
+					<div id="howItWorks-steps" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+						<!-- Conteúdo inserido via JS -->
 					</div>
 				</div>
 			</section>
 
 			<!-- FUNCIONALIDADES -->
-			<section
-				id="funcionalidades"
-				class="py-16 sm:py-20 border-t border-white/10 reveal"
-			>
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="text-center">
-						<h2 class="text-2xl md:text-3xl font-bold">
-							Tudo o que você precisa em um só lugar
-						</h2>
-						<p class="mt-2 text-white/70 max-w-2xl mx-auto">
-							Centralize, simplifique e tenha controle total do
-							seu evento na palma da mão.
-						</p>
-					</div>
-
-					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-						<div class="rounded-3xl glass p-6 cursor-pointer">
-							<h3 class="font-semibold">
-								🎉 Criar eventos em minutos
-							</h3>
-							<p class="text-white/70 mt-2 text-sm">
-								Personalize sua festa com facilidade.
-							</p>
-						</div>
-						<div class="rounded-3xl glass p-6 cursor-pointer">
-							<h3 class="font-semibold">
-								📩 Enviar convites digitais
-							</h3>
-							<p class="text-white/70 mt-2 text-sm">
-								Compartilhe via WhatsApp ou link.
-							</p>
-						</div>
-						<div class="rounded-3xl glass p-6 cursor-pointer">
-							<h3 class="font-semibold">
-								🎁 Montar lista de presentes
-							</h3>
-							<p class="text-white/70 mt-2 text-sm">
-								Seus convidados escolhem e compram direto pelo
-								app.
-							</p>
-						</div>
-						<div class="rounded-3xl glass p-6 cursor-pointer">
-							<h3 class="font-semibold">
-								🔔 Receber notificações
-							</h3>
-							<p class="text-white/70 mt-2 text-sm">
-								Saiba quando alguém confirmou presença ou
-								comprou presente.
-							</p>
-						</div>
-						<div class="rounded-3xl glass p-6 cursor-pointer">
-							<h3 class="font-semibold">
-								🎟 Visualizar cupons e vouchers
-							</h3>
-							<p class="text-white/70 mt-2 text-sm">
-								Acompanhe tudo organizado no celular.
-							</p>
-						</div>
-						<div class="rounded-3xl glass p-6 cursor-pointer">
-							<h3 class="font-semibold">
-								📱 Praticidade para convidados
-							</h3>
-							<p class="text-white/70 mt-2 text-sm">
-								Diga adeus às listas de papel e grupos confusos.
-							</p>
-						</div>
+			<section id="funcionalidades" class="py-16 sm:py-20 border-t border-white/10 reveal">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+					<h2 id="features-title" class="text-2xl md:text-3xl font-bold"></h2>
+					<p id="features-subtitle" class="mt-2 text-white/70 max-w-2xl mx-auto"></p>
+					<div id="features-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 text-left">
+						<!-- Conteúdo inserido via JS -->
 					</div>
 				</div>
 			</section>
 
-			<!-- PRINTS -->
-			<section
-				id="prints"
-				class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden"
-			>
+			<!-- TELAS DO SISTEMA -->
+			<section id="prints" class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 class="text-2xl md:text-3xl font-bold">
-						Algumas telas do sistema
-					</h2>
-					<p class="mt-2 text-white/70">
-						Interface moderna, responsiva e pronta para uso em
-						desktop e mobile.
-					</p>
-
+					<h2 id="screenshots-title" class="text-2xl md:text-3xl font-bold"></h2>
+					<p id="screenshots-subtitle" class="mt-2 text-white/70"></p>
 					<div class="relative mt-10">
-						<!-- Carousel Wrapper -->
-						<div
-							id="carousel-wrapper-prints"
-							class="overflow-hidden cursor-grab"
-						>
+						<div id="carousel-wrapper-prints" class="overflow-hidden cursor-grab">
 							<div id="carousel-track-prints" class="flex">
-								<!-- Slides -->
-								<div
-									class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable"
-									>
-										<div
-											class="aspect-[16/9] w-full bg-white/6 overflow-hidden"
-										>
-											<img
-												src="https://placehold.co/600x400/444/fff?text=Gestão+de+Eventos"
-												draggable="false"
-												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-										<div class="p-4 text-sm text-white/80">
-											Gestão de Eventos
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable"
-									>
-										<div
-											class="aspect-[16/9] w-full bg-white/6 overflow-hidden"
-										>
-											<img
-												src="https://placehold.co/600x400/444/fff?text=Detalhes+do+Evento"
-												draggable="false"
-												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-										<div class="p-4 text-sm text-white/80">
-											Detalhes do Evento
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable"
-									>
-										<div
-											class="aspect-[16/9] w-full bg-white/6 overflow-hidden"
-										>
-											<img
-												src="https://placehold.co/600x400/444/fff?text=Cadastrar+Evento"
-												draggable="false"
-												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-										<div class="p-4 text-sm text-white/80">
-											Cadastrar Evento
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable"
-									>
-										<div
-											class="aspect-[16/9] w-full bg-white/6 overflow-hidden"
-										>
-											<img
-												src="https://placehold.co/600x400/555/fff?text=Lista+de+Presentes"
-												draggable="false"
-												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-										<div class="p-4 text-sm text-white/80">
-											Lista de Presentes
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable"
-									>
-										<div
-											class="aspect-[16/9] w-full bg-white/6 overflow-hidden"
-										>
-											<img
-												src="https://placehold.co/600x400/555/fff?text=Convites+Digitais"
-												draggable="false"
-												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-										<div class="p-4 text-sm text-white/80">
-											Convites Digitais
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable"
-									>
-										<div
-											class="aspect-[16/9] w-full bg-white/6 overflow-hidden"
-										>
-											<img
-												src="https://placehold.co/600x400/555/fff?text=Dashboard"
-												draggable="false"
-												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-										<div class="p-4 text-sm text-white/80">
-											Dashboard
-										</div>
-									</div>
-								</div>
+								<!-- Slides inseridos via JS -->
 							</div>
 						</div>
-
-						<!-- Controls -->
-						<button
-							id="prev-slide-prints"
-							class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"
-						>
-							<svg
-								class="w-6 h-6"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 19l-7-7 7-7"
-								></path>
-							</svg>
-						</button>
-						<button
-							id="next-slide-prints"
-							class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"
-						>
-							<svg
-								class="w-6 h-6"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 5l7 7-7 7"
-								></path>
-							</svg>
-						</button>
+						<button id="prev-slide-prints" class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+						<button id="next-slide-prints" class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
 					</div>
 				</div>
 			</section>
 
 			<!-- DEPOIMENTOS -->
-			<section
-				id="depoimentos"
-				class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden"
-			>
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 class="text-2xl md:text-3xl font-bold">
-						O que dizem nossos usuários
-					</h2>
-					<p class="mt-2 text-white/70">
-						A experiência de quem já transformou suas festas com o
-						Wevity.
-					</p>
-
-					<div class="relative mt-10">
-						<!-- Carousel Wrapper -->
-						<div
-							id="carousel-wrapper"
-							class="overflow-hidden cursor-grab"
-						>
-							<div id="carousel-track" class="flex">
-								<!-- Slides -->
-								<div
-									class="carousel-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable p-6 justify-center"
-									>
-										<p class="text-white/80">
-											“Montei meu aniversário em minutos e
-											já recebi presentes sem
-											complicação.”
-										</p>
-										<div
-											class="mt-4 font-semibold text-orange-400"
-										>
-											Ana Silva
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable p-6 justify-center"
-									>
-										<p class="text-white/80">
-											“Os convites digitais foram um
-											sucesso, meus amigos confirmaram
-											rapidinho!”
-										</p>
-										<div
-											class="mt-4 font-semibold text-orange-400"
-										>
-											João Costa
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable p-6 justify-center"
-									>
-										<p class="text-white/80">
-											“A lista de presentes no app é muito
-											prática. Facilitou para mim e para
-											os convidados.”
-										</p>
-										<div
-											class="mt-4 font-semibold text-orange-400"
-										>
-											Mariana Lima
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable p-6 justify-center"
-									>
-										<p class="text-white/80">
-											“Finalmente um jeito simples de
-											organizar o chá de bebê. Recomendo!”
-										</p>
-										<div
-											class="mt-4 font-semibold text-orange-400"
-										>
-											Lucas Ferreira
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable p-6 justify-center"
-									>
-										<p class="text-white/80">
-											“Usei para minha festa de formatura
-											e foi incrível ter todo o controle
-											pelo celular.”
-										</p>
-										<div
-											class="mt-4 font-semibold text-orange-400"
-										>
-											Beatriz Souza
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3"
-								>
-									<div
-										class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable p-6 justify-center"
-									>
-										<p class="text-white/80">
-											“O Wevity é sensacional! Nunca foi
-											tão fácil organizar um aniversário.”
-										</p>
-										<div
-											class="mt-4 font-semibold text-orange-400"
-										>
-											Ricardo Almeida
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Controls -->
-						<button
-							id="prev-slide"
-							class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"
-						>
-							<svg
-								class="w-6 h-6"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 19l-7-7 7-7"
-								></path>
-							</svg>
-						</button>
-						<button
-							id="next-slide"
-							class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"
-						>
-							<svg
-								class="w-6 h-6"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 5l7 7-7 7"
-								></path>
-							</svg>
-						</button>
-					</div>
-				</div>
-			</section>
-
-			<!-- INÍCIO DA NOVA SEÇÃO PARA EMPRESas -->
-			<section
-				id="para-empresas"
-				class="py-16 sm:py-20 border-t border-white/10 reveal"
-			>
+			<section id="depoimentos" class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="text-center">
-						<p class="font-semibold text-orange-400">
-							Você gerencia um estabelecimento ou negócio?
-						</p>
-						<h2
-							class="text-3xl md:text-4xl font-extrabold tracking-tighter mt-2"
-						>
-							Potencialize seu Negócio com o Wevity
-						</h2>
-						<p class="mt-3 text-white/80 max-w-3xl mx-auto">
-							Uma plataforma completa para gestão de eventos,
-							marketing digital e fidelização de clientes. Aumente
-							suas vendas e fortaleça sua marca.
-						</p>
+						<h2 id="testimonials-title" class="text-2xl md:text-3xl font-bold"></h2>
+						<p id="testimonials-subtitle" class="mt-2 text-white/70 max-w-2xl mx-auto"></p>
 					</div>
-
-					<!-- Abas de Navegação -->
-					<div
-						id="tabs-container"
-						class="flex flex-col sm:flex-row justify-center items-center gap-2 md:gap-4 p-1 rounded-xl bg-white/5 mt-10 max-w-2xl mx-auto"
-					>
-						<button data-tab="gestao" class="tab-btn active">
-							Gestão e Vendas
-						</button>
-						<button data-tab="marketing" class="tab-btn">
-							Marketing Digital
-						</button>
-						<button data-tab="fidelizacao" class="tab-btn">
-							Fidelização
-						</button>
-					</div>
-
-					<!-- Conteúdo das Abas -->
-					<div class="mt-8 relative max-w-4xl mx-auto text-center">
-						<!-- Conteúdo da Aba 1: Gestão e Vendas -->
-						<div id="gestao" class="tab-content active">
-							<h3 class="text-xl font-bold mb-3">
-								Venda Ingressos e Gerencie Eventos Facilmente
-							</h3>
-							<p class="text-white/80">
-								Crie eventos, configure lotes de ingressos e
-								venda online com integração total ao Mercado
-								Pago. Acompanhe as vendas em tempo real,
-								gerencie listas de convidados e tenha controle
-								total sobre a bilheteria do seu estabelecimento.
-							</p>
+					<div class="relative mt-10">
+						<div id="carousel-wrapper" class="overflow-hidden cursor-grab">
+							<div id="carousel-track" class="flex">
+								<!-- Slides inseridos via JS -->
+							</div>
 						</div>
-						<!-- Conteúdo da Aba 2: Marketing Digital -->
-						<div id="marketing" class="tab-content">
-							<h3 class="text-xl font-bold mb-3">
-								Crie Campanhas e Cardápios Digitais Atraentes
-							</h3>
-							<p class="text-white/80">
-								Lance campanhas promocionais, crie cardápios
-								digitais interativos com um clique e gere
-								anúncios com IA para impulsionar seus produtos.
-								Envie cupons e vouchers diretamente para o
-								WhatsApp e e-mail de seus clientes.
-							</p>
-						</div>
-						<!-- Conteúdo da Aba 3: Fidelização -->
-						<div id="fidelizacao" class="tab-content">
-							<h3 class="text-xl font-bold mb-3">
-								Construa um Relacionamento Duradouro com seu
-								Público
-							</h3>
-							<p class="text-white/80">
-								Crie uma base de clientes sólida, envie convites
-								personalizados para eventos exclusivos e utilize
-								vouchers de desconto para incentivar o retorno.
-								Transforme clientes em fãs da sua marca com
-								ações de marketing direcionadas.
-							</p>
-						</div>
-					</div>
-
-					<!-- Botão CTA para Empresas -->
-					<div class="mt-10 flex justify-center">
-						<a
-							href="wevity-Business.html"
-							class="button-animation inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-xl accent shadow-lg font-semibold transition"
-						>
-							Conheça Nossa Solução  
-						</a>
+						<button id="prev-slide" class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+						<button id="next-slide" class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
 					</div>
 				</div>
 			</section>
-			<!-- FIM DA NOVA SEÇÃO PARA EMPRESAS -->
+
+			<!-- PARA EMPRESAS -->
+			<section id="para-empresas" class="py-16 sm:py-20 border-t border-white/10 reveal">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div class="text-center">
+						<p id="businessCta-tagline" class="font-semibold text-orange-400"></p>
+						<h2 id="businessCta-title" class="text-3xl md:text-4xl font-extrabold tracking-tighter mt-2"></h2>
+						<p id="businessCta-subtitle" class="mt-3 text-white/80 max-w-3xl mx-auto"></p>
+					</div>
+					<div id="tabs-container" class="flex flex-col sm:flex-row justify-center items-center gap-2 md:gap-4 p-1 rounded-xl bg-white/5 mt-10 max-w-2xl mx-auto">
+						<!-- Botões das abas inseridos via JS -->
+					</div>
+					<div id="tabs-content-container" class="mt-8 relative max-w-4xl mx-auto text-center">
+						<!-- Conteúdo das abas inserido via JS -->
+					</div>
+					<div class="mt-10 flex justify-center">
+						<a id="businessCta-button" href="wevity-Business.html" class="button-animation inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-xl accent shadow-lg font-semibold transition"></a>
+					</div>
+				</div>
+			</section>
 
 			<!-- CTA FINAL -->
-			<section
-				id="contato"
-				class="py-16 sm:py-20 border-t border-white/10 reveal"
-			>
+			<section id="contato" class="py-16 sm:py-20 border-t border-white/10 reveal">
 				<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="rounded-3xl glass p-8 md:p-12">
 						<div class="grid md:grid-cols-2 gap-8 items-center">
 							<div class="text-center md:text-left">
-								<h2
-									class="text-3xl md:text-4xl font-extrabold tracking-tighter"
-								>
-									Pronto para a festa?
-								</h2>
-								<p class="mt-3 text-white/80">
-									Crie seu evento no Wevity agora e aproveite
-									cada momento sem preocupações.
-								</p>
+								<h2 id="contact-title" class="text-3xl md:text-4xl font-extrabold tracking-tighter"></h2>
+								<p id="contact-description" class="mt-3 text-white/80"></p>
 							</div>
-							<div
-								class="mt-6 md:mt-0 flex justify-center md:justify-end"
-							>
-								<a
-									href="#"
-									class="button-animation inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-xl accent shadow-lg font-semibold transition"
-								>
-									Criar meu evento agora
-								</a>
+							<div class="mt-6 md:mt-0 flex justify-center md:justify-end">
+								<a id="contact-button" href="#" class="button-animation inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-xl accent shadow-lg font-semibold transition"></a>
 							</div>
 						</div>
 					</div>
@@ -1079,323 +217,329 @@
 		<!-- FOOTER -->
 		<footer class="py-10 border-t border-white/10">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-				<p class="text-sm text-white/50">
-					© <span id="year"></span> Wevity. Todos os direitos
-					reservados.
-				</p>
-				<div
-					class="mt-4 flex justify-center gap-6 text-sm text-white/70"
-				>
-					<a
-						href="#funcionalidades"
-						class="hover:text-orange-400 transition-colors"
-						>Funcionalidades</a
-					>
-					<a
-						href="#como-funciona"
-						class="hover:text-orange-400 transition-colors"
-						>Como Funciona</a
-					>
-					<a href="#" class="hover:text-orange-400 transition-colors"
-						>Contato</a
-					>
-					<a href="#" class="hover:text-orange-400 transition-colors"
-						>Política de Privacidade</a
-					>
+				<p class="text-sm text-white/50">© <span id="year"></span> Wevity. Todos os direitos reservados.</p>
+				<div id="footer-links" class="mt-4 flex justify-center gap-6 text-sm text-white/70">
+					<!-- Links inseridos via JS -->
 				</div>
 			</div>
 		</footer>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
+		<script type="module">
+			import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+			import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+			const firebaseConfig = {
+				apiKey: "AIzaSyDmScpF_IsLIWRtltZg09yDpOkYIyE1MrU",
+				authDomain: "papifast-90f21.firebaseapp.com",
+				projectId: "papifast-90f21",
+				storageBucket: "papifast-90f21.appspot.com",
+				messagingSenderId: "423481031884",
+				appId: "1:423481031884:web:8f2e02e4fd8bc9a0e55669",
+				measurementId: "G-0S2L6TXN0W"
+			};
+
+			const app = initializeApp(firebaseConfig);
+			const db = getFirestore(app);
+
+			// Helper para popular conteúdo
+			function setContent(elementId, content, fallback = '') {
+				const element = document.getElementById(elementId);
+				if (element) { element.innerHTML = content || fallback; }
+			}
+
+			// Conteúdo Padrão (Fallback)
+			const defaultContent = {
+				hero: { title_part1: "Sua festa organizada de um ", title_highlight: "jeito simples e inovador", subtitle: "Crie seu evento, envie convites digitais, monte sua lista de presentes e acompanhe tudo em tempo real – direto do celular.", primary_button: "Criar meu evento agora", secondary_button: "Saiba como funciona" },
+				about: { title: "O jeito moderno de organizar suas comemorações", description: "O Wevity é o aplicativo que simplifica a organização de festas, aniversários e eventos especiais. Em poucos cliques, você cria seu evento, adiciona produtos ou presentes, envia convites personalizados e acompanha tudo em tempo real." },
+				howItWorks: { title: "Seu evento pronto em 4 passos", steps: [ { title: "Crie sua conta", description: "Faça login ou cadastre-se rapidamente para começar a planejar." }, { title: "Cadastre seu evento", description: "Personalize sua festa com tema, data, local e todas as informações." }, { title: "Monte a lista e convide", description: "Adicione presentes à sua lista e envie convites digitais com um clique." }, { title: "Acompanhe tudo", description: "Receba confirmações de presença e notificações de presentes em tempo real." } ] },
+				features: { title: "Tudo o que você precisa em um só lugar", subtitle: "Centralize, simplifique e tenha controle total do seu evento na palma da mão.", items: [ { title: "🎉 Criar eventos em minutos", description: "Personalize sua festa com facilidade." }, { title: "📩 Enviar convites digitais", description: "Compartilhe via WhatsApp ou link." }, { title: "🎁 Montar lista de presentes", description: "Seus convidados escolhem e compram direto pelo app." }, { title: "🔔 Receber notificações", description: "Saiba quando alguém confirmou presença ou comprou presente." }, { title: "🎟 Visualizar cupons e vouchers", description: "Acompanhe tudo organizado no celular." }, { title: "📱 Praticidade para convidados", description: "Diga adeus às listas de papel e grupos confusos." } ] },
+				screenshots: { title: "Algumas telas do sistema", subtitle: "Interface moderna, responsiva e pronta para uso em desktop e mobile.", items: [ { image: "https://placehold.co/600x400/444/fff?text=Gestão+de+Eventos", caption: "Gestão de Eventos" }, { image: "https://placehold.co/600x400/444/fff?text=Detalhes+do+Evento", caption: "Detalhes do Evento" }, { image: "https://placehold.co/600x400/555/fff?text=Lista+de+Presentes", caption: "Lista de Presentes" }, { image: "https://placehold.co/600x400/555/fff?text=Convites+Digitais", caption: "Convites Digitais" } ] },
+				testimonials: { title: "O que dizem nossos usuários", subtitle: "A experiência de quem já transformou suas festas com o Wevity.", items: [ { quote: "“Montei meu aniversário em minutos e já recebi presentes sem complicação.”", author: "Ana Silva" }, { quote: "“Os convites digitais foram um sucesso, meus amigos confirmaram rapidinho!”", author: "João Costa" }, { quote: "“A lista de presentes no app é muito prática. Facilitou para mim e para os convidados.”", author: "Mariana Lima" }, { quote: "“Finalmente um jeito simples de organizar o chá de bebê. Recomendo!”", author: "Lucas Ferreira" } ] },
+				businessCta: { tagline: "Você gerencia um estabelecimento ou negócio?", title: "Potencialize seu Negócio com o Wevity", subtitle: "Uma plataforma completa para gestão de eventos, marketing digital e fidelização de clientes. Aumente suas vendas e fortaleça sua marca.", button: "Conheça Nossa Solução", tabs: [ { id: "gestao", title: "Gestão e Vendas", content_title: "Venda Ingressos e Gerencie Eventos Facilmente", content_description: "Crie eventos, configure lotes de ingressos e venda online. Acompanhe as vendas em tempo real, gerencie listas de convidados e tenha controle total sobre a bilheteria do seu estabelecimento." }, { id: "marketing", title: "Marketing Digital", content_title: "Crie Campanhas e Cardápios Digitais Atraentes", content_description: "Lance campanhas promocionais, crie cardápios digitais interativos com um clique e gere anúncios com IA para impulsionar seus produtos. Envie cupons e vouchers diretamente para o WhatsApp e e-mail de seus clientes." }, { id: "fidelizacao", title: "Fidelização", content_title: "Construa um Relacionamento Duradouro com seu Público", content_description: "Crie uma base de clientes sólida, envie convites personalizados para eventos exclusivos e utilize vouchers de desconto para incentivar o retorno. Transforme clientes em fãs da sua marca com ações de marketing direcionadas." } ] },
+				contact: { title: "Pronto para a festa?", description: "Crie seu evento no Wevity agora e aproveite cada momento sem preocupações.", button: "Criar meu evento agora" },
+				footer: { links: [ { text: "Funcionalidades", href: "#funcionalidades" }, { text: "Como Funciona", href: "#como-funciona" }, { text: "Contato", href: "#" }, { text: "Política de Privacidade", href: "#" } ] }
+			};
+
+			function renderContent(data) {
+                const content = {
+                    ...defaultContent,
+                    ...data,
+                    hero: { ...defaultContent.hero, ...data?.hero },
+                    about: { ...defaultContent.about, ...data?.about },
+                    howItWorks: { ...defaultContent.howItWorks, ...data?.howItWorks },
+                    features: { ...defaultContent.features, ...data?.features },
+                    screenshots: { ...defaultContent.screenshots, ...data?.screenshots },
+                    testimonials: { ...defaultContent.testimonials, ...data?.testimonials },
+                    businessCta: { ...defaultContent.businessCta, ...data?.businessCta },
+                    contact: { ...defaultContent.contact, ...data?.contact },
+                    footer: { ...defaultContent.footer, ...data?.footer },
+                };
+				
+				// Hero
+				const heroTitleHtml = `${content.hero.title_part1}<span style='background: linear-gradient(90deg, #fb923c, #ef4444); -webkit-background-clip: text; background-clip: text; color: transparent;'>${content.hero.title_highlight}</span>`;
+				setContent('hero-title', heroTitleHtml);
+				setContent('hero-subtitle', content.hero.subtitle);
+				setContent('hero-primary-button', content.hero.primary_button);
+				setContent('hero-secondary-button', content.hero.secondary_button);
+
+				// About
+				setContent('about-title', content.about.title);
+				setContent('about-description', content.about.description);
+				
+				// How It Works
+				setContent('howItWorks-title', content.howItWorks.title);
+				document.getElementById('howItWorks-steps').innerHTML = (content.howItWorks.steps || []).map((item, index) => `
+					<div class="rounded-3xl glass p-6 cursor-pointer text-center">
+						<div class="text-3xl mb-2">${index + 1}.</div>
+						<h3 class="text-lg font-semibold mt-1">${item.title}</h3>
+						<p class="mt-2 text-sm text-white/80">${item.description}</p>
+					</div>
+				`).join('');
+
+				// Features
+				setContent('features-title', content.features.title);
+				setContent('features-subtitle', content.features.subtitle);
+				document.getElementById('features-container').innerHTML = (content.features.items || []).map(item => `
+					<div class="rounded-3xl glass p-6 cursor-pointer"><h3 class="font-semibold">${item.title}</h3><p class="text-white/70 mt-2 text-sm">${item.description}</p></div>
+				`).join('');
+				
+				// Screenshots Carousel
+				setContent('screenshots-title', content.screenshots.title);
+				setContent('screenshots-subtitle', content.screenshots.subtitle);
+				document.getElementById('carousel-track-prints').innerHTML = (content.screenshots.items || []).map(item => `
+					<div class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+						<div class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable">
+							<div class="aspect-[16/9] w-full bg-white/6 overflow-hidden">
+								<img src="${item.image}" draggable="false" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+							</div>
+							<div class="p-4 text-sm text-white/80">${item.caption}</div>
+						</div>
+					</div>`).join('');
+				
+				// Testimonials Carousel
+				setContent('testimonials-title', content.testimonials.title);
+				setContent('testimonials-subtitle', content.testimonials.subtitle);
+				document.getElementById('carousel-track').innerHTML = (content.testimonials.items || []).map(item => `
+					<div class="carousel-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+						<div class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable p-6 justify-center">
+							<p class="text-white/80">${item.quote}</p>
+							<div class="mt-4 font-semibold text-orange-400">${item.author}</div>
+						</div>
+					</div>`).join('');
+
+				// Business CTA with Tabs
+				setContent('businessCta-tagline', content.businessCta.tagline);
+				setContent('businessCta-title', content.businessCta.title);
+				setContent('businessCta-subtitle', content.businessCta.subtitle);
+				setContent('businessCta-button', content.businessCta.button);
+				document.getElementById('tabs-container').innerHTML = (content.businessCta.tabs || []).map((tab, index) => `
+					<button data-tab="${tab.id}" class="tab-btn ${index === 0 ? 'active' : ''}">${tab.title}</button>
+				`).join('');
+				document.getElementById('tabs-content-container').innerHTML = (content.businessCta.tabs || []).map((tab, index) => `
+					<div id="${tab.id}" class="tab-content ${index === 0 ? 'active' : ''}">
+						<h3 class="text-xl font-bold mb-3">${tab.content_title}</h3>
+						<p class="text-white/80">${tab.content_description}</p>
+					</div>
+				`).join('');
+
+				// Contact CTA
+				setContent('contact-title', content.contact.title);
+				setContent('contact-description', content.contact.description);
+				setContent('contact-button', content.contact.button);
+				
+				// Footer
+				document.getElementById('footer-links').innerHTML = (content.footer.links || []).map(link => `
+					<a href="${link.href}" class="hover:text-orange-400 transition-colors">${link.text}</a>
+				`).join('');
+			}
+
+
+			async function loadContentFromFirebase() {
+				try {
+					const docSnap = await getDoc(doc(db, 'content', 'pages'));
+					renderContent(docSnap.exists() ? docSnap.data().homePage : {});
+				} catch (error) {
+					console.error("Erro ao carregar do Firebase:", error);
+					renderContent({}); // Usa fallback em caso de erro
+				}
+			}
+			
+			// --- Funções de UI ---
+
+			function setupUI() {
 				// Menu mobile
 				const mobileMenu = document.getElementById('mobile-menu');
 				const mobileBtn = document.getElementById('btn-mobile');
-				const navLinks = document.querySelectorAll(
-					'#mobile-menu a, #nav-desktop a'
-				);
+				const closeMenu = () => { mobileMenu.classList.remove('open'); document.body.classList.remove('menu-open'); };
+				mobileBtn.addEventListener('click', () => { mobileMenu.classList.toggle('open'); document.body.classList.toggle('menu-open'); });
+				document.querySelectorAll('#mobile-menu a, #nav-desktop a').forEach(link => link.addEventListener('click', closeMenu));
+				
+				// Ano no footer
+				document.getElementById('year').textContent = new Date().getFullYear();
 
-				const closeMenu = () => {
-					mobileMenu.classList.remove('open');
-					document.body.classList.remove('menu-open');
-				};
-
-				mobileBtn.addEventListener('click', function () {
-					mobileMenu.classList.toggle('open');
-					document.body.classList.toggle('menu-open');
-				});
-
-				navLinks.forEach((link) => {
-					link.addEventListener('click', () => {
-						closeMenu();
-					});
-				});
-
-				document.getElementById('year').textContent =
-					new Date().getFullYear();
-
-				// Alternador de tema (light/dark)
+				// Alternador de tema
 				const themeToggle = document.getElementById('theme-toggle');
 				const lightIcon = document.getElementById('theme-icon-light');
 				const darkIcon = document.getElementById('theme-icon-dark');
-
 				const applyTheme = (theme) => {
-					if (theme === 'light') {
-						document.body.classList.add('light-theme');
-						lightIcon.classList.add('hidden');
-						darkIcon.classList.remove('hidden');
-					} else {
-						document.body.classList.remove('light-theme');
-						lightIcon.classList.remove('hidden');
-						darkIcon.classList.add('hidden');
-					}
+					if (theme === 'light') { document.body.classList.add('light-theme'); lightIcon.classList.add('hidden'); darkIcon.classList.remove('hidden'); } 
+					else { document.body.classList.remove('light-theme'); lightIcon.classList.remove('hidden'); darkIcon.classList.add('hidden'); }
 				};
-
 				const savedTheme = localStorage.getItem('theme') || 'dark';
 				applyTheme(savedTheme);
-
-				themeToggle.addEventListener('click', function () {
-					const isLight =
-						document.body.classList.toggle('light-theme');
-					const newTheme = isLight ? 'light' : 'dark';
+				themeToggle.addEventListener('click', () => {
+					const newTheme = document.body.classList.toggle('light-theme') ? 'light' : 'dark';
 					localStorage.setItem('theme', newTheme);
 					applyTheme(newTheme);
 				});
 
 				// Animação de scroll
-				const observer = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add('visible');
-							}
-						});
-					},
-					{ threshold: 0.1 }
-				);
-				document
-					.querySelectorAll('.reveal')
-					.forEach((el) => observer.observe(el));
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+				}, { threshold: 0.1 });
+				document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-				// Lógica para a nova seção de abas (Tabs)
+				// Lógica das Abas (Tabs)
 				const tabsContainer = document.getElementById('tabs-container');
 				if (tabsContainer) {
-					const tabButtons =
-						tabsContainer.querySelectorAll('.tab-btn');
-					const tabContents = document.querySelectorAll(
-						'#para-empresas .tab-content'
-					);
+					tabsContainer.addEventListener('click', (e) => {
+						if (!e.target.matches('.tab-btn')) return;
+						const tabId = e.target.dataset.tab;
+						
+						tabsContainer.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+						e.target.classList.add('active');
 
-					tabButtons.forEach((button) => {
-						button.addEventListener('click', () => {
-							const tabId = button.dataset.tab;
-
-							// Altera o botão ativo
-							tabButtons.forEach((btn) =>
-								btn.classList.remove('active')
-							);
-							button.classList.add('active');
-
-							// Altera o conteúdo ativo
-							tabContents.forEach((content) => {
-								if (content.id === tabId) {
-									content.classList.add('active');
-								} else {
-									content.classList.remove('active');
-								}
-							});
+						document.querySelectorAll('#tabs-content-container .tab-content').forEach(content => {
+							content.classList.remove('active');
 						});
+						document.getElementById(tabId)?.classList.add('active');
 					});
 				}
+				
+				// Inicializa Carrosséis
+				initializeCarousel({ wrapperId: 'carousel-wrapper-prints', trackId: 'carousel-track-prints', slideClass: '.carousel-slide-prints', nextId: 'next-slide-prints', prevId: 'prev-slide-prints' });
+				initializeCarousel({ wrapperId: 'carousel-wrapper', trackId: 'carousel-track', slideClass: '.carousel-slide', nextId: 'next-slide', prevId: 'prev-slide' });
+			}
+			
+			function initializeCarousel(config) {
+				const carouselWrapper = document.getElementById(config.wrapperId);
+				const track = document.getElementById(config.trackId);
+				if (!track || !carouselWrapper) return;
+				
+				let originalSlides, slides, currentIndex, slidesPerView, isDragging, startX, startTranslate;
+				isDragging = false;
+				
+				const setupCarousel = () => {
+					originalSlides = Array.from(track.children);
+					if (originalSlides.length === 0) return;
 
-				// Lógica do Carrossel Avançado
-				function initializeCarousel(config) {
-					const carouselWrapper = document.getElementById(
-						config.wrapperId
-					);
-					const track = document.getElementById(config.trackId);
-					if (!track) return;
-
-					const originalSlides = Array.from(
-						document.querySelectorAll(config.slideClass)
-					);
+					slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
 					const nextButton = document.getElementById(config.nextId);
 					const prevButton = document.getElementById(config.prevId);
 
-					let slides = [];
-					let currentIndex = 0;
-					let slidesPerView = 3;
-					let isDragging = false,
-						startX = 0,
-						startTranslate = 0;
+					if(originalSlides.length <= slidesPerView) {
+						if(nextButton) nextButton.style.display = 'none';
+						if(prevButton) prevButton.style.display = 'none';
+						// Não clonar slides se não houver necessidade de loop
+						return;
+					} else {
+						if(nextButton) nextButton.style.display = 'block';
+						if(prevButton) prevButton.style.display = 'block';
+					}
 
-					const setupCarousel = () => {
-						if (originalSlides.length === 0) return;
-						slidesPerView =
-							window.innerWidth < 768
-								? 1
-								: window.innerWidth < 1024
-								? 2
-								: 3;
+					const fragment = document.createDocumentFragment();
+					originalSlides.slice(-slidesPerView).forEach(slide => fragment.appendChild(slide.cloneNode(true)));
+					originalSlides.forEach(slide => fragment.appendChild(slide.cloneNode(true)));
+					originalSlides.slice(0, slidesPerView).forEach(slide => fragment.appendChild(slide.cloneNode(true)));
+					
+					track.innerHTML = '';
+					track.appendChild(fragment);
 
-						track.innerHTML = '';
-						originalSlides.forEach((slide) =>
-							track.appendChild(slide.cloneNode(true))
-						);
+					slides = Array.from(track.children);
+					currentIndex = slidesPerView;
+					updatePosition(false);
+				};
 
-						const slidesToCloneStart = originalSlides.slice(
-							-slidesPerView
-						);
-						const slidesToCloneEnd = originalSlides.slice(
-							0,
-							slidesPerView
-						);
+				const updatePosition = (animate = true) => {
+					if (!slides || slides.length === 0) return;
+					track.style.transition = animate ? `transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)` : 'none';
+					const slideWidth = slides[0].getBoundingClientRect().width;
+					track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+				};
 
-						slidesToCloneEnd.forEach((slide) =>
-							track.appendChild(slide.cloneNode(true))
-						);
-						slidesToCloneStart
-							.reverse()
-							.forEach((slide) =>
-								track.prepend(slide.cloneNode(true))
-							);
-
-						slides = Array.from(track.children);
-						currentIndex = slidesPerView;
+				const handleTransitionEnd = () => {
+					if (!originalSlides || originalSlides.length <= slidesPerView) return;
+					if (currentIndex < slidesPerView) {
+						currentIndex = originalSlides.length + currentIndex;
 						updatePosition(false);
-					};
+					}
+					if (currentIndex >= originalSlides.length + slidesPerView) {
+						currentIndex = currentIndex - originalSlides.length;
+						updatePosition(false);
+					}
+				};
 
-					const updatePosition = (animate = true) => {
-						if (slides.length === 0) return;
-						const transitionTime = animate ? 0.4 : 0;
-						track.style.transition = `transform ${transitionTime}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
-						const slideWidth =
-							slides[0].getBoundingClientRect().width;
-						track.style.transform = `translateX(${
-							-currentIndex * slideWidth
-						}px)`;
-					};
+				const move = (direction) => {
+					if (isDragging) return;
+					currentIndex += direction;
+					updatePosition();
+				};
 
-					const handleTransitionEnd = () => {
-						if (currentIndex < slidesPerView) {
-							currentIndex = originalSlides.length + currentIndex;
-							updatePosition(false);
-						}
-						if (
-							currentIndex >=
-							originalSlides.length + slidesPerView
-						) {
-							currentIndex = currentIndex - originalSlides.length;
-							updatePosition(false);
-						}
-					};
+				const handleDragStart = (e) => {
+					if (!slides || slides.length === 0 || originalSlides.length <= slidesPerView) return;
+					isDragging = true;
+					startX = e.pageX || e.touches[0].pageX;
+					const slideWidth = slides[0].getBoundingClientRect().width;
+					startTranslate = -currentIndex * slideWidth;
+					track.style.transition = 'none';
+					carouselWrapper.style.cursor = 'grabbing';
+				};
 
-					const moveToNext = () => {
-						if (isDragging) return;
-						currentIndex++;
+				const handleDragMove = (e) => {
+					if (!isDragging) return;
+					e.preventDefault();
+					const currentX = e.pageX || e.touches[0].pageX;
+					track.style.transform = `translateX(${startTranslate + (currentX - startX)}px)`;
+				};
+
+				const handleDragEnd = (e) => {
+					if (!isDragging) return;
+					isDragging = false;
+					const currentX = e.pageX || (e.changedTouches && e.changedTouches[0].pageX) || startX;
+					carouselWrapper.style.cursor = 'grab';
+					if (Math.abs(currentX - startX) > slides[0].getBoundingClientRect().width / 5) {
+						move(currentX > startX ? -1 : 1);
+					} else {
 						updatePosition();
-					};
+					}
+				};
+				
+				const nextButton = document.getElementById(config.nextId);
+				const prevButton = document.getElementById(config.prevId);
+				if(nextButton) nextButton.addEventListener('click', () => move(1));
+				if(prevButton) prevButton.addEventListener('click', () => move(-1));
+				
+				track.addEventListener('transitionend', handleTransitionEnd);
+				carouselWrapper.addEventListener('mousedown', handleDragStart);
+				carouselWrapper.addEventListener('mousemove', handleDragMove);
+				document.addEventListener('mouseup', handleDragEnd);
+				carouselWrapper.addEventListener('mouseleave', (e) => { if (isDragging) handleDragEnd(e); });
+				carouselWrapper.addEventListener('touchstart', handleDragStart, { passive: true });
+				carouselWrapper.addEventListener('touchmove', handleDragMove, { passive: true });
+				carouselWrapper.addEventListener('touchend', handleDragEnd);
 
-					const moveToPrev = () => {
-						if (isDragging) return;
-						currentIndex--;
-						updatePosition();
-					};
-
-					const handleDragStart = (e) => {
-						if (slides.length === 0) return;
-						isDragging = true;
-						startX = e.pageX || e.touches[0].pageX;
-						const slideWidth =
-							slides[0].getBoundingClientRect().width;
-						startTranslate = -currentIndex * slideWidth;
-						track.style.transition = 'none';
-						carouselWrapper.style.cursor = 'grabbing';
-					};
-
-					const handleDragMove = (e) => {
-						if (!isDragging) return;
-						e.preventDefault();
-						const currentX = e.pageX || e.touches[0].pageX;
-						const walk = currentX - startX;
-						track.style.transform = `translateX(${
-							startTranslate + walk
-						}px)`;
-					};
-
-					const handleDragEnd = (e) => {
-						if (!isDragging) return;
-						isDragging = false;
-						const currentX =
-							e.pageX ||
-							(e.changedTouches && e.changedTouches[0].pageX) ||
-							startX;
-						const walk = currentX - startX;
-						const slideWidth =
-							slides[0].getBoundingClientRect().width;
-
-						carouselWrapper.style.cursor = 'grab';
-
-						if (Math.abs(walk) > slideWidth / 5) {
-							currentIndex += walk > 0 ? -1 : 1;
-						}
-
-						updatePosition();
-					};
-
-					nextButton.addEventListener('click', moveToNext);
-					prevButton.addEventListener('click', moveToPrev);
-					track.addEventListener(
-						'transitionend',
-						handleTransitionEnd
-					);
-
-					carouselWrapper.addEventListener(
-						'mousedown',
-						handleDragStart
-					);
-					carouselWrapper.addEventListener(
-						'mousemove',
-						handleDragMove
-					);
-					document.addEventListener('mouseup', handleDragEnd);
-					carouselWrapper.addEventListener('mouseleave', (e) => {
-						if (isDragging) handleDragEnd(e);
-					});
-
-					carouselWrapper.addEventListener(
-						'touchstart',
-						handleDragStart,
-						{ passive: true }
-					);
-					carouselWrapper.addEventListener(
-						'touchmove',
-						handleDragMove,
-						{ passive: true }
-					);
-					carouselWrapper.addEventListener('touchend', handleDragEnd);
-
-					setupCarousel();
-					window.addEventListener('resize', setupCarousel);
-				}
-
-				// Inicializa Carrossel de Telas
-				initializeCarousel({
-					wrapperId: 'carousel-wrapper-prints',
-					trackId: 'carousel-track-prints',
-					slideClass: '.carousel-slide-prints',
-					nextId: 'next-slide-prints',
-					prevId: 'prev-slide-prints',
+				let resizeTimeout;
+				window.addEventListener('resize', () => {
+					clearTimeout(resizeTimeout);
+					resizeTimeout = setTimeout(setupCarousel, 200);
 				});
+				
+				setTimeout(setupCarousel, 150);
+			}
 
-				// Inicializa Carrossel de Depoimentos
-				initializeCarousel({
-					wrapperId: 'carousel-wrapper',
-					trackId: 'carousel-track',
-					slideClass: '.carousel-slide',
-					nextId: 'next-slide',
-					prevId: 'prev-slide',
-				});
+			document.addEventListener('DOMContentLoaded', async () => {
+				await loadContentFromFirebase();
+				setupUI();
 			});
 		</script>
 	</body>
