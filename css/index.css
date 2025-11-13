@@ -1,0 +1,197 @@
+/* Estilos base e animações */
+body {
+	font-family: 'Inter', sans-serif;
+	background: #0f0f11;
+	color: #fff;
+	transition: background 0.3s, color 0.3s;
+}
+.glass {
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	transition: all 0.3s ease;
+}
+.header-bg {
+	background: rgba(15, 15, 17, 0.8);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass:hover {
+	transform: translateY(-5px);
+	background: rgba(255, 255, 255, 0.08);
+}
+.accent {
+	background: linear-gradient(90deg, #f97316, #ef4444);
+	color: white;
+	transition: all 0.2s ease-in-out;
+}
+.accent:hover {
+	opacity: 0.95;
+	transform: scale(1.05) translateY(-2px);
+	box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+.button-animation {
+	transition: all 0.2s ease-in-out;
+}
+.button-animation:hover {
+	transform: scale(1.05) translateY(-2px);
+}
+.nav-link {
+	position: relative;
+	padding-bottom: 5px;
+	transition: color 0.3s ease;
+}
+.nav-link:hover {
+	color: #f97316;
+}
+.nav-link::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #f97316;
+	transform-origin: bottom right;
+	transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.nav-link:hover::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+.unselectable {
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.tab-btn {
+	transition: all 0.3s ease;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.75rem;
+	font-weight: 600;
+	border: 2px solid transparent;
+	flex: 1;
+	text-align: center;
+}
+.tab-btn.active {
+	background: linear-gradient(90deg, #f97316, #ef4444);
+	color: white;
+	box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+.tab-content {
+	display: none;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	min-height: 120px;
+}
+.tab-content.active {
+	display: block;
+	opacity: 1;
+}
+/* Modo claro */
+body.light-theme {
+	background: #f8fafc;
+	color: #1e293b;
+}
+body.light-theme .glass {
+	background: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.08);
+}
+body.light-theme .header-bg {
+	background: rgba(248, 250, 252, 0.8);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+body.light-theme .glass:hover {
+	background: rgba(255, 255, 255, 1);
+}
+body.light-theme .accent {
+	background: linear-gradient(90deg, #fb923c, #ef4444);
+	color: white !important;
+}
+body.light-theme .accent:hover,
+body.light-theme .tab-btn.active {
+	box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4);
+}
+body.light-theme .text-white {
+	color: #1e293b !important;
+}
+body.light-theme .text-white\/80 {
+	color: rgba(30, 41, 59, 0.8) !important;
+}
+body.light-theme .text-white\/70 {
+	color: rgba(30, 41, 59, 0.7) !important;
+}
+body.light-theme .text-white\/50 {
+	color: rgba(30, 41, 59, 0.5) !important;
+}
+body.light-theme .border-white\/10 {
+	border-color: rgba(0, 0, 0, 0.1);
+}
+body.light-theme .bg-white\/10 {
+	background: rgba(0, 0, 0, 0.05);
+}
+body.light-theme .bg-white\/5,
+body.light-theme .bg-white\/6 {
+	background: rgba(0, 0, 0, 0.04);
+}
+/* Animação de entrada */
+.reveal {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+/* Menu mobile animado */
+#mobile-menu {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#mobile-menu.open {
+	max-height: 30rem;
+}
+body.menu-open {
+	overflow: hidden;
+}
+
+/* --- Estilos do Fluxo (Diagrama com Setas) --- */
+.flow-step-box {
+	position: relative;
+	z-index: 10;
+	background: rgba(255, 255, 255, 0.04);
+}
+
+/* --- NOVO: Estilos do Modal --- */
+.flow-modal {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 0.3s, opacity 0.3s ease;
+}
+.flow-modal.modal-visible {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s, opacity 0.3s ease;
+}
+.flow-modal .modal-content {
+	transform: scale(0.9);
+	opacity: 0;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.flow-modal.modal-visible .modal-content {
+	transform: scale(1);
+	opacity: 1;
+}
+/* --- Fim dos Estilos do Modal --- */
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

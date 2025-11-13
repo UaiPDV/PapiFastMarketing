@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Admin - Editor de Conteúdo Visual</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- CSS SEPARADO -->
+		<link rel="stylesheet" href="css/admin.css" />
+	</head>
+	<body class="bg-gray-900 text-white">
+		<div class="container mx-auto p-4 md:p-8">
+			<header class="mb-8 text-center">
+				<h1 class="text-4xl font-bold text-orange-500">
+					Editor de Conteúdo
+				</h1>
+				<p class="text-gray-400 mt-2">
+					Altere o conteúdo das páginas nos campos abaixo e clique em
+					"Salvar".
+				</p>
+			</header>
+
+			<div
+				id="loading-state"
+				class="text-center p-8 bg-gray-800 rounded-lg"
+			>
+				<p>Carregando dados do Firebase...</p>
+			</div>
+			<div
+				id="initialization-state"
+				class="hidden text-center p-8 bg-gray-800 rounded-lg border-2 border-dashed border-orange-500"
+			>
+				<h2 class="text-2xl font-semibold mb-4">
+					Banco de dados vazio!
+				</h2>
+				<p class="mb-6 text-gray-300">
+					Clique no botão abaixo para carregar o conteúdo inicial no
+					Firebase.
+				</p>
+				<button
+					id="initialize-button"
+					class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300"
+				>
+					Carregar Conteúdo Inicial
+				</button>
+			</div>
+
+			<main id="editor-state" class="hidden space-y-12">
+				<div
+					id="status-message"
+					class="hidden mb-6 p-4 rounded-lg text-center font-semibold sticky top-4 z-50"
+				></div>
+
+				<div class="grid lg:grid-cols-2 gap-8 items-start">
+					<!-- COLUNA PÁGINA PRINCIPAL -->
+					<div class="space-y-6">
+						<h2 class="text-3xl font-bold text-gray-200 page-title">
+							Página Principal
+						</h2>
+						<form id="homePageForm" class="space-y-6">
+							<!-- Seção: Funcionalidades -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Funcionalidades
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Título da Seção</label
+										><input
+											type="text"
+											data-path="homePage.features.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo da Seção</label
+										><textarea
+											data-path="homePage.features.subtitle"
+											class="h-20"
+										></textarea>
+									</div>
+									<div
+										id="features-items-editor"
+										class="space-y-6 pt-4 border-t border-gray-700"
+									>
+										<!-- Campos Fixos para Funcionalidades -->
+									</div>
+								</div>
+							</div>
+							<!-- Seção: Telas do Sistema -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Telas (Carrossel)
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Título</label
+										><input
+											type="text"
+											data-path="homePage.screenshots.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo</label
+										><textarea
+											data-path="homePage.screenshots.subtitle"
+											class="h-20"
+										></textarea>
+									</div>
+									<div
+										id="screenshots-items-editor"
+										class="space-y-4 pt-4 border-t border-gray-700 scrollable-editor"
+									></div>
+								</div>
+							</div>
+							<!-- Seção: Depoimentos -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Depoimentos (Carrossel)
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Título</label
+										><input
+											type="text"
+											data-path="homePage.testimonials.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo</label
+										><textarea
+											data-path="homePage.testimonials.subtitle"
+											class="h-20"
+										></textarea>
+									</div>
+									<div
+										id="testimonials-items-editor"
+										class="space-y-4 pt-4 border-t border-gray-700 scrollable-editor"
+									></div>
+								</div>
+							</div>
+							
+							<!-- Seção: Fluxos (MODIFICADA PARA 4 PASSOS FIXOS) -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Fluxo Principal (Fixo)
+								</h3>
+								<p class="section-subtitle">
+									Configure os 4 passos fixos do fluxo da página principal.
+								</p>
+								<div class="space-y-4 mb-4">
+									<div>
+										<label>Título da Seção</label
+										><input
+											type="text"
+											data-path="homePage.flowsConfig.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo da Seção</label
+										><textarea
+											data-path="homePage.flowsConfig.subtitle"
+											class="h-20"
+										></textarea>
+									</div>
+								</div>
+								<div
+									id="home-flows-editor"
+									class="space-y-6 scrollable-editor pt-4 border-t border-gray-700"
+								>
+									<!-- JS irá popular os 4 campos fixos aqui -->
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- COLUNA PÁGINA EMPRESAS -->
+					<div class="space-y-6">
+						<h2 class="text-3xl font-bold text-gray-200 page-title">
+							Página de Empresas
+						</h2>
+						<form id="businessPageForm" class="space-y-6">
+							<!-- Seção: Hero -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Principal (Hero)
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Título</label
+										><input
+											type="text"
+											data-path="businessPage.hero.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo</label
+										><textarea
+											data-path="businessPage.hero.subtitle"
+											class="h-24"
+										></textarea>
+									</div>
+									<div>
+										<label>Botão Principal</label
+										><input
+											type="text"
+											data-path="businessPage.hero.cta_button"
+										/>
+									</div>
+									<div>
+										<label>Botão Secundário</label
+										><input
+											type="text"
+											data-path="businessPage.hero.secondary_button"
+										/>
+									</div>
+								</div>
+							</div>
+							<!-- Seção: Proposta de Valor -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Proposta de Valor
+								</h3>
+								<div>
+									<label>Título da Seção</label
+									><input
+										type="text"
+										data-path="businessPage.valueProposition.title"
+									/>
+								</div>
+								<div
+									id="business-value-prop-editor"
+									class="space-y-4 pt-4 border-t border-gray-700 mt-4"
+								>
+									<!-- Itens fixos da proposta de valor -->
+								</div>
+							</div>
+							<!-- Seção: Seções de Informação (NOVO) -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Features Detalhadas
+								</h3>
+								<div
+									id="info-sections-editor"
+									class="space-y-4 pt-4 border-t border-gray-700 scrollable-editor"
+								>
+									<!-- Itens dinâmicos das seções de informação -->
+								</div>
+							</div>
+							<!-- Seção: Grid de Funcionalidades -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Grid de Funcionalidades
+								</h3>
+								<div>
+									<label>Título da Seção</label
+									><input
+										type="text"
+										data-path="businessPage.features.title"
+									/>
+								</div>
+								<div>
+									<label>Subtítulo da Seção</label
+									><textarea
+										data-path="businessPage.features.subtitle"
+										class="h-20"
+									></textarea>
+								</div>
+								<div
+									id="business-features-editor"
+									class="space-y-4 pt-4 border-t border-gray-700 mt-4"
+								>
+									<!-- Conteúdo Fixo de Features -->
+								</div>
+							</div>
+							<!-- Seção: Telas (Carrossel Business) -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Telas (Carrossel Empresa)
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Título</label
+										><input
+											type="text"
+											data-path="businessPage.screenshots.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo</label
+										><textarea
+											data-path="businessPage.screenshots.subtitle"
+											class="h-20"
+										></textarea>
+									</div>
+									<div
+										id="business-screenshots-editor"
+										class="space-y-4 pt-4 border-t border-gray-700 scrollable-editor"
+									></div>
+								</div>
+							</div>
+							<!-- Seção: Depoimentos (Business) -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Depoimentos (Empresa)
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Título</label
+										><input
+											type="text"
+											data-path="businessPage.testimonials.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo</label
+										><textarea
+											data-path="businessPage.testimonials.subtitle"
+											class="h-20"
+										></textarea>
+									</div>
+									<div
+										id="business-testimonials-editor"
+										class="space-y-4 pt-4 border-t border-gray-700 scrollable-editor"
+									></div>
+								</div>
+							</div>
+							<!-- Seção: Fluxos (Business) -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Fluxos Empresariais (Carrossel)
+								</h3>
+								<p class="section-subtitle">
+									Configure fluxos para mostrar processos do
+									negócio
+								</p>
+								<div class="space-y-4 mb-4">
+									<div>
+										<label>Título da Seção</label
+										><input
+											type="text"
+											data-path="businessPage.flowsConfig.title"
+										/>
+									</div>
+									<div>
+										<label>Subtítulo da Seção</label
+										><textarea
+											data-path="businessPage.flowsConfig.subtitle"
+											class="h-20"
+										></textarea>
+									</div>
+								</div>
+								<div
+									id="business-flows-editor"
+									class="space-y-6 scrollable-editor"
+								></div>
+							</div>
+							<!-- Seção: Para Clientes -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: Para Clientes (CTA)
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Tagline (Texto Laranja)</label
+										><input
+											type="text"
+											data-path="businessPage.forClients.tagline"
+										/>
+									</div>
+									<div>
+										<label>Título</label
+										><input
+											type="text"
+											data-path="businessPage.forClients.title"
+										/>
+									</div>
+									<div>
+										<label>Descrição</label
+										><textarea
+											data-path="businessPage.forClients.description"
+											class="h-20"
+										></textarea>
+									</div>
+									<div>
+										<label>Texto do Botão</label
+										><input
+											type="text"
+											data-path="businessPage.forClients.button"
+										/>
+									</div>
+								</div>
+							</div>
+							<!-- Seção: CTA Final -->
+							<div class="form-section p-6 rounded-xl">
+								<h3
+									class="text-xl font-semibold text-orange-400 mb-4"
+								>
+									Seção: CTA Final
+								</h3>
+								<div class="space-y-4">
+									<div>
+										<label>Título</label
+										><input
+											type="text"
+											data-path="businessPage.cta.title"
+										/>
+									</div>
+									<div>
+										<label>Descrição</label
+										><textarea
+											data-path="businessPage.cta.description"
+											class="h-20"
+										></textarea>
+									</div>
+									<div>
+										<label>Texto do Botão</label
+										><input
+											type="text"
+											data-path="businessPage.cta.button"
+										/>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div
+					class="mt-8 text-center sticky bottom-0 py-4 bg-gray-900/80 backdrop-blur-sm"
+				>
+					<button
+						id="save-button"
+						class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-12 rounded-lg transition-colors duration-300 text-lg"
+					>
+						Salvar Alterações
+					</button>
+				</div>
+
+				<!-- IMPORTAÇÃO UNIVERSAL JSON -->
+				<div
+					class="mt-12 p-8 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-2xl border-2 border-purple-500/50"
+				>
+					<h2
+						class="text-3xl font-bold text-purple-300 mb-3 text-center"
+					>
+						🚀 Importação Universal JSON
+					</h2>
+					<p class="text-gray-300 text-center mb-6">
+						Importe dados para qualquer seção de qualquer página em
+						um único JSON
+					</p>
+
+					<div class="max-w-4xl mx-auto">
+						<label
+							class="block text-sm font-semibold text-gray-300 mb-2"
+						>
+							Cole o JSON abaixo (pode conter múltiplas
+							páginas/seções):
+						</label>
+						<textarea
+							id="universal-json-import"
+							class="w-full h-64 bg-gray-800 border-2 border-purple-500/50 rounded-lg px-4 py-3 text-white font-mono text-sm resize-y"
+							placeholder='{"homePage": {"flows": [...]}, "businessPage": {"flows": [...]}}'
+						></textarea>
+
+						<div class="mt-4 flex gap-3 justify-center flex-wrap">
+							<button
+								type="button"
+								id="import-universal-json-btn"
+								class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/50"
+							>
+								📥 Importar Dados
+							</button>
+							<button
+								type="button"
+								id="clear-universal-json-btn"
+								class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+							>
+								🗑️ Limpar Campo
+							</button>
+						</div>
+
+						<div
+							class="mt-4 text-xs text-gray-400 bg-gray-800/50 rounded-lg p-4"
+						>
+							<p class="font-semibold text-purple-300 mb-2">
+								📖 Formato esperado:
+							</p>
+							<pre
+								class="text-gray-300 overflow-x-auto whitespace-pre-wrap"
+							>
+{"homePage": {"flows": [...]}, "businessPage": {"flows": [...]}}</pre
+							>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- JS SEPARADO -->
+		<script type="module" src="js/admin.js"></script>
+	</body>
+</html>
