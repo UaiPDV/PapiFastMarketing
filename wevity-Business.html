@@ -219,32 +219,42 @@
 				</div>
 			</section>
 
-			<!-- FLUXOS DO SISTEMA -->
+			<!-- FLUXOS DO SISTEMA (MODIFICADO PARA O LAYOUT DA INDEX) -->
 			<section
 				id="fluxos"
 				class="py-16 sm:py-20 border-t border-white/10 reveal overflow-hidden"
 			>
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<!-- TÍTULO GERAL DA SEÇÃO -->
 					<div class="text-center mb-12">
 						<h2
-							id="business-flows-title"
+							id="flows-title"
 							class="text-3xl sm:text-4xl font-bold mb-4"
 						>
-							Fluxos de Trabalho
+							Nosso Fluxo
 						</h2>
 						<p
-							id="business-flows-subtitle"
+							id="flows-subtitle"
 							class="text-white/70 text-lg max-w-3xl mx-auto"
 						>
-							Processos simplificados para o seu negócio
+							Um ciclo simples para organizar seu evento sem
+							complicações.
 						</p>
 					</div>
 
-					<div class="relative">
-						<!-- Botões de navegação -->
+					<!-- INÍCIO DO CARROSSEL DE FLUXO -->
+					<div class="relative max-w-5xl mx-auto">
+						<div
+							id="carousel-wrapper-flows"
+							class="overflow-hidden cursor-grab"
+						>
+							<div id="carousel-track-flows" class="flex">
+								<!-- Slides do fluxo serão inseridos aqui via JS -->
+							</div>
+						</div>
 						<button
-							id="business-flows-prev"
-							class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-full transition-all duration-300 hidden md:block"
+							id="prev-slide-flows"
+							class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"
 						>
 							<svg
 								class="w-6 h-6"
@@ -257,12 +267,12 @@
 									stroke-linejoin="round"
 									stroke-width="2"
 									d="M15 19l-7-7 7-7"
-								/>
+								></path>
 							</svg>
 						</button>
 						<button
-							id="business-flows-next"
-							class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-full transition-all duration-300 hidden md:block"
+							id="next-slide-flows"
+							class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full z-10"
 						>
 							<svg
 								class="w-6 h-6"
@@ -275,32 +285,11 @@
 									stroke-linejoin="round"
 									stroke-width="2"
 									d="M9 5l7 7-7 7"
-								/>
+								></path>
 							</svg>
 						</button>
-
-						<!-- Container do carrossel -->
-						<div
-							id="business-flows-carousel-wrapper"
-							class="overflow-hidden mx-auto"
-							style="max-width: 900px"
-						>
-							<div
-								id="business-flows-carousel-track"
-								class="flex transition-transform duration-500 ease-out"
-							>
-								<!-- Os fluxos serão inseridos aqui dinamicamente -->
-							</div>
-						</div>
-
-						<!-- Indicadores -->
-						<div
-							id="business-flows-indicators"
-							class="flex justify-center gap-2 mt-8"
-						>
-							<!-- Indicadores serão inseridos aqui -->
-						</div>
 					</div>
+					<!-- FIM DO CARROSSEL DE FLUXO -->
 				</div>
 			</section>
 
@@ -522,6 +511,32 @@
 				</div>
 			</div>
 		</footer>
+
+		<!-- MODAL DO FLUXO (COPIADO DA INDEX.HTML) -->
+		<div
+			id="flow-step-modal"
+			class="flow-modal fixed inset-0 z-50 flex items-center justify-center p-4"
+		>
+			<div
+				id="modal-overlay"
+				class="absolute inset-0 bg-black/70 backdrop-blur-sm"
+			></div>
+			<div
+				class="glass rounded-2xl p-6 w-full max-w-sm relative z-10 modal-content"
+			>
+				<h3
+					id="modal-title"
+					class="text-xl font-semibold mb-2 text-orange-400"
+				></h3>
+				<p id="modal-description" class="text-white/80"></p>
+				<button
+					id="modal-close-btn"
+					class="absolute -top-3 -right-3 w-8 h-8 rounded-full accent shadow-lg flex items-center justify-center text-lg font-bold"
+				>
+					&times;
+				</button>
+			</div>
+		</div>
 
 		<!-- Custom JavaScript -->
 		<script type="module" src="js/wevity-business.js"></script>

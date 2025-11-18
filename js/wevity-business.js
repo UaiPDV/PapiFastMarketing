@@ -40,6 +40,187 @@ function setContent(elementId, content) {
 	if (element) element.innerHTML = content || '';
 }
 
+// --- NOVO: Lógica do Modal do Fluxo (copiado de app.js) ---
+function setupFlowModal() {
+	const modal = document.getElementById('flow-step-modal');
+	const modalTitle = document.getElementById('modal-title');
+	const modalDescription = document.getElementById('modal-description');
+	const closeModalBtn = document.getElementById('modal-close-btn');
+	const modalOverlay = document.getElementById('modal-overlay');
+
+	if (!modal || !modalTitle || !modalDescription || !closeModalBtn) {
+		return;
+	}
+
+	const showModal = (title, description) => {
+		modalTitle.textContent = title || '';
+		modalDescription.textContent = description || '';
+		modal.classList.add('modal-visible');
+	};
+
+	const hideModal = () => {
+		modal.classList.remove('modal-visible');
+	};
+
+	// Event listener delegado para os passos do fluxo
+	document.body.addEventListener('click', (e) => {
+		const stepBox = e.target.closest('.flow-step-box');
+		if (stepBox) {
+			// Apenas ativa o modal em telas 'md' (768px) ou menores
+			if (window.innerWidth < 768) {
+				const title = stepBox.dataset.title;
+				const description = stepBox.dataset.description;
+				showModal(title, description);
+			}
+		}
+	});
+
+	// Fechar modal
+	closeModalBtn.addEventListener('click', hideModal);
+	modalOverlay.addEventListener('click', hideModal);
+}
+
+// --- NOVO: Função renderFlows (copiada de index.js) ---
+/**
+ * Renderiza os fluxos como um carrossel de diagramas 2x2.
+ * @param {object} flowsConfig - Configuração com título e subtítulo da seção.
+ * @param {Array} flows - Array de fluxos, onde cada fluxo tem 4 passos.
+ */
+function renderFlows(flowsConfig, flows) {
+	// Define o título e subtítulo gerais da seção
+	setContent('flows-title', flowsConfig?.title || 'Nosso Fluxo');
+	setContent(
+		'flows-subtitle',
+		flowsConfig?.subtitle || 'Processos simples para o seu negócio decolar.'
+	);
+
+	const carouselTrack = document.getElementById('carousel-track-flows');
+	if (!carouselTrack) return;
+
+	// Garante que 'flows' é um array
+	const flowsArray = Array.isArray(flows) ? flows : [];
+
+	if (flowsArray.length === 0) {
+		carouselTrack.innerHTML =
+			'<p class="text-center w-full">Nenhum fluxo configurado.</p>';
+		return;
+	}
+
+	carouselTrack.innerHTML = flowsArray
+		.map((flow) => {
+			// Pega os 4 passos (ou objetos vazios como fallback)
+			const step1 = flow.steps?.[0] || {
+				title: 'Passo 1',
+				description: '...',
+			};
+			const step2 = flow.steps?.[1] || {
+				title: 'Passo 2',
+				description: '...',
+			};
+			const step3 = flow.steps?.[2] || {
+				title: 'Passo 3',
+				description: '...',
+			};
+			const step4 = flow.steps?.[3] || {
+				title: 'Passo 4',
+				description: '...',
+			};
+
+			// Retorna o HTML completo do slide, incluindo o diagrama 2x2
+			return `
+            <div class="carousel-slide-flows w-full flex-shrink-0 p-3">
+                <div class="unselectable">
+                    
+                    <!-- TÍTULO E SUBTÍTULO DO FLUXO (SLIDE) -->
+                    <div class="text-center mb-8 md:mb-12">
+						${
+							flow.sectionTitle
+								? `<h3 class="text-2xl font-bold text-orange-400 mb-2">${flow.sectionTitle}</h3>`
+								: ''
+						}
+						${
+							flow.sectionSubtitle
+								? `<p class="text-white/70 text-lg max-w-2xl mx-auto">${flow.sectionSubtitle}</p>`
+								: ''
+						}
+					</div>
+
+                    <!-- Estrutura do Diagrama 2x2 -->
+                    <div class="relative max-w-3xl mx-auto">
+                        
+                        <!-- Grid Container -->
+                        <div class="grid grid-cols-2 gap-x-8 gap-y-16 md:gap-x-24 md:gap-y-32">
+                            
+                            <!-- Step 1 -->
+                            <div class="glass rounded-2xl p-6 text-center reveal visible flow-step-box md:cursor-default" 
+								 data-title="${step1.title}" data-description="${step1.description}">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full accent shadow-lg mb-4">
+                                    <span class="text-2xl font-bold">1</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">${
+									step1.title
+								}</h3>
+								<!-- Descrição visível em desktop -->
+                                <p class="text-white/70 text-sm hidden md:block">${
+									step1.description
+								}</p>
+								<!-- "Saber mais" visível em mobile -->
+								<p class="text-orange-400 text-sm font-semibold mt-2 md:hidden">Saber mais...</p>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="glass rounded-2xl p-6 text-center reveal visible flow-step-box md:cursor-default"
+								 data-title="${step2.title}" data-description="${step2.description}">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full accent shadow-lg mb-4">
+                                    <span class="text-2xl font-bold">2</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">${
+									step2.title
+								}</h3>
+                                <p class="text-white/70 text-sm hidden md:block">${
+									step2.description
+								}</p>
+								<p class="text-orange-400 text-sm font-semibold mt-2 md:hidden">Saber mais...</p>
+                            </div>
+
+                            <!-- Step 4 (vem antes do 3 no HTML para layout) -->
+                            <div class="glass rounded-2xl p-6 text-center reveal visible flow-step-box md:cursor-default"
+								 data-title="${step4.title}" data-description="${step4.description}">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full accent shadow-lg mb-4">
+                                    <span class="text-2xl font-bold">4</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">${
+									step4.title
+								}</h3>
+                                <p class="text-white/70 text-sm hidden md:block">${
+									step4.description
+								}</p>
+								<p class="text-orange-400 text-sm font-semibold mt-2 md:hidden">Saber mais...</p>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="glass rounded-2xl p-6 text-center reveal visible flow-step-box md:cursor-default"
+								 data-title="${step3.title}" data-description="${step3.description}">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full accent shadow-lg mb-4">
+                                    <span class="text-2xl font-bold">3</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">${
+									step3.title
+								}</h3>
+                                <p class="text-white/70 text-sm hidden md:block">${
+									step3.description
+								}</p>
+								<p class="text-orange-400 text-sm font-semibold mt-2 md:hidden">Saber mais...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+		})
+		.join('');
+}
+
 function renderContent(data) {
 	const content = data || {};
 	// Hero
@@ -69,7 +250,7 @@ function renderContent(data) {
 	if (infoSectionsContainer && Array.isArray(infoSectionsData)) {
 		infoSectionsContainer.innerHTML = infoSectionsData
 			.map(
-				(section, index) => `
+				(section) => `
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center reveal">
 			<div>
 				<h3 class="text-3xl font-bold">${section.title || ''}</h3>
@@ -158,217 +339,23 @@ function renderContent(data) {
 	setContent('cta-button', content.cta?.button);
 }
 
-// Renderizar Fluxos (Business)
-function renderBusinessFlows(flows, flowsConfig = {}) {
-	if (!flows || flows.length === 0) return;
-
-	setContent(
-		'business-flows-title',
-		flowsConfig.title || 'Fluxos de Trabalho'
-	);
-	setContent(
-		'business-flows-subtitle',
-		flowsConfig.subtitle || 'Processos simplificados para o seu negócio'
-	);
-
-	const track = document.getElementById('business-flows-carousel-track');
-	const indicators = document.getElementById('business-flows-indicators');
-
-	// Função para calcular posições dos círculos em formato circular (sempre)
-	function getGeometricPositions(numSteps, containerSize) {
-		const positions = [];
-		const centerX = containerSize.width / 2;
-		const centerY = containerSize.height / 2;
-
-		// Ajusta o raio baseado no número de itens para melhor espaçamento
-		let radius = 180;
-		if (numSteps === 2) radius = 120;
-		if (numSteps === 3) radius = 140;
-		if (numSteps === 4) radius = 160;
-
-		// Sempre em círculo, começando do topo (12 horas)
-		for (let i = 0; i < numSteps; i++) {
-			const angle = (i * 2 * Math.PI) / numSteps - Math.PI / 2;
-			positions.push({
-				x: centerX + radius * Math.cos(angle),
-				y: centerY + radius * Math.sin(angle),
-			});
-		}
-
-		return positions;
-	}
-
-	// Função para calcular ângulo e distância entre dois pontos
-	function getConnection(from, to) {
-		const circleRadius = 70; // Raio do círculo (140px de diâmetro / 2)
-
-		const dx = to.x - from.x;
-		const dy = to.y - from.y;
-		const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-		const totalDistance = Math.sqrt(dx * dx + dy * dy);
-
-		// Distância da seta = distância total - raios dos dois círculos
-		const arrowDistance = totalDistance - circleRadius * 2;
-
-		// Ponto de início da seta (na borda do círculo de origem)
-		const startOffsetX = circleRadius * Math.cos((angle * Math.PI) / 180);
-		const startOffsetY = circleRadius * Math.sin((angle * Math.PI) / 180);
-
-		return {
-			angle,
-			distance: arrowDistance,
-			startX: startOffsetX,
-			startY: startOffsetY,
-		};
-	}
-
-	track.innerHTML = flows
-		.map((flow, flowIndex) => {
-			const steps = flow.steps || [];
-
-			// Tamanho fixo do container para centralização
-			const containerWidth = 700;
-			const containerHeight = 600;
-
-			const positions = getGeometricPositions(steps.length, {
-				width: containerWidth,
-				height: containerHeight,
-			});
-
-			return `
-		<div class="flow-container" style="display: flex; justify-content: center; align-items: center; width: 100%; min-height: 600px;">
-			<div style="position: relative; width: ${containerWidth}px; height: ${containerHeight}px;">
-				${steps
-					.map((step, stepIndex) => {
-						const pos = positions[stepIndex];
-						const nextPos =
-							positions[(stepIndex + 1) % steps.length];
-						const connection = getConnection(pos, nextPos);
-
-						return `
-					<div class="flow-step" style="position: absolute; left: ${pos.x}px; top: ${
-							pos.y
-						}px; transform: translate(-50%, -50%); animation: fadeInUp 0.6s ease-out ${
-							stepIndex * 0.1
-						}s both; z-index: 2;">
-						<div class="flow-circle">
-							<!-- Número do passo -->
-							<div style="position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #f97316, #ef4444); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">${
-								stepIndex + 1
-							}</div>
-							<div class="flow-icon">${step.icon || '📱'}</div>
-							<div style="font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9);">${
-								step.title || ''
-							}</div>
-						</div>
-						<div class="flow-label" style="max-width: 140px; text-align: center;">${
-							step.label || ''
-						}</div>
-						
-						<!-- Linha conectando ao próximo círculo -->
-						<div style="
-							position: absolute;
-							left: 50%;
-							top: 50%;
-							margin-left: ${connection.startX}px;
-							margin-top: ${connection.startY}px;
-							width: ${connection.distance}px;
-							height: 2px;
-							background: rgba(251, 146, 60, 0.7);
-							transform-origin: left center;
-							transform: rotate(${connection.angle}deg);
-							z-index: 1;
-						"></div>
-					</div>
-				`;
-					})
-					.join('')}
-			</div>
-		</div>
-	`;
-		})
-		.join('');
-
-	// Indicadores
-	if (flows.length > 1) {
-		indicators.innerHTML = flows
-			.map(
-				(_, index) =>
-					`<div class="flow-indicator ${
-						index === 0 ? 'active' : ''
-					}" data-index="${index}"></div>`
-			)
-			.join('');
-		document
-			.getElementById('business-flows-prev')
-			.classList.remove('hidden');
-		document
-			.getElementById('business-flows-next')
-			.classList.remove('hidden');
-	} else {
-		indicators.innerHTML = '';
-		document.getElementById('business-flows-prev').classList.add('hidden');
-		document.getElementById('business-flows-next').classList.add('hidden');
-	}
-
-	// Inicializar carrossel de fluxos
-	if (flows.length > 1) initBusinessFlowsCarousel(flows.length);
-}
-
-function initBusinessFlowsCarousel(totalFlows) {
-	let currentFlow = 0;
-	const track = document.getElementById('business-flows-carousel-track');
-	const indicators = document.querySelectorAll(
-		'#business-flows-indicators .flow-indicator'
-	);
-	const prevBtn = document.getElementById('business-flows-prev');
-	const nextBtn = document.getElementById('business-flows-next');
-
-	function updateCarousel() {
-		track.style.transform = `translateX(-${currentFlow * 100}%)`;
-		indicators.forEach((ind, idx) => {
-			ind.classList.toggle('active', idx === currentFlow);
-		});
-	}
-
-	function next() {
-		currentFlow = (currentFlow + 1) % totalFlows;
-		updateCarousel();
-	}
-
-	function prev() {
-		currentFlow = (currentFlow - 1 + totalFlows) % totalFlows;
-		updateCarousel();
-	}
-
-	nextBtn.addEventListener('click', next);
-	prevBtn.addEventListener('click', prev);
-	indicators.forEach((ind, idx) => {
-		ind.addEventListener('click', () => {
-			currentFlow = idx;
-			updateCarousel();
-		});
-	});
-
-	// Auto-play opcional (a cada 8 segundos)
-	setInterval(next, 8000);
-}
-
 async function loadContentFromFirebase() {
 	try {
 		const docSnap = await getDoc(doc(db, 'content', 'pages'));
 		const businessPage = docSnap.exists()
 			? docSnap.data().businessPage
 			: {};
+
+		// Renderiza todo o conteúdo principal
 		renderContent(businessPage);
-		renderBusinessFlows(
-			businessPage.flows || [],
-			businessPage.flowsConfig || {}
-		);
+		// Renderiza o NOVO fluxo
+		renderFlows(businessPage.flowsConfig, businessPage.flows);
 	} catch (error) {
 		console.error('Erro ao carregar do Firebase:', error);
 		renderContent({});
+		renderFlows({}, []); // Renderiza fluxo vazio em caso de erro
 	} finally {
+		// Inicializa os carrosséis existentes
 		initializeCarousel({
 			wrapperId: 'carousel-wrapper-prints',
 			trackId: 'carousel-track-prints',
@@ -383,12 +370,28 @@ async function loadContentFromFirebase() {
 			nextId: 'next-slide-testimonials',
 			prevId: 'prev-slide-testimonials',
 		});
+		// Inicializa o NOVO carrossel de fluxo
+		initializeCarousel({
+			wrapperId: 'carousel-wrapper-flows',
+			trackId: 'carousel-track-flows',
+			slideClass: '.carousel-slide-flows',
+			nextId: 'next-slide-flows',
+			prevId: 'prev-slide-flows',
+			slidesPerView: 1, // Força 1 slide por vez
+		});
+
 		observeRevealElements();
 	}
 }
 
 function initializeCarousel(config) {
-	const { wrapperId, trackId, slideClass, nextId, prevId } = config;
+	const {
+		wrapperId,
+		trackId,
+		nextId,
+		prevId,
+		slidesPerView: configSlides,
+	} = config;
 	const carouselWrapper = document.getElementById(wrapperId);
 	const track = document.getElementById(trackId);
 	if (!track || !carouselWrapper) return;
@@ -406,14 +409,28 @@ function initializeCarousel(config) {
 		originalSlides = Array.from(track.children);
 		if (originalSlides.length === 0) return;
 
-		slidesPerView =
-			window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+		// MODIFICADO: Respeita o 'slidesPerView' do config, se existir
+		if (configSlides) {
+			slidesPerView = configSlides;
+		} else {
+			slidesPerView =
+				window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+		}
+
 		const nextButton = document.getElementById(nextId);
 		const prevButton = document.getElementById(prevId);
 
 		if (originalSlides.length <= slidesPerView) {
 			if (nextButton) nextButton.style.display = 'none';
 			if (prevButton) prevButton.style.display = 'none';
+			// Não clona slides se não for necessário
+			track.innerHTML = '';
+			originalSlides.forEach((slide) =>
+				track.appendChild(slide.cloneNode(true))
+			);
+			slides = Array.from(track.children);
+			currentIndex = 0;
+			updatePosition(false);
 			return;
 		} else {
 			if (nextButton) nextButton.style.display = 'block';
@@ -444,7 +461,10 @@ function initializeCarousel(config) {
 		track.style.transition = animate
 			? `transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)`
 			: 'none';
-		const slideWidth = slides[0].getBoundingClientRect().width;
+		const slideWidth = slides[0]
+			? slides[0].getBoundingClientRect().width
+			: 0;
+		if (slideWidth === 0) return;
 		track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
 	};
 
@@ -498,10 +518,15 @@ function initializeCarousel(config) {
 			(e.changedTouches && e.changedTouches[0].pageX) ||
 			startX;
 		carouselWrapper.style.cursor = 'grab';
-		if (
-			Math.abs(currentX - startX) >
-			slides[0].getBoundingClientRect().width / 5
-		) {
+
+		const slideWidth =
+			slides && slides[0] ? slides[0].getBoundingClientRect().width : 0;
+		if (slideWidth === 0) {
+			updatePosition();
+			return;
+		}
+
+		if (Math.abs(currentX - startX) > slideWidth / 5) {
 			move(currentX > startX ? -1 : 1);
 		} else {
 			updatePosition();
@@ -534,7 +559,8 @@ function initializeCarousel(config) {
 		resizeTimeout = setTimeout(setupCarousel, 200);
 	});
 
-	setupCarousel();
+	// Atraso para garantir que o layout esteja estável
+	setTimeout(setupCarousel, 500);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -582,4 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	observeRevealElements();
+
+	// Configura o modal de fluxo
+	setupFlowModal();
 });

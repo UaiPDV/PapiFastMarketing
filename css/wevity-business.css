@@ -137,143 +137,38 @@ body.menu-open {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
-/* Estilos dos Fluxos */
-.flow-container {
-	min-width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 2rem 0;
-}
-.flow-step {
+
+/* --- ESTILOS ADICIONADOS (COPIADOS DE INDEX.CSS) --- */
+
+/* --- Estilos do Fluxo (Diagrama com Setas) --- */
+.flow-step-box {
 	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	flex: 1;
-	min-width: 140px;
-	max-width: 200px;
+	z-index: 10;
+	background: rgba(255, 255, 255, 0.04);
 }
-.flow-circle {
-	width: 140px;
-	height: 140px;
-	border-radius: 50%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(
-		135deg,
-		rgba(251, 146, 60, 0.2),
-		rgba(239, 68, 68, 0.2)
-	);
-	border: 3px solid rgba(251, 146, 60, 0.5);
-	backdrop-filter: blur(10px);
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	position: relative;
-	z-index: 2;
+
+/* --- NOVO: Estilos do Modal --- */
+.flow-modal {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 0.3s, opacity 0.3s ease;
 }
-.flow-circle:hover {
-	transform: scale(1.1) translateY(-8px);
-	box-shadow: 0 20px 40px rgba(251, 146, 60, 0.4);
-	border-color: rgba(251, 146, 60, 0.8);
-	background: linear-gradient(
-		135deg,
-		rgba(251, 146, 60, 0.3),
-		rgba(239, 68, 68, 0.3)
-	);
+.flow-modal.modal-visible {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s, opacity 0.3s ease;
 }
-.flow-icon {
-	font-size: 2.5rem;
-	margin-bottom: 0.5rem;
-	filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+.flow-modal .modal-content {
+	transform: scale(0.9);
+	opacity: 0;
+	transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.flow-label {
-	font-weight: 700;
-	font-size: 0.95rem;
-	margin-top: 1rem;
-	color: white;
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.flow-modal.modal-visible .modal-content {
+	transform: scale(1);
+	opacity: 1;
 }
-.flow-arrow {
-	position: absolute;
-	top: 50%;
-	left: 100%;
-	transform: translateY(-50%);
-	width: 60px;
-	height: 3px;
-	background: linear-gradient(
-		90deg,
-		rgba(251, 146, 60, 0.6),
-		rgba(251, 146, 60, 0.2)
-	);
-	z-index: 1;
-}
-.flow-arrow::after {
-	content: '';
-	position: absolute;
-	right: -10px;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 0;
-	height: 0;
-	border-left: 12px solid rgba(251, 146, 60, 0.6);
-	border-top: 8px solid transparent;
-	border-bottom: 8px solid transparent;
-}
-.flow-arrow.curved {
-	height: 60px;
-	width: 80px;
-	background: none;
-}
-.flow-arrow.curved::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border: 3px solid rgba(251, 146, 60, 0.6);
-	border-left: none;
-	border-bottom: none;
-	border-radius: 0 50% 0 0;
-}
-.flow-arrow.return {
-	top: auto;
-	bottom: -40px;
-	left: 50%;
-	transform: translateX(-50%) rotate(180deg);
-	width: 100px;
-}
-.flow-indicator {
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.3);
-	transition: all 0.3s ease;
-	cursor: pointer;
-}
-.flow-indicator.active {
-	width: 32px;
-	border-radius: 6px;
-	background: linear-gradient(90deg, #f97316, #ef4444);
-}
-@media (max-width: 768px) {
-	.flow-circle {
-		width: 110px;
-		height: 110px;
-	}
-	.flow-icon {
-		font-size: 2rem;
-	}
-	.flow-label {
-		font-size: 0.85rem;
-	}
-	.flow-arrow {
-		width: 40px;
-	}
-}
+/* --- Fim dos Estilos do Modal --- */
+
 @keyframes fadeInUp {
 	from {
 		opacity: 0;
