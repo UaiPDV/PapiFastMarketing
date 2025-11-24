@@ -449,7 +449,7 @@ function renderContent(data) {
 			<div class="carousel-slide-prints w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
 				<div class="rounded-2xl overflow-hidden glass group h-full flex flex-col unselectable">
 					<div class="aspect-[16/9] w-full bg-white/6 overflow-hidden">
-						<img src="${item.image}" draggable="false" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+						<img src="${item.image}" draggable="false" class="w-full h-full object-fill group-hover:scale-105 transition-transform duration-300"/>
 					</div>
 					<div class="p-4 text-sm text-white/80">${item.caption}</div>
 				</div>
