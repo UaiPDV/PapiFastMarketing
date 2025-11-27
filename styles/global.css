@@ -1,0 +1,72 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0f0f11;
+  color: #fff;
+}
+
+body.light-theme {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.light-theme .glass {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.glass:hover {
+  transform: translateY(-5px);
+}
+
+.light-theme .glass:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.accent {
+  background: linear-gradient(90deg, #f97316, #ef4444);
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.accent:hover {
+  opacity: 0.95;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #fb923c, #ef4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.reveal {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.invisible-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

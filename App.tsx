@@ -1,0 +1,28 @@
+import React from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
+import { Home } from './components/Home';
+import { Business } from './components/Business';
+import { Admin } from './components/Admin';
+import { useContent } from './hooks/useContent';
+
+export default function App() {
+  const { content } = useContent();
+
+  return (
+    <HashRouter>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/business" element={<Business />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </main>
+        <Footer links={content?.homePage?.footer?.links} />
+      </div>
+    </HashRouter>
+  );
+}
