@@ -497,8 +497,14 @@ export const Admin: React.FC = () => {
         `}>
             <div className="p-6 border-b border-white/5">
                 <div className="flex items-center gap-3 mb-1">
-                    <div className="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center font-bold text-white">W</div>
-                    <span className="font-bold text-xl">Wevity Admin</span>
+                    <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center overflow-hidden">
+                        <img
+                            src="https://printweb.vlks.com.br/imagens/novaLogo1.png"
+                            alt="PapiFast Logo"
+                            className="object-contain w-full h-full"
+                        />
+                    </div>
+                    <span className="font-bold text-xl">PapiFast Admin</span>
                 </div>
                 <p className="text-xs text-gray-500">Sistema de Gestão de Conteúdo</p>
             </div>
@@ -1432,7 +1438,7 @@ export const Admin: React.FC = () => {
             </div>
             
             <footer className="mt-12 py-6 text-center text-gray-600 text-sm border-t border-white/5">
-                Admin Panel © {new Date().getFullYear()} Wevity
+                Admin Panel © {new Date().getFullYear()} PapiFast
             </footer>
         </main>
     </div>

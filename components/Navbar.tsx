@@ -56,8 +56,8 @@ export const Navbar: React.FC = () => {
 	const navLinks = getNavLinks();
 
 	const getLogoText = () => {
-		if (isAdmin) return 'Wevity Admin';
-		return isBusiness ? 'Wevity Business' : 'Wevity';
+		if (isAdmin) return 'PapiFast Admin';
+		return isBusiness ? 'PapiFast Business' : 'PapiFast';
 	};
 
 	const logoText = getLogoText();
@@ -90,7 +90,7 @@ export const Navbar: React.FC = () => {
 					>
 						<div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-lg transition-transform group-hover:scale-105">
 							<img
-								src="https://placehold.co/40x40/orange/white?text=W"
+								src="https://printweb.vlks.com.br/imagens/novaLogo1.png"
 								alt="Logo"
 								className="object-cover"
 							/>

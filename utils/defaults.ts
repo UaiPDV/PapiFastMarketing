@@ -14,7 +14,7 @@ export const defaultContent = {
     },
     about: {
       title: 'O jeito moderno de organizar suas comemorações',
-      description: 'O Wevity é o aplicativo que simplifica a organização de festas, aniversários e eventos especiais. Em poucos cliques, você cria seu evento, adiciona produtos ou presentes, envia convites personalizados e acompanha tudo em tempo real.',
+      description: 'O PapiFast é o aplicativo que simplifica a organização de festas, aniversários e eventos especiais. Em poucos cliques, você cria seu evento, adiciona produtos ou presentes, envia convites personalizados e acompanha tudo em tempo real.',
       images: [
         'https://images.unsplash.com/photo-1530103862676-de3c9da59af7?q=80&w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1511795409834-ef04bbd51622?q=80&w=800&auto=format&fit=crop',
@@ -65,7 +65,7 @@ export const defaultContent = {
     },
     useCases: {
         title: 'Perfeito para qualquer celebração',
-        subtitle: 'Não importa o tamanho da sua festa, o Wevity ajuda você a torná-la inesquecível.',
+        subtitle: 'Não importa o tamanho da sua festa, o PapiFast ajuda você a torná-la inesquecível.',
         items: [
             {
                 image: 'https://placehold.co/200x200/orange/white?text=Aniversario',
@@ -100,7 +100,7 @@ export const defaultContent = {
     },
     testimonials: {
       title: 'O que dizem nossos usuários',
-      subtitle: 'A experiência de quem já transformou suas festas com o Wevity.',
+      subtitle: 'A experiência de quem já transformou suas festas com o PapiFast.',
       items: [
         { quote: '“Montei meu aniversário em minutos e já recebi presentes sem complicação.”', author: 'Ana Silva' },
         { quote: '“Os convites digitais foram um sucesso, meus amigos confirmaram rapidinho!”', author: 'João Costa' },
@@ -109,7 +109,7 @@ export const defaultContent = {
     },
     businessCta: {
       tagline: 'Você gerencia um estabelecimento ou negócio?',
-      title: 'Potencialize seu Negócio com o Wevity',
+      title: 'Potencialize seu Negócio com o PapiFast',
       subtitle: 'Uma plataforma completa para gestão de eventos, marketing digital e fidelização de clientes.',
       button: 'Conheça Nossa Solução',
       tabs: [
@@ -120,7 +120,7 @@ export const defaultContent = {
     },
     contact: {
       title: 'Pronto para a festa?',
-      description: 'Crie seu evento no Wevity agora e aproveite cada momento sem preocupações.',
+      description: 'Crie seu evento no PapiFast agora e aproveite cada momento sem preocupações.',
       button: 'Criar meu evento agora',
     },
     footer: {
@@ -134,7 +134,7 @@ export const defaultContent = {
   businessPage: {
     hero: {
       title: 'A Plataforma Completa para seu Negócio Decolar',
-      subtitle: 'Gestão de eventos, marketing automatizado e vendas integradas. Transforme a experiência do seu cliente e impulsione seus resultados com Wevity.',
+      subtitle: 'Gestão de eventos, marketing automatizado e vendas integradas. Transforme a experiência do seu cliente e impulsione seus resultados com o PapiFast.',
       cta_button: 'Agendar uma Demonstração',
       secondary_button: 'Ver Funcionalidades',
     },
@@ -215,9 +215,9 @@ export const defaultContent = {
     },
     testimonials: {
         title: 'Parceiros',
-        subtitle: 'Quem confia no Wevity.',
+        subtitle: 'Quem confia no PapiFast.',
         items: [
-            { quote: 'O Wevity transformou a gestão da minha casa de shows.', author: 'Carlos, Gerente de Eventos' },
+            { quote: 'O PapiFast transformou a gestão da minha casa de shows.', author: 'Carlos, Gerente de Eventos' },
             { quote: 'Consigo acompanhar as vendas de ingressos de onde estiver.', author: 'Fernanda, Produtora' },
             { quote: 'As ferramentas de marketing automatizado são incríveis.', author: 'Ricardo, Dono de Club' },
         ]
@@ -225,12 +225,12 @@ export const defaultContent = {
     forClients: {
         tagline: 'Você é um cliente?',
         title: 'Organizando sua festa pessoal?',
-        description: 'O Wevity também é para você. Crie convites, listas de presentes e muito mais.',
+        description: 'O PapiFast também é para você. Crie convites, listas de presentes e muito mais.',
         button: 'Conheça a versão para você'
     },
     cta: {
         title: 'Pronto para levar seu negócio ao próximo nível?',
-        description: 'Agende uma demonstração gratuita e descubra como o Wevity pode transformar a gestão do seu negócio.',
+        description: 'Agende uma demonstração gratuita e descubra como o PapiFast pode transformar a gestão do seu negócio.',
         button: 'Fale com um especialista'
     }
   }
