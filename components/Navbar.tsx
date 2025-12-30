@@ -134,17 +134,6 @@ export const Navbar: React.FC = () => {
 							)
 						)}
 
-						{!isAdmin && (
-							<Link
-								to="/admin"
-								className={`text-sm font-medium transition-colors hover:text-orange-500 ${
-									isDark ? 'text-white/50' : 'text-slate-400'
-								}`}
-							>
-								Admin
-							</Link>
-						)}
-
 						<div className="flex items-center gap-3 pl-4 border-l border-white/10">
 							<button
 								onClick={toggleTheme}
@@ -257,17 +246,7 @@ export const Navbar: React.FC = () => {
 								</Link>
 							)
 						)}
-						<Link
-							to="/admin"
-							onClick={() => setIsOpen(false)}
-							className={`block px-4 py-3 rounded-xl text-base font-medium transition ${
-								isDark
-									? 'text-white hover:bg-white/10'
-									: 'text-slate-900 hover:bg-slate-100'
-							}`}
-						>
-							Admin
-						</Link>
+
 						<div className="pt-4 mt-2 border-t border-white/5">
 							<a
 								href={primaryCtaHref}
